@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clases;
+package enums;
 
 /**
  *
  * @author carlac
  */
-public class Usuario {
+public enum RecipeDifficulty {
     
-    private String nombreUsuario;
-    private char[] password;
-    private int identificador;
-    
+    LOW, 
+    MEDIUM, 
+    HARD
     
 }
