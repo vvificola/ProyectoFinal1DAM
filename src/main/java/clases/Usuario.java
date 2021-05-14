@@ -13,6 +13,7 @@ public class Usuario {
     
     private String nombreUsuario;
     private char[] password;
+    private int identificador;
     
     
 }
