@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enums;
+package products;
+
+import classes.Product;
+import typeOfEnums.TypeOfLegume;
 
 /**
  *
  * @author carlac
  */
-public enum RecipeDifficulty {
+public class Legume  extends Product{
     
-    LOW, 
-    MEDIUM, 
-    HARD
+    private TypeOfLegume typeOfLegume;
     
 }

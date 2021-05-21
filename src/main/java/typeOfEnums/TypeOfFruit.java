@@ -3,12 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package typeOfEnums;
 
 /**
  *
  * @author carlac
  */
-public class Tokens {
-    
+public enum TypeOfFruit {
+
+    APPLE,
+    PEAR,
+    WATERMELON,
+    LEMON,
+    ORANGE,
+    STRAWBERRY,
+    BANANA,
+    PEACH,
+    PINNEAPPLE, 
+    AVOCADO,
+
 }

@@ -3,19 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enums;
+package typeOfEnums;
 
 /**
  *
  * @author carlac
  */
-public enum DietaryRestrictions {
-    
-    HALAL, 
-    VEGAN, 
-    RAW, 
-    LOWCARB, 
-    
-    
-    
+public enum TypeOfVegetable {
+
+    ONION,
+    CUCUMBER,
+    EGGPLANT,
+    TOMATO,
+    CARROT,
+    ASPARAGUS,
+    REDPEPPER,
+    GREENPEPPER,
+    PUMPKIN,
+    ZUCHINNI,
+    GARLIC,
+    VEGANMEAT
+
 }

@@ -5,6 +5,8 @@
  */
 package com.mycompany.proyectofinal1dam;
 
+import typeOfEnums.TypeOfFish;
+
 /**
  *
  * @author carlac
@@ -17,8 +19,7 @@ public class NewMain {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println("hola prueba de commit a traves de las estañas de netbeans"
-                + "");
+        System.out.println(TypeOfFish);
     }
     
 }

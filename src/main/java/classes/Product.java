@@ -5,14 +5,18 @@
  */
 package classes;
 
+import restrictionsEnums.DietaryRestrictions;
+import restrictionsEnums.Storage;
+
 /**
  *
  * @author carlac
  */
-public class Product {
+public class Product  extends NutritionalValues {
     
     private String productName;
-    private String productName;
-    private boolean productName;
-    private String productName;    
+    private Short weight;
+    private Storage storage;
+    private DietaryRestrictions dietary;
+        
 }

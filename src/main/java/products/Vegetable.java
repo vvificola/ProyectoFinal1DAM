@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enums;
+package products;
+
+import classes.Product;
+import typeOfEnums.TypeOfVegetable;
 
 /**
  *
  * @author carlac
  */
-public enum ProductStorage {
+public class Vegetable  extends Product {
     
-    DRY, 
-    COLD, 
-    FREEZE
-    
-    
+    private TypeOfVegetable typeOfVegetable;
     
 }

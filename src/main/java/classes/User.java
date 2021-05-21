@@ -7,6 +7,8 @@ package classes;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import restrictionsEnums.DietaryRestrictions;
 /**
  *
  * @author carlac
@@ -14,16 +16,21 @@ import java.time.LocalDate;
 public class User {
     
     private String userName;
-    private char[] password;
+    private String password;
     private String email;
     private String firstName;
     private String lastName;
     private boolean genre;
-    private short heigth; //en centímetros
-    private short weigth; //en centímetros
-    
-    private Tokens tokens;
+    private short height; //en centímetros
+    private short weight; //en centímetros
     private LocalDate birthDate;
+    private ArrayList<Product> favorites;
+    private ArrayList<DietaryRestrictions> dietaryOptions;
+    private ArrayList <Menu> savedMenu;
+    
+    
+    
+    
     
     
 }
