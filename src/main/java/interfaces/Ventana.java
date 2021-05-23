@@ -8,12 +8,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import classes.User;
+
 
 
 public class Ventana extends JFrame{
 
 	private PantallaRegistro pantallaRegistro;
 	private PantallaInicio pantallaInicio;
+	private PantallaUsuario pantallaUsuario;
 	private Ventana v;
 	 
 	public Ventana() {
@@ -24,7 +27,6 @@ public class Ventana extends JFrame{
 		this.isAlwaysOnTop();
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 		pantallaRegistro = new PantallaRegistro(this);
 		this.setContentPane (pantallaRegistro);
 		this.setVisible(true);
@@ -45,7 +47,7 @@ public class Ventana extends JFrame{
 		
 	} 
 	
-public void goRegister(){
+   public void goRegister(){
 		
 		if(this.pantallaRegistro  == null) {
 			this.pantallaRegistro = new PantallaRegistro(this);
@@ -55,9 +57,25 @@ public void goRegister(){
 		this.setContentPane(this.pantallaRegistro);
 		this.setSize(pantallaRegistro.getSize());
 		this.pantallaRegistro.setVisible(true);
-	
-
 		
 	}
+   
+   
+  
+   
+   public void userLogged(){
+		
+		if(this.pantallaUsuario  == null) {
+			this.pantallaUsuario = new PantallaUsuario(this);
+		}
+		this.pantallaInicio.setVisible(false);
+		
+		this.setContentPane(this.pantallaUsuario);
+		this.setSize(pantallaUsuario.getSize());
+		this.pantallaUsuario.setVisible(true);
+		
+	}
+   
+   
 }
  

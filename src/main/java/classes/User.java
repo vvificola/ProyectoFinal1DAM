@@ -9,6 +9,9 @@ package classes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
+import interfaces.PantallaRegistro;
 import preferenceEnums.DietaryRestrictions;
 /**
  *
@@ -28,6 +31,14 @@ public class User {
     private ArrayList<Product> favorites;
     private ArrayList<DietaryRestrictions> dietaryOptions;
     private ArrayList <Menu> savedMenu;
+    
+    
+	public User(String userName) {
+		
+		
+		
+		
+	}
     
     
     

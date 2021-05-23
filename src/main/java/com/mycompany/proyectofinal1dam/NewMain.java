@@ -7,6 +7,7 @@ package com.mycompany.proyectofinal1dam;
 
 
 
+import classes.User;
 import interfaces.PantallaRegistro;
 import interfaces.Ventana;
 

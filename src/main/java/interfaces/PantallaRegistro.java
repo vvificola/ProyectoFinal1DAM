@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
+
+import classes.User;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
@@ -42,6 +45,45 @@ public class PantallaRegistro extends JPanel {
 	
 	
 	
+	
+	
+	
+	public void setUserNameField(JTextField userNameField) {
+		this.userNameField = userNameField;
+	}
+
+	public JTextField getLastNameField() {
+		return lastNameField;
+	}
+
+	public JTextField getFirstNameField() {
+		return firstNameField;
+	}
+
+
+	public JTextField getSecondLastNameField() {
+		return secondLastNameField;
+	}
+
+	public JTextField getMailField() {
+		return mailField;
+	}
+
+
+	public JTextField getBirthField() {
+		return birthField;
+	}
+
+	public JTextField getUserNameField() {
+		return userNameField;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+
+
 	public PantallaRegistro(Ventana v) {
 		this.ventana=v;
 		this.setSize(323, 416);
@@ -201,6 +243,13 @@ public class PantallaRegistro extends JPanel {
 		
 	
 		JButton registerButton = new JButton("registrame");
+		registerButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.userLogged();
+				User nUser = new User (getUserNameField().toString());
+				
+			}
+		});
 		registerButton.setForeground(new Color(0, 0, 51));
 		panelSouth.add(registerButton);
 		
@@ -221,4 +270,6 @@ public class PantallaRegistro extends JPanel {
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		add(titulo, BorderLayout.NORTH);
 	}
+
+	
 }

@@ -24,6 +24,8 @@ import java.awt.Component;
 import javax.swing.Box;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PantallaInicio extends JPanel {
@@ -67,6 +69,7 @@ public class PantallaInicio extends JPanel {
 		labelGoRegister.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				ventana.goRegister();
 			}
 		});
@@ -81,6 +84,12 @@ public class PantallaInicio extends JPanel {
 		panelSouth.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton loginButton = new JButton("Iniciar sesión");
+		loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			 ventana.userLogged();     
+			 
+			}
+		});
 		loginButton.setForeground(new Color(0, 0, 0));
 		panelSouth.add(loginButton);
 		
