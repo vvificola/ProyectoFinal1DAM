@@ -8,7 +8,8 @@ package classes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import restrictionsEnums.DietaryRestrictions;
+
+import preferenceEnums.DietaryRestrictions;
 /**
  *
  * @author carlac

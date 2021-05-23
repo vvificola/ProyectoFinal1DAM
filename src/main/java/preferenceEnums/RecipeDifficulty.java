@@ -3,20 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enums;
+package preferenceEnums;
 
 /**
  *
  * @author carlac
  */
-public enum TypeOfCooking {
+public enum RecipeDifficulty {
     
-    MEDITERRANEAN, 
-    SPANISH, 
-    ITALIAN, 
-    AMERICAN, 
-    FRENCH, 
-    CHINESE, 
-    JAPANESE
+    LOW, 
+    MEDIUM, 
+    HARD
     
 }

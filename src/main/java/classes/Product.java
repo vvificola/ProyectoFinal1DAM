@@ -5,8 +5,8 @@
  */
 package classes;
 
-import restrictionsEnums.DietaryRestrictions;
-import restrictionsEnums.Storage;
+import preferenceEnums.DietaryRestrictions;
+import preferenceEnums.Storage;
 
 /**
  *

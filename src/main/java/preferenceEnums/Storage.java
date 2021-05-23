@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package restrictionsEnums;
+package preferenceEnums;
 
 /**
  *
  * @author carlac
  */
-public enum DietaryRestrictions {
+public enum Storage {
     
-    HALAL, 
-    VEGAN,
-    KOSHER,
-    LOWCARB, 
-    HIGHPROTEIN
+    DRY, 
+    COLD, 
+    FREEZE
     
     
     

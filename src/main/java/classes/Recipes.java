@@ -5,9 +5,10 @@
  */
 package classes;
 
-import enums.TypeOfCooking;
+import preferenceEnums.RecipeDifficulty;
+import preferenceEnums.TypeOfCooking;
+
 import java.util.ArrayList;
-import restrictionsEnums.RecipeDifficulty;
 
 /**
  *

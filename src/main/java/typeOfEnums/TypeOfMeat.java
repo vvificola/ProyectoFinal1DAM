@@ -14,6 +14,7 @@ public enum TypeOfMeat {
     CHICKEN, 
     BEEF, 
     TURKEY, 
-    PORK
+    PORK,
+    LAMB
     
 }

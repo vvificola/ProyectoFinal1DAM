@@ -5,7 +5,11 @@
  */
 package com.mycompany.proyectofinal1dam;
 
-import typeOfEnums.TypeOfFish;
+
+
+import interfaces.PantallaRegistro;
+import interfaces.Ventana;
+
 
 /**
  *
@@ -18,8 +22,13 @@ public class NewMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+    	
+    	
+    	Ventana nuevaVentana = new Ventana();
         
-        System.out.println(TypeOfFish);
+    	
+    	
+     
     }
     
 }
