@@ -15,7 +15,7 @@ import enums.DayofWeek;
  */
 public class Menu {
     
-    private HashMap  <DayofWeek, ArrayList <Recipes>> planning;
+    private HashMap  <DayofWeek, ArrayList <Recipe>> planning;
     
     
 }

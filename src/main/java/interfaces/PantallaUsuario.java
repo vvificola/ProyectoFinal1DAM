@@ -36,21 +36,25 @@ public class PantallaUsuario  extends JPanel{
 		JPanel panelCentral = new JPanel();
 		add(panelCentral, BorderLayout.CENTER);
 		panelCentral.setLayout(null);
-		
 		cargarMenu = new JButton("cargar menú");
 		cargarMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		cargarMenu.setBounds(0, 38, 243, 23);
+		cargarMenu.setBounds(0, 23, 243, 23);
 		panelCentral.add(cargarMenu);
 		
 		JButton btnNewButton_1_1 = new JButton("generar menú");
 		btnNewButton_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		btnNewButton_1_1.setBounds(0, 84, 243, 23);
+		btnNewButton_1_1.setBounds(0, 58, 243, 23);
 		panelCentral.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_1_1 = new JButton("buscador recetas");
 		btnNewButton_1_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		btnNewButton_1_1_1.setBounds(0, 128, 243, 23);
+		btnNewButton_1_1_1.setBounds(0, 93, 243, 23);
 		panelCentral.add(btnNewButton_1_1_1);
+		
+		JButton btnNewButton_1_1_1_1 = new JButton("buscador recetas");
+		btnNewButton_1_1_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		btnNewButton_1_1_1_1.setBounds(0, 128, 243, 23);
+		panelCentral.add(btnNewButton_1_1_1_1);
 		
 		
 		JPanel panelSouth = new JPanel();

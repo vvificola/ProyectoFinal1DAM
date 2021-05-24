@@ -33,8 +33,8 @@ import java.awt.event.MouseEvent;
 
 public class PantallaRegistro extends JPanel {
 	
-	private JTextField lastNameField;
 	private JTextField firstNameField; 
+	private JTextField lastNameField;
 	private JTextField secondLastNameField;
 	private JTextField mailField;
 	private JTextField birthField;
@@ -42,49 +42,11 @@ public class PantallaRegistro extends JPanel {
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
 	private Ventana ventana;
+
 	
-	
-	
-	
-	
-	
-	public void setUserNameField(JTextField userNameField) {
-		this.userNameField = userNameField;
-	}
-
-	public JTextField getLastNameField() {
-		return lastNameField;
-	}
-
-	public JTextField getFirstNameField() {
-		return firstNameField;
-	}
-
-
-	public JTextField getSecondLastNameField() {
-		return secondLastNameField;
-	}
-
-	public JTextField getMailField() {
-		return mailField;
-	}
-
-
-	public JTextField getBirthField() {
-		return birthField;
-	}
-
-	public JTextField getUserNameField() {
-		return userNameField;
-	}
-
-	public JPasswordField getPasswordField() {
-		return passwordField;
-	}
-
-
 
 	public PantallaRegistro(Ventana v) {
+		
 		this.ventana=v;
 		this.setSize(323, 416);
 		setLayout(new BorderLayout(0, 0));
@@ -100,6 +62,12 @@ public class PantallaRegistro extends JPanel {
 		lastNameField.setColumns(10);
 		
 		firstNameField = new JTextField();
+		firstNameField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String firstNameFieldValue=firstNameField.getText();
+				
+				}
+		});
 		firstNameField.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		firstNameField.setColumns(10);
 		firstNameField.setBounds(141, 22, 167, 17);
@@ -192,6 +160,10 @@ public class PantallaRegistro extends JPanel {
 		panelCentral.add(checkLowCarb);
 		
 		JCheckBox checkVegan = new JCheckBox("vegano");
+		checkVegan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		checkVegan.setFont(new Font("Futura", Font.PLAIN, 9));
 		checkVegan.setBounds(15, 190, 71, 23);
 		panelCentral.add(checkVegan);
@@ -245,10 +217,9 @@ public class PantallaRegistro extends JPanel {
 		JButton registerButton = new JButton("registrame");
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.userLogged();
-				User nUser = new User (getUserNameField().toString());
-				
-			}
+					ventana.userCreated();
+					ventana.userLoggedFromRegister();
+				}
 		});
 		registerButton.setForeground(new Color(0, 0, 51));
 		panelSouth.add(registerButton);
@@ -270,6 +241,13 @@ public class PantallaRegistro extends JPanel {
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		add(titulo, BorderLayout.NORTH);
 	}
+
+
+
+	public String getUserNameField(JTextField t) {
+		return t.getText();
+	}
+
 
 	
 }

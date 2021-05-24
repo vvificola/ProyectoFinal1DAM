@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author carlac
  */
-public class Recipes {
+public class Recipe {
     
     private String name;
     private TypeOfCooking style; 

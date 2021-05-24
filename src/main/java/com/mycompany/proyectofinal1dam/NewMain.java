@@ -27,9 +27,7 @@ public class NewMain {
     	
     	Ventana nuevaVentana = new Ventana();
         
-    	
-    	
-     
+    
     }
     
 }
