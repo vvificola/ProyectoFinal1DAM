@@ -62,12 +62,6 @@ public class PantallaRegistro extends JPanel {
 		lastNameField.setColumns(10);
 		
 		firstNameField = new JTextField();
-		firstNameField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String firstNameFieldValue=firstNameField.getText();
-				
-				}
-		});
 		firstNameField.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		firstNameField.setColumns(10);
 		firstNameField.setBounds(141, 22, 167, 17);

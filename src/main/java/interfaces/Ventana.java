@@ -18,20 +18,36 @@ public class Ventana extends JFrame{
 	private PantallaRegistro pantallaRegistro;
 	private PantallaInicio pantallaInicio;
 	private PantallaUsuario pantallaUsuario;
+	private PantallaCreacionUsuarioyPass pantallaCreacionUsuario;
 	private Ventana v;
 	 
 	public Ventana() {
 		
 	
 			
-	    this.setSize(320,450);
-		this.isAlwaysOnTop();
+	    this.setSize(307,207);
+		this.setAlwaysOnTop(true);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pantallaRegistro = new PantallaRegistro(this);
-		this.setContentPane (pantallaRegistro);
+		pantallaInicio = new PantallaInicio(this);
+		this.setContentPane (pantallaInicio);
 		this.setVisible(true);
 
+	}
+	
+	public void goCreateUser() {
+		
+		if(this.pantallaCreacionUsuario  == null) {
+			this.pantallaCreacionUsuario = new PantallaCreacionUsuarioyPass(this);
+		}
+		this.pantallaInicio.setVisible(false);
+		this.setTitle("creación usuario");
+		this.setContentPane(this.pantallaCreacionUsuario);
+		this.setSize(pantallaCreacionUsuario.getSize());
+		this.pantallaCreacionUsuario.setVisible(true);
+		
+		
+		
 	}
 	
 	public void goLogin (){

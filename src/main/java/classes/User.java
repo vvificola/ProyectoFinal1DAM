@@ -5,21 +5,22 @@
  */
 package classes;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import interfaces.PantallaRegistro;
 import preferenceEnums.DietaryRestrictions;
+
 /**
  *
  * @author carlac
  */
 public class User {
-    
-    private static String userName = new String ();
+
+    private static String userName;
     private static String password;
     private static String email;
     private static String firstName;
@@ -29,191 +30,198 @@ public class User {
     private static short height; //en centímetros
     private static short weight; //en centímetros
     private static LocalDate birthDate;
-    private ArrayList<Product> favorites;
+    private ArrayList<User> usuarios;
+    private ArrayList<Product> favoriteProducts;
+    private ArrayList<Recipe> favoriteRecipes;
     private ArrayList<DietaryRestrictions> dietaryOptions;
-    private ArrayList <Menu> savedMenu;
+    private ArrayList<Menu> savedMenu;
     private PantallaRegistro p;
-    
-    
-    
-    
-    
-	public User(String userName, String password, String email, String firstName, String lastName, boolean genre,
-			short height, short weight, LocalDate birthDate, ArrayList<DietaryRestrictions> dietaryOptions) {
-		super();
-		
-		User.lastName = lastName;
-		User.firstName = firstName;
+
+    /**
+     *
+     * @param userName
+     * @param password
+     *
+     */
+    public static boolean createUser(String userNameInput, String passwordInput, String passwordInputConfirm) throws Exception {
+
+        if (userNameInput.length() >= 8 && userNameInput.length() <= 14) {
+            User.userName = userNameInput;
+           
+        } else {
+            Exception DataInputException = new Exception("Nombre de usuario incorrecto.");
+            JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto. Asegúrese de que el nombre de usuario tiene entre 8 y 14 caractéres");
+            return false;
+           
+
+        }
+
+        if ((((passwordInput.length() >= 6 && passwordInput.length() <= 10))) && ((passwordInput.contains("$") || passwordInput.contains("*")
+                || passwordInput.contains("!") || passwordInput.contains("?") || passwordInput.contains("%"))) && (passwordInput.equals(passwordInputConfirm))) {
+            User.password = passwordInput;
+            return true;
+
+           
+            } else {
+            	
+            	if(!(passwordInput.equals(passwordInputConfirm))) {
+            		
+            		 Exception DataInputException = new Exception("Formato de contraseña no válido.");
+            		
+            		
+            	}
+
+                Exception DataInputException = new Exception("Formato de contraseña no válido.");
+                JOptionPane.showMessageDialog(null, "Formato contraseña incorrecto." + "\n"
+                        + "Asegúrese de que la contraseña tiene entre 6 y 12 caractéres." + "\n"
+                        + "Asegúrese de que la contraseña contiene al menos uno de estos caracteres: '$', '*', '!', '?', '%'.");
+
+            }return false;
+
+        }
+
+    } 
+
+    public static boolean checkPasswordUser(String inputU, String inputP) {
+
+        if (inputP.equals(User.getPassword()) && inputU.equals(User.getUserName())) {
+            JOptionPane.showInputDialog("contraseña correcta/usuario logado");
+            return true;
+
+        } else {
+            JOptionPane.showInputDialog("contraseña o nombre de usuario incorrectos");
+            return false;
+        }
+
+    }
+
+    //getter y setters
+    public static String getUserName() {
+        return userName;
+    }
+
+    public static void setUserName(String userName) {
+        User.userName = userName;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        User.password = password;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        User.email = email;
+    }
+
+    public static String getFirstName() {
+        return firstName;
+    }
+
+    public static void setFirstName(String firstName) {
+        User.firstName = firstName;
+    }
+
+    public static String getLastName() {
+        return lastName;
+    }
+
+    public static void setLastName(String lastName) {
+        User.lastName = lastName;
+    }
+
+    public static String getSecondLastName() {
+        return secondLastName;
+    }
+
+    public static void setSecondLastName(String secondLastName) {
         User.secondLastName = secondLastName;
-		User.genre = genre;
-		User.height = height;
-		User.weight = weight;
-		User.birthDate = birthDate;
-		User.userName = userName;
-		User.password = password;
-		User.email = email;
-		this.dietaryOptions = dietaryOptions;
+    }
 
-	}
+    public static boolean isGenre() {
+        return genre;
+    }
 
-	
-	public static boolean checkPassword(String input) {
-		if (input== User.getPassword()) {
-			return true;
-		} else {
-		return false;
-		}
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//getter y setters
-	
-	
-	
-	
-	
-	
-	public static String getUserName() {
-		return userName;
-	}
+    public static void setGenre(boolean genre) {
+        User.genre = genre;
+    }
 
-	public void setUserName(String userName) {
-		User.userName = userName;
-	}
+    public static short getHeight() {
+        return height;
+    }
 
-	public static String getPassword() {
-		return password;
-	}
+    public static void setHeight(short height) {
+        User.height = height;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public static short getWeight() {
+        return weight;
+    }
 
-	public static String getEmail() {
-		return email;
-	}
+    public static void setWeight(short weight) {
+        User.weight = weight;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public static LocalDate getBirthDate() {
+        return birthDate;
+    }
 
-	public  static String getFirstName() {
-		return firstName;
-	}
+    public static void setBirthDate(LocalDate birthDate) {
+        User.birthDate = birthDate;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public ArrayList<User> getUsuarios() {
+        return usuarios;
+    }
 
-	public static String getLastName() {
-		return lastName;
-	}
+    public void setUsuarios(ArrayList<User> usuarios) {
+        this.usuarios = usuarios;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	public static String getSecondLastName() {
+    public ArrayList<Product> getFavoriteProducts() {
+        return favoriteProducts;
+    }
 
-		return lastName;
-	}
+    public void setFavoriteProducts(ArrayList<Product> favoriteProducts) {
+        this.favoriteProducts = favoriteProducts;
+    }
 
-	public void setSecondLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	public boolean isGenre() {
-		return genre;
-	}
+    public ArrayList<Recipe> getFavoriteRecipes() {
+        return favoriteRecipes;
+    }
 
-	public void setGenre(boolean genre) {
-		this.genre = genre;
-	}
+    public void setFavoriteRecipes(ArrayList<Recipe> favoriteRecipes) {
+        this.favoriteRecipes = favoriteRecipes;
+    }
 
-	public short getHeight() {
-		return height;
-	}
+    public ArrayList<DietaryRestrictions> getDietaryOptions() {
+        return dietaryOptions;
+    }
 
-	public void setHeight(short height) {
-		this.height = height;
-	}
+    public void setDietaryOptions(ArrayList<DietaryRestrictions> dietaryOptions) {
+        this.dietaryOptions = dietaryOptions;
+    }
 
-	public static short getWeight() {
-		return weight;
-	}
+    public ArrayList<Menu> getSavedMenu() {
+        return savedMenu;
+    }
 
-	public void setWeight(short weight) {
-		this.weight = weight;
-	}
+    public void setSavedMenu(ArrayList<Menu> savedMenu) {
+        this.savedMenu = savedMenu;
+    }
 
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
+    public PantallaRegistro getP() {
+        return p;
+    }
 
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
-	}
-	public ArrayList<Product> getFavorites() {
-		return favorites;
-	}
+    public void setP(PantallaRegistro p) {
+        this.p = p;
+    }
 
-
-	public void setFavorites(ArrayList<Product> favorites) {
-		this.favorites = favorites;
-	}
-
-	public ArrayList<DietaryRestrictions> getDietaryOptions() {
-		return dietaryOptions;
-	}
-
-	public void setDietaryOptions(ArrayList<DietaryRestrictions> dietaryOptions) {
-		this.dietaryOptions = dietaryOptions;
-	}
-	
-	public ArrayList<Menu> getSavedMenu() {
-		return savedMenu;
-	}
-
-	public void setSavedMenu(ArrayList<Menu> savedMenu) {
-		this.savedMenu = savedMenu;
-	}
-
-	public PantallaRegistro getP() {
-		return p;
-	}
-
-	public void setP(PantallaRegistro p) {
-		this.p = p;
-	}
-	
-	
-    
-    
-  
-    
-
-	
-	
 }
