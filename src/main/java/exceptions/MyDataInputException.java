@@ -9,10 +9,10 @@ package exceptions;
  *
  * @author carlac
  */
-public class DataInputException extends Exception{
+public class MyDataInputException extends Exception{
     
     
-    public DataInputException (String msg) {
+    public MyDataInputException (String msg) {
 		
 		super ("Ha habido un problema: " + msg);
 		

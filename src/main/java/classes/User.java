@@ -47,40 +47,32 @@ public class User {
 
         if (userNameInput.length() >= 8 && userNameInput.length() <= 14) {
             User.userName = userNameInput;
-           
+
         } else {
             Exception DataInputException = new Exception("Nombre de usuario incorrecto.");
-            JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto. Asegúrese de que el nombre de usuario tiene entre 8 y 14 caractéres");
+            JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto. Asegúrese de que el nombre de usuario tiene entre 8 y 14 caracteres");
             return false;
-           
 
         }
 
-        if ((((passwordInput.length() >= 6 && passwordInput.length() <= 10))) && ((passwordInput.contains("$") || passwordInput.contains("*")
-                || passwordInput.contains("!") || passwordInput.contains("?") || passwordInput.contains("%"))) && (passwordInput.equals(passwordInputConfirm))) {
-            User.password = passwordInput;
-            return true;
-
-           
-            } else {
-            	
-            	if(!(passwordInput.equals(passwordInputConfirm))) {
-            		
-            		 Exception DataInputException = new Exception("Formato de contraseña no válido.");
-            		
-            		
-            	}
-
-                Exception DataInputException = new Exception("Formato de contraseña no válido.");
-                JOptionPane.showMessageDialog(null, "Formato contraseña incorrecto." + "\n"
-                        + "Asegúrese de que la contraseña tiene entre 6 y 12 caractéres." + "\n"
-                        + "Asegúrese de que la contraseña contiene al menos uno de estos caracteres: '$', '*', '!', '?', '%'.");
-
-            }return false;
-
+        if ((passwordInput.length() >= 6 && passwordInput.length() <= 10) && (passwordInput.length()==passwordInputConfirm.length())) {
+            JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
+             User.password = passwordInput;
+             return true;
+            
+        } else if (!(passwordInput.length()==passwordInputConfirm.length())){
+             Exception MyDataInputException = new Exception("Formato de contraseña no válido.");
+             JOptionPane.showMessageDialog(null, 
+                     "Asegúrese de que las contraseñas coinciden");
+             return false;
+  
         }
+        return true;
+       
 
-    } 
+     
+
+    }
 
     public static boolean checkPasswordUser(String inputU, String inputP) {
 

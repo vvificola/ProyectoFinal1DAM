@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JToggleButton;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import java.awt.Component;
@@ -29,6 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Iterator;
 
 
 public class PantallaRegistro extends JPanel {
@@ -80,6 +82,12 @@ public class PantallaRegistro extends JPanel {
 		panelCentral.add(secondLastNameField);
 		
 		JComboBox fieldGenre = new JComboBox();
+		fieldGenre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				
+			}
+		});
 		fieldGenre.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		fieldGenre.setModel(new DefaultComboBoxModel(new String[] {"hombre", "mujer"}));
 		fieldGenre.setBounds(141, 105, 167, 26);
@@ -118,21 +126,25 @@ public class PantallaRegistro extends JPanel {
 		JLabel labelWeight = new JLabel("peso (kg)");
 		labelWeight.setHorizontalAlignment(SwingConstants.LEFT);
 		labelWeight.setFont(new Font("Futura", Font.PLAIN, 10));
-		labelWeight.setBounds(202, 215, 58, 16);
+		labelWeight.setBounds(190, 215, 58, 16);
 		panelCentral.add(labelWeight);
 		
 		JLabel labelHeight = new JLabel("altura (cm)");
 		labelHeight.setHorizontalAlignment(SwingConstants.LEFT);
 		labelHeight.setFont(new Font("Futura", Font.PLAIN, 10));
-		labelHeight.setBounds(202, 194, 58, 16);
+		labelHeight.setBounds(190, 194, 58, 16);
 		panelCentral.add(labelHeight);
 		
 		JSpinner spinnerWeight = new JSpinner();
-		spinnerWeight.setBounds(262, 209, 34, 26);
+		spinnerWeight.setFont(new Font("Futura", Font.PLAIN, 10));
+		spinnerWeight.setModel(new SpinnerNumberModel(70, 0, 140, 1 ));
+		spinnerWeight.setBounds(245, 209, 51, 26);
 		panelCentral.add(spinnerWeight);
 		
 		JSpinner spinnerHeight = new JSpinner();
-		spinnerHeight.setBounds(262, 188, 34, 26);
+		spinnerHeight.setFont(new Font("Futura", Font.PLAIN, 10));
+		spinnerHeight.setBounds(245, 188, 51, 26);
+                                       		
 		panelCentral.add(spinnerHeight);
 		
 		JLabel labelBirth = new JLabel("fecha nacimiento");
@@ -238,10 +250,8 @@ public class PantallaRegistro extends JPanel {
 
 
 
-	public String getUserNameField(JTextField t) {
-		return t.getText();
-	}
 
+        }
 
 	
-}
+
