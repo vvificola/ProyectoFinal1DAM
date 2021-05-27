@@ -101,7 +101,7 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 
                 try {
-                    if (User.createUserNamePassword(userNameField.getText(), passwordField.getPassword().toString(),
+                     (User.createUserNamePassword(userNameField.getText(), passwordField.getPassword().toString(),
                             passwordField_1.getPassword().toString())) {
                             JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
                         

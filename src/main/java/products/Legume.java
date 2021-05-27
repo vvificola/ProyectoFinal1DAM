@@ -6,14 +6,21 @@
 package products;
 
 import classes.Product;
+import preferenceEnums.DietaryRestrictions;
+import preferenceEnums.Storage;
 import typeOfEnums.TypeOfLegume;
 
 /**
  *
  * @author carlac
  */
-public class Legume  extends Product{
+  class Legume  extends Product{
     
     private TypeOfLegume typeOfLegume;
+
+    public Legume(String productName, Short weight, Storage storage, DietaryRestrictions dietary, short caloricDensity, short carbs, short proteins, short fats,TypeOfLegume typeOfLegume ) {
+        super(productName, weight, storage, dietary, caloricDensity, carbs, proteins, fats);
+        this.typeOfLegume=typeOfLegume;
+    }
     
 }

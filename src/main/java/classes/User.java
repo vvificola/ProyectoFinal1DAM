@@ -1,10 +1,15 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package classes;
 
+import exceptions.ContraseñaMuyCortaException;
+import exceptions.ContraseñaMuyLargaException;
+import exceptions.ContraseñaNoCoincideException;
+import exceptions.LongitudNombreIncorrectaException;
+import exceptions.NombreVacioException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -20,182 +25,141 @@ import preferenceEnums.DietaryRestrictions;
  */
 public class User {
 
-    private static String userName;
-    private static String password;
-    private static String email;
-    private static String firstName;
-    private static String lastName;
-    private static String secondLastName;
-    private static boolean genre;
-    private static int height; //en centímetros
-    private static int weight; //en centímetros
-    private static LocalDate birthDate;
+    private  String userName;
+    private  String password;
+    private  String email;
+    private  String firstName;
+    private  String lastName;
+    private  String secondLastName;
+    private boolean genre;
+    private int height; //en centímetros
+    private  int weight; //en centímetros
+    private  LocalDate birthDate;
     private ArrayList<User> usuarios;
     private ArrayList<Product> favoriteProducts;
     private ArrayList<Recipe> favoriteRecipes;
-    private static ArrayList<DietaryRestrictions> dietaryOptions;
+    private  ArrayList<DietaryRestrictions> dietaryOptions;
     private ArrayList<Menu> savedMenu;
     private PantallaRegistro p;
 
-    /**
-     *
-     * @param userName
-     * @param password
-     *
-     */
-    public static boolean createUserNamePassword(String userNameInput, String passwordInput, String passwordInputConfirm) throws Exception {
-
-        if ((userNameInput.length() < 8 || userNameInput.length() > 14)){
-             JOptionPane.showMessageDialog(null, userNameInput + "no es un nombre de usuario válido");
-             return false;
-        
-        }else if (passwordInput.equals(passwordInputConfirm)) {
-            JOptionPane.showMessageDialog(null, userNameInput + "las contraseñas no coinciden");
-            return false;
-            
-        } else if (passwordInput.length() <=5 ) {
-            JOptionPane.showMessageDialog(null, userNameInput + "la contraseña es demasiado corta");
-            return false;
-            
-        
-        
-        }else {
-            User.userName = userNameInput;
-            User.password = passwordInput;
-        
-        }
-        return true;
-             
-    }
-            
-  
+    public User(String userName, String password, String email, String firstName, String lastName, String secondLastName, boolean genre, int height, int weight, LocalDate birthDate) {
+        this.userName = userName;
+        this.password =password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.secondLastName = secondLastName;
+        this.genre = genre;
+        this.height = height;
+        this.weight = weight;
+        this.birthDate = birthDate;
     
+    }
+    
+    public User(String userName, String password, String passwordConfirm) throws ContraseñaMuyCortaException, ContraseñaMuyLargaException, ContraseñaNoCoincideException, NombreVacioException, LongitudNombreIncorrectaException {
+        this.setUserName(userName);
+        this.setPassword(password, passwordConfirm);
 
-    public static boolean registerUser(String userName,  String password, String firstNameInput, String lastNameInput, String secondLastNameInput,
-            boolean genreInput, int heightInput, int weightInput, String emailInput, LocalDate birthDateInput, boolean veganInput, boolean lowCarbInput,
-            boolean halalInput, boolean highProteinInput) throws Exception {
-        User.userName = userName;
-        User.password = password;
-        User.firstName = firstNameInput;
-        User.lastName = lastNameInput;
-        User.secondLastName = secondLastNameInput;
-        User.genre = genreInput;
-        User.email = emailInput;
-        User.birthDate = birthDateInput;
-
-        if (veganInput) {
-            dietaryOptions.add(DietaryRestrictions.VEGAN);
-        }
-
-        if (lowCarbInput) {
-            dietaryOptions.add(DietaryRestrictions.LOWCARB);
-        }
-
-        if (halalInput) {
-            dietaryOptions.add(DietaryRestrictions.HALAL);
-        }
-
-        if (highProteinInput) {
-
-            dietaryOptions.add(DietaryRestrictions.HIGHPROTEIN);
-        }
-        return true;
-
+    
+    }
      
-    }
-
-    public static boolean checkPasswordUser(String inputU, String inputP) {
-
-        if (inputP.equals(User.getPassword()) && inputU.equals(User.getUserName())) {
-            JOptionPane.showInputDialog("contraseña correcta/usuario logado");
-            return true;
-
-        } else {
-            JOptionPane.showInputDialog("contraseña o nombre de usuario incorrectos");
-            return false;
-        }
-
-    }
-
     //getter y setters
-    public static String getUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public static void setUserName(String userName) {
-        User.userName = userName;
+    public void setUserName(String userName) throws NombreVacioException, LongitudNombreIncorrectaException {
+        if (userName.isBlank()){
+           throw new NombreVacioException ("El nombre de usuario no puede estar vacío");
+           
+        } else if (userName.length()<3 || userName.length()>14){
+            throw new LongitudNombreIncorrectaException ("La longitud del nombre no es correcta");
+
+        }
+        
+        this.userName = userName;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public static void setPassword(String password) {
-        User.password = password;
+    public void setPassword(String password, String confirmPassword) throws ContraseñaMuyCortaException, ContraseñaMuyLargaException, ContraseñaNoCoincideException {
+        if (password.length()<8) {
+            throw new ContraseñaMuyCortaException("La contraseña es demasiado corta");
+        }  else if(password.length()>14) {
+            throw new ContraseñaMuyLargaException("La contraseña es demasiado corta");
+         
+        } else if (!password.contentEquals(confirmPassword)) {
+          throw new ContraseñaNoCoincideException("La contraseña es demasiado corta");
+
+        } 
+        this.password = password;
+        
     }
 
-    public static String getEmail() {
+    public  String getEmail() {
         return email;
     }
 
-    public static void setEmail(String email) {
-        User.email = email;
+    public  void setEmail(String email) {
+        this.email = email;
     }
 
-    public static String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public static void setFirstName(String firstName) {
-        User.firstName = firstName;
+    public  void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public static String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public static void setLastName(String lastName) {
-        User.lastName = lastName;
+    public  void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public static String getSecondLastName() {
+    public  String getSecondLastName() {
         return secondLastName;
     }
 
-    public static void setSecondLastName(String secondLastName) {
-        User.secondLastName = secondLastName;
+    public void setSecondLastName(String secondLastName) {
+        this.secondLastName = secondLastName;
     }
 
-    public static boolean isGenre() {
+    public  boolean isGenre() {
         return genre;
     }
 
-    public static void setGenre(boolean genre) {
-        User.genre = genre;
+    public  void setGenre(boolean genre) {
+      this.genre = genre;
     }
 
-    public static int getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public static void setHeight(short height) {
-        User.height = height;
+    public  void setHeight(short height) {
+       this.height = height;
     }
 
-    public static int getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public static void setWeight(short weight) {
-        User.weight = weight;
+    public  void setWeight(short weight) {
+        this.weight = weight;
     }
 
-    public static LocalDate getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public static void setBirthDate(LocalDate birthDate) {
-        User.birthDate = birthDate;
+    public  void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public ArrayList<User> getUsuarios() {
@@ -244,6 +208,12 @@ public class User {
 
     public void setP(PantallaRegistro p) {
         this.p = p;
+    }
+    
+    @Override
+    public String toString (){
+    return super.toString()+ firstName + lastName;
+    
     }
 
 }
