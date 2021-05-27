@@ -27,8 +27,8 @@ public class User {
     private static String lastName;
     private static String secondLastName;
     private static boolean genre;
-    private static short height; //en centímetros
-    private static short weight; //en centímetros
+    private static int height; //en centímetros
+    private static int weight; //en centímetros
     private static LocalDate birthDate;
     private ArrayList<User> usuarios;
     private ArrayList<Product> favoriteProducts;
@@ -45,36 +45,37 @@ public class User {
      */
     public static boolean createUserNamePassword(String userNameInput, String passwordInput, String passwordInputConfirm) throws Exception {
 
-        if (userNameInput.length() >= 8 && userNameInput.length() <= 14) {
+        if ((userNameInput.length() < 8 || userNameInput.length() > 14)){
+             JOptionPane.showMessageDialog(null, userNameInput + "no es un nombre de usuario válido");
+             return false;
+        
+        }else if (passwordInput.equals(passwordInputConfirm)) {
+            JOptionPane.showMessageDialog(null, userNameInput + "las contraseñas no coinciden");
+            return false;
+            
+        } else if (passwordInput.length() <=5 ) {
+            JOptionPane.showMessageDialog(null, userNameInput + "la contraseña es demasiado corta");
+            return false;
+            
+        
+        
+        }else {
             User.userName = userNameInput;
-
-        } else {
-            Exception DataInputException = new Exception("Nombre de usuario incorrecto.");
-            JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto. Asegúrese de que el nombre de usuario tiene entre 8 y 14 caracteres");
-            return false;
-
-        }
-
-        if ((passwordInput.length() >= 6 && passwordInput.length() <= 10) && (passwordInput.length() == passwordInputConfirm.length())) {
-            JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
             User.password = passwordInput;
-            return true;
-
-        } else if (!(passwordInput.length() == passwordInputConfirm.length())) {
-            Exception MyDataInputException = new Exception("Formato de contraseña no válido.");
-            JOptionPane.showMessageDialog(null,
-                    "Asegúrese de que las contraseñas coinciden");
-            return false;
-
+        
         }
         return true;
-
+             
     }
+            
+  
+    
 
-    public static boolean registerUser(String firstNameInput, String lastNameInput, String secondLastNameInput,
-            boolean genreInput, String emailInput, LocalDate birthDateInput, boolean veganInput, boolean lowCarbInput,
+    public static boolean registerUser(String userName,  String password, String firstNameInput, String lastNameInput, String secondLastNameInput,
+            boolean genreInput, int heightInput, int weightInput, String emailInput, LocalDate birthDateInput, boolean veganInput, boolean lowCarbInput,
             boolean halalInput, boolean highProteinInput) throws Exception {
-
+        User.userName = userName;
+        User.password = password;
         User.firstName = firstNameInput;
         User.lastName = lastNameInput;
         User.secondLastName = secondLastNameInput;
@@ -98,8 +99,9 @@ public class User {
 
             dietaryOptions.add(DietaryRestrictions.HIGHPROTEIN);
         }
-
         return true;
+
+     
     }
 
     public static boolean checkPasswordUser(String inputU, String inputP) {
@@ -172,7 +174,7 @@ public class User {
         User.genre = genre;
     }
 
-    public static short getHeight() {
+    public static int getHeight() {
         return height;
     }
 
@@ -180,7 +182,7 @@ public class User {
         User.height = height;
     }
 
-    public static short getWeight() {
+    public static int getWeight() {
         return weight;
     }
 

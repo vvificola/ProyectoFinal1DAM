@@ -6,6 +6,8 @@
 package products;
 
 import classes.Product;
+import preferenceEnums.DietaryRestrictions;
+import preferenceEnums.Storage;
 import typeOfEnums.TypeOfFish;
 
 /**
@@ -14,5 +16,10 @@ import typeOfEnums.TypeOfFish;
  */
 public class Fish  extends Product {
     private TypeOfFish typeOfFish;
+
+    public Fish(String productName, Short weight, Storage storage, DietaryRestrictions dietary, short caloricDensity, short carbs, short proteins, short fats, TypeOfFish typeOfFish) {
+        super(productName, weight, storage, dietary, caloricDensity, carbs, proteins, fats);
+        this.typeOfFish = typeOfFish;
+    }
     
 }

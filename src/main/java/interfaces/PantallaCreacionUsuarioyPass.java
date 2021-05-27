@@ -99,21 +99,13 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
         JButton btnNewButton = new JButton("crear usuario");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                try {
-                    User.createUserNamePassword(userNameField.getText(), passwordField.getPassword().toString(),
-                            passwordField_1.getPassword().toString());
-                    System.out.println(userNameField.getText().length());
-                    System.out.println(passwordField.getPassword().toString());
-                    System.out.println(passwordField_1.getPassword().toString());
-
-                } catch (Exception e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                
                 try {
                     if (User.createUserNamePassword(userNameField.getText(), passwordField.getPassword().toString(),
                             passwordField_1.getPassword().toString())) {
-                        ventana.goRegister();
+                            JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
+                        
+                            ventana.goRegister();
 
                     } else {
                         JOptionPane.showMessageDialog(null, "No hemos podido crear su suario. Inténtelo de nuevo");

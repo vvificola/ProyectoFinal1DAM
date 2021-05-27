@@ -85,9 +85,7 @@ public class Ventana extends JFrame {
 
     }
 
-    public void userCreated() {
-        JOptionPane.showMessageDialog(pantallaRegistro, "Usuario creado con éxito");
-    }
+ 
 
     public void userLogged() {
 

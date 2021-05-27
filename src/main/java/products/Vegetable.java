@@ -6,6 +6,8 @@
 package products;
 
 import classes.Product;
+import preferenceEnums.DietaryRestrictions;
+import preferenceEnums.Storage;
 import typeOfEnums.TypeOfVegetable;
 
 /**
@@ -15,5 +17,10 @@ import typeOfEnums.TypeOfVegetable;
 public class Vegetable  extends Product {
     
     private TypeOfVegetable typeOfVegetable;
+
+    public Vegetable(TypeOfVegetable typeOfVegetable, String productName, Short weight, Storage storage, DietaryRestrictions dietary, short caloricDensity, short carbs, short proteins, short fats) {
+        super(productName, weight, storage, dietary, caloricDensity, carbs, proteins, fats);
+        this.typeOfVegetable = typeOfVegetable;
+    }
     
 }
