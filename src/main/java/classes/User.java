@@ -33,7 +33,7 @@ public class User {
     private ArrayList<User> usuarios;
     private ArrayList<Product> favoriteProducts;
     private ArrayList<Recipe> favoriteRecipes;
-    private ArrayList<DietaryRestrictions> dietaryOptions;
+    private static ArrayList<DietaryRestrictions> dietaryOptions;
     private ArrayList<Menu> savedMenu;
     private PantallaRegistro p;
 
@@ -55,44 +55,52 @@ public class User {
 
         }
 
-        if ((passwordInput.length() >= 6 && passwordInput.length() <= 10) && (passwordInput.length()==passwordInputConfirm.length())) {
+        if ((passwordInput.length() >= 6 && passwordInput.length() <= 10) && (passwordInput.length() == passwordInputConfirm.length())) {
             JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
-             User.password = passwordInput;
-             return true;
-            
-        } else if (!(passwordInput.length()==passwordInputConfirm.length())){
-             Exception MyDataInputException = new Exception("Formato de contraseña no válido.");
-             JOptionPane.showMessageDialog(null, 
-                     "Asegúrese de que las contraseñas coinciden");
-             return false;
-  
+            User.password = passwordInput;
+            return true;
+
+        } else if (!(passwordInput.length() == passwordInputConfirm.length())) {
+            Exception MyDataInputException = new Exception("Formato de contraseña no válido.");
+            JOptionPane.showMessageDialog(null,
+                    "Asegúrese de que las contraseñas coinciden");
+            return false;
+
         }
         return true;
 
     }
-    
-    public static boolean registerUser (String firstNameInput, String lastNameInput, String secondLastNameInput,
-    		boolean genreInput, String emailInput, LocalDate birthDateInput, boolean veganInput, boolean lowCarbInput,
-    		boolean halalInput, boolean highProteinInput) throws Exception {
-				
-    	User.firstName = firstNameInput;
-    	User.lastName = lastNameInput; 
-    	User.secondLastName = secondLastNameInput; 
-    	User.genre= genreInput; 
-    	User.email = emailInput; 
-    	User.birthDate = birthDateInput;
-    	
-    	
-    	
-    	
-    	
-    	
-    	return true;
+
+    public static boolean registerUser(String firstNameInput, String lastNameInput, String secondLastNameInput,
+            boolean genreInput, String emailInput, LocalDate birthDateInput, boolean veganInput, boolean lowCarbInput,
+            boolean halalInput, boolean highProteinInput) throws Exception {
+
+        User.firstName = firstNameInput;
+        User.lastName = lastNameInput;
+        User.secondLastName = secondLastNameInput;
+        User.genre = genreInput;
+        User.email = emailInput;
+        User.birthDate = birthDateInput;
+
+        if (veganInput) {
+            dietaryOptions.add(DietaryRestrictions.VEGAN);
+        }
+
+        if (lowCarbInput) {
+            dietaryOptions.add(DietaryRestrictions.LOWCARB);
+        }
+
+        if (halalInput) {
+            dietaryOptions.add(DietaryRestrictions.HALAL);
+        }
+
+        if (highProteinInput) {
+
+            dietaryOptions.add(DietaryRestrictions.HIGHPROTEIN);
+        }
+
+        return true;
     }
-    		
-    
-    
-    
 
     public static boolean checkPasswordUser(String inputU, String inputP) {
 

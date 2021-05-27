@@ -34,6 +34,8 @@ import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class PantallaRegistro extends JPanel {
@@ -80,10 +82,12 @@ public class PantallaRegistro extends JPanel {
 		secondLastNameField.setColumns(10);
 		secondLastNameField.setBounds(141, 80, 167, 17);
 		panelCentral.add(secondLastNameField);
+                
+                
 		JComboBox fieldGenre = new JComboBox();
 		fieldGenre.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		fieldGenre.setModel(new DefaultComboBoxModel(new String[] {"hombre", "mujer"}));
-		fieldGenre.setSelectedIndex(0);
+		
 		fieldGenre.setBounds(141, 105, 167, 26);
 		panelCentral.add(fieldGenre);
 		
@@ -176,10 +180,8 @@ public class PantallaRegistro extends JPanel {
 		panelCentral.add(checkLowCarb);
 		
 		JCheckBox checkVegan = new JCheckBox("vegano");
-		checkVegan.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
+		
 		checkVegan.setFont(new Font("Futura", Font.PLAIN, 9));
 		checkVegan.setBounds(15, 190, 71, 23);
 		panelCentral.add(checkVegan);
@@ -222,19 +224,34 @@ public class PantallaRegistro extends JPanel {
 		JButton loginButton = new JButton("inicio sesión");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (firstNameField!=null) {String firstName = firstNameField.getText();}
+                                 
+				if (firstNameField!=null && firstNameField.getText().length()>1) {String firstName = firstNameField.getText();}
 				else {  JOptionPane.showMessageDialog(null, 
-	                     "Introduzca un nombre");}
-				if (lastNameField!=null) {String lastName = lastNameField.getText();}
+	                     "Introduzca un nombre válido");}
+				if (lastNameField!=null && lastNameField.getText().length()>1) {String lastName = lastNameField.getText();}
 				else {  JOptionPane.showMessageDialog(null, 
-	                     "Introduzca un apellido");}
-				if (secondLastNameField!=null) {String secondLastName = secondLastNameField.getText();}
+	                     "Introduzca un apellido válido");}
+				if (secondLastNameField!=null && secondLastNameField.getText().length()>1) {String secondLastName = secondLastNameField.getText();}
 				else {  JOptionPane.showMessageDialog(null, 
-	                     "Introduzca un segundo apellido");}
+	                     "Introduzca un segundo apellido válido");}
+                                 boolean genre= fieldGenre.equals("hombre");
+                                 Short height = (Short) spinnerHeight.getValue();
+                                 Short weight = (Short) spinnerWeight.getValue();
+                                
+                                 String email = mailField.getText();
+                                 String date =  (birthField.getText());
+                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                                 LocalDate birthDate = LocalDate.parse(date, formatter);
+                                  boolean vegan= checkVegan.isSelected();
+                                  boolean lowCarb = checkLowCarb.isSelected();
+                                  boolean halal = checkHalal.isSelected();
+                                  boolean highProtein = checkHighProtein.isSelected();
+                                  
+                                  
 				
 				 
 			}
-		});
+		}); 
 	
 		panelSouth.add(loginButton);
 		
