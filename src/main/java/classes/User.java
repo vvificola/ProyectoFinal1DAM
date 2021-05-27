@@ -43,7 +43,7 @@ public class User {
      * @param password
      *
      */
-    public static boolean createUser(String userNameInput, String passwordInput, String passwordInputConfirm) throws Exception {
+    public static boolean createUserNamePassword(String userNameInput, String passwordInput, String passwordInputConfirm) throws Exception {
 
         if (userNameInput.length() >= 8 && userNameInput.length() <= 14) {
             User.userName = userNameInput;
@@ -68,11 +68,31 @@ public class User {
   
         }
         return true;
-       
-
-     
 
     }
+    
+    public static boolean registerUser (String firstNameInput, String lastNameInput, String secondLastNameInput,
+    		boolean genreInput, String emailInput, LocalDate birthDateInput, boolean veganInput, boolean lowCarbInput,
+    		boolean halalInput, boolean highProteinInput) throws Exception {
+				
+    	User.firstName = firstNameInput;
+    	User.lastName = lastNameInput; 
+    	User.secondLastName = secondLastNameInput; 
+    	User.genre= genreInput; 
+    	User.email = emailInput; 
+    	User.birthDate = birthDateInput;
+    	
+    	
+    	
+    	
+    	
+    	
+    	return true;
+    }
+    		
+    
+    
+    
 
     public static boolean checkPasswordUser(String inputU, String inputP) {
 

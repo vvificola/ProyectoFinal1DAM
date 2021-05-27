@@ -18,6 +18,7 @@ import javax.swing.UIManager;
 import classes.User;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JToggleButton;
@@ -31,6 +32,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Iterator;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 
 public class PantallaRegistro extends JPanel {
@@ -40,9 +43,6 @@ public class PantallaRegistro extends JPanel {
 	private JTextField secondLastNameField;
 	private JTextField mailField;
 	private JTextField birthField;
-	private JTextField userNameField;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
 	private Ventana ventana;
 
 	
@@ -50,7 +50,7 @@ public class PantallaRegistro extends JPanel {
 	public PantallaRegistro(Ventana v) {
 		
 		this.ventana=v;
-		this.setSize(323, 416);
+		this.setSize(323, 337);
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelCentral = new JPanel();
@@ -80,16 +80,10 @@ public class PantallaRegistro extends JPanel {
 		secondLastNameField.setColumns(10);
 		secondLastNameField.setBounds(141, 80, 167, 17);
 		panelCentral.add(secondLastNameField);
-		
 		JComboBox fieldGenre = new JComboBox();
-		fieldGenre.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				
-			}
-		});
 		fieldGenre.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		fieldGenre.setModel(new DefaultComboBoxModel(new String[] {"hombre", "mujer"}));
+		fieldGenre.setSelectedIndex(0);
 		fieldGenre.setBounds(141, 105, 167, 26);
 		panelCentral.add(fieldGenre);
 		
@@ -137,14 +131,30 @@ public class PantallaRegistro extends JPanel {
 		
 		JSpinner spinnerWeight = new JSpinner();
 		spinnerWeight.setFont(new Font("Futura", Font.PLAIN, 10));
-		spinnerWeight.setModel(new SpinnerNumberModel(70, 0, 140, 1 ));
+		String genre = fieldGenre.getSelectedItem().toString();
+		if(genre.equals("hombre")) {
+		spinnerWeight.setModel(new SpinnerNumberModel(70, 0, 150, 1 ));
+		} else {
+			
+			spinnerWeight.setModel(new SpinnerNumberModel(50, 0, 120, 1 ));
+			
+		}
+		
 		spinnerWeight.setBounds(245, 209, 51, 26);
 		panelCentral.add(spinnerWeight);
 		
 		JSpinner spinnerHeight = new JSpinner();
 		spinnerHeight.setFont(new Font("Futura", Font.PLAIN, 10));
+		if(genre.equals("hombre")) {
+			spinnerHeight.setModel(new SpinnerNumberModel(170, 0, 220, 1 ));
+			} else {
+				
+				spinnerHeight.setModel(new SpinnerNumberModel(160, 0, 200, 1 ));
+				
+			}
 		spinnerHeight.setBounds(245, 188, 51, 26);
-                                       		
+		
+		 
 		panelCentral.add(spinnerHeight);
 		
 		JLabel labelBirth = new JLabel("fecha nacimiento");
@@ -184,43 +194,22 @@ public class PantallaRegistro extends JPanel {
 		checkHalal.setBounds(15, 211, 51, 23);
 		panelCentral.add(checkHalal);
 		
-		JLabel userNameLabel = new JLabel("usuario");
-		userNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		userNameLabel.setFont(new Font("Futura", Font.BOLD, 12));
-		userNameLabel.setBounds(0, 256, 143, 16);
-		panelCentral.add(userNameLabel);
-		
-		JLabel labelPassword = new JLabel("contraseña");
-		labelPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPassword.setFont(new Font("Futura", Font.BOLD, 12));
-		labelPassword.setBounds(0, 284, 143, 16);
-		panelCentral.add(labelPassword);
-		
-		JLabel labelConfirmPassword = new JLabel("repita contraseña");
-		labelConfirmPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		labelConfirmPassword.setFont(new Font("Futura", Font.BOLD, 12));
-		labelConfirmPassword.setBounds(0, 313, 143, 16);
-		panelCentral.add(labelConfirmPassword);
-		
-		userNameField = new JTextField();
-		userNameField.setColumns(10);
-		userNameField.setBounds(141, 255, 167, 17);
-		panelCentral.add(userNameField);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(141, 283, 167, 17);
-		panelCentral.add(passwordField);
-		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(141, 312, 167, 17);
-		panelCentral.add(passwordField_1);
-		
 		JPanel panelSouth = new JPanel();
 		add(panelSouth, BorderLayout.SOUTH);
 		panelSouth.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 	
 		JButton registerButton = new JButton("registrame");
+		registerButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				registerButton.setBackground(new Color (84,117,166));	
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				registerButton.setBackground(null);
+			}
+		});
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					ventana.userCreated();
@@ -232,9 +221,18 @@ public class PantallaRegistro extends JPanel {
 		
 		JButton loginButton = new JButton("inicio sesión");
 		loginButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ventana.goLogin();
+			public void actionPerformed(ActionEvent e) { 
+				if (firstNameField!=null) {String firstName = firstNameField.getText();}
+				else {  JOptionPane.showMessageDialog(null, 
+	                     "Introduzca un nombre");}
+				if (lastNameField!=null) {String lastName = lastNameField.getText();}
+				else {  JOptionPane.showMessageDialog(null, 
+	                     "Introduzca un apellido");}
+				if (secondLastNameField!=null) {String secondLastName = secondLastNameField.getText();}
+				else {  JOptionPane.showMessageDialog(null, 
+	                     "Introduzca un segundo apellido");}
 				
+				 
 			}
 		});
 	
@@ -249,7 +247,7 @@ public class PantallaRegistro extends JPanel {
 	}
 
 
-
+  
 
         }
 
