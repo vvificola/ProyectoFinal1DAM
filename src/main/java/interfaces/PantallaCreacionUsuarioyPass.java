@@ -96,34 +96,22 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
         labelRepeatPassword.setBounds(0, 111, 139, 16);
         panelCentral.add(labelRepeatPassword);
 
-        JButton btnNewButton = new JButton("crear usuario");
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                
-                try {
-                     (User.createUserNamePassword(userNameField.getText(), passwordField.getPassword().toString(),
-                            passwordField_1.getPassword().toString())) {
-                            JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
-                        
-                            ventana.goRegister();
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hemos podido crear su suario. Inténtelo de nuevo");
-
-                        ventana.goLoginfromCreateUSer();
-
-                    }
-
-                } catch (Exception e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-
-            }
+        JButton registerButton = new JButton("crear usuario");
+        registerButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseEntered(MouseEvent e) {
+        	}
+        	@Override
+        	public void mouseExited(MouseEvent e) {
+        	}
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        	}
         });
-        btnNewButton.setFont(new Font("Futura", Font.PLAIN, 11));
-        btnNewButton.setBounds(104, 138, 100, 29);
-        panelCentral.add(btnNewButton);
+        
+        registerButton.setFont(new Font("Futura", Font.PLAIN, 11));
+        registerButton.setBounds(104, 138, 100, 29);
+        panelCentral.add(registerButton);
 
     }
 }
