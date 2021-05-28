@@ -16,6 +16,7 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 import classes.User;
+import exceptions.EmailNoValidoException;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -47,10 +48,12 @@ public class PantallaRegistro extends JPanel {
     private JTextField mailField;
     private JTextField birthField;
     private Ventana ventana;
+    private User user;
 
     public PantallaRegistro(Ventana v) {
 
         this.ventana = v;
+        
         this.setSize(323, 337);
         setLayout(new BorderLayout(0, 0));
 
@@ -223,17 +226,11 @@ public class PantallaRegistro extends JPanel {
                 boolean lowCarb = checkLowCarb.isSelected();
                 boolean halal = checkHalal.isSelected();
                 boolean highProtein = checkHighProtein.isSelected();
-                String userName = userName.getUserName();
-                String password = User.getPassword();
-
-                try {
-                    if (User.registerUser(userName, password, firstName, lastName, secondLastName, genre, height, weight, email, birthDate, vegan, lowCarb, halal, highProtein)) {
-                    ventana.userLoggedFromRegister();
-                    }
-                } catch (Exception ex) {
-                    Logger.getLogger(PantallaRegistro.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+               
+                User registrado = new User (user.getUserName(), user.getPassword(), email, firstName, lastName, secondLastName, 
+                		genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
+                
+              
             }
         });
         registerButton.setForeground(new Color(0, 0, 51));

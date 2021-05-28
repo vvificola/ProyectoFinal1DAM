@@ -8,6 +8,7 @@ package classes;
 import exceptions.ContraseñaMuyCortaException;
 import exceptions.ContraseñaMuyLargaException;
 import exceptions.ContraseñaNoCoincideException;
+import exceptions.EmailNoValidoException;
 import exceptions.LongitudNombreIncorrectaException;
 import exceptions.NombreVacioException;
 import java.time.LocalDate;
@@ -32,6 +33,10 @@ public class User {
     private  String lastName;
     private  String secondLastName;
     private boolean genre;
+    private boolean halal;
+    private boolean vegan;
+    private boolean lowCarb;
+    private boolean highProtein;
     private int height; //en centímetros
     private  int weight; //en centímetros
     private  LocalDate birthDate;
@@ -42,7 +47,8 @@ public class User {
     private ArrayList<Menu> savedMenu;
     private PantallaRegistro p;
 
-    public User(String userName, String password, String email, String firstName, String lastName, String secondLastName, boolean genre, int height, int weight, LocalDate birthDate) {
+    public User(String userName, String password, String email, String firstName, String lastName, String secondLastName, boolean genre, int height, int weight, LocalDate birthDate,
+    		boolean halal, boolean vegan, boolean lowCarb, boolean highProtein) {
         this.userName = userName;
         this.password =password;
         this.email = email;
@@ -53,6 +59,9 @@ public class User {
         this.height = height;
         this.weight = weight;
         this.birthDate = birthDate;
+        this.halal=halal;
+        this.vegan=vegan;
+        this.lowCarb=lowCarb;
     
     }
     
@@ -88,7 +97,7 @@ public class User {
     }
 
     public void setPassword(String password, String confirmPassword) throws ContraseñaMuyCortaException, ContraseñaMuyLargaException, ContraseñaNoCoincideException {
-        if (password.length()<8) {
+        if (password.length()< 8) {
             throw new ContraseñaMuyCortaException("La contraseña es demasiado corta");
         }  else if(password.length()>14) {
             throw new ContraseñaMuyLargaException("La contraseña es demasiado corta");
@@ -105,7 +114,11 @@ public class User {
         return email;
     }
 
-    public  void setEmail(String email) {
+    public  void setEmail(String email) throws EmailNoValidoException {
+    	
+    	if (!email.contains("@") || !email.contains(".")) {
+          throw new EmailNoValidoException("No es un formato de mail correcto");
+    	}
         this.email = email;
     }
 
