@@ -209,32 +209,12 @@ public class PantallaRegistro extends JPanel {
         });
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String firstName = "";
-                String lastName = "";
-                String secondLastName = "";
-
-                if (firstNameField != null && firstNameField.getText().length() > 1) {
-                    firstName = firstNameField.getText();
-                } else {
-                    JOptionPane.showMessageDialog(null,
-                            "Introduzca un nombre válido");
-                }
-                if (lastNameField != null && lastNameField.getText().length() > 1) {
-                    lastName = lastNameField.getText();
-                } else {
-                    JOptionPane.showMessageDialog(null,
-                            "Introduzca un apellido válido");
-                }
-                if (secondLastNameField != null && secondLastNameField.getText().length() > 1) {
-                    secondLastName = secondLastNameField.getText();
-                } else {
-                    JOptionPane.showMessageDialog(null,
-                            "Introduzca un segundo apellido válido");
-                }
+                String firstName = firstNameField.getText();
+                String lastName = lastNameField.getText();
+                String secondLastName = secondLastNameField.getText();
                 boolean genre = fieldGenre.equals("hombre");
                 int height = (int) spinnerHeight.getValue();
                 int weight = (int) spinnerWeight.getValue();
-
                 String email = mailField.getText();
                 String date = (birthField.getText());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -243,7 +223,7 @@ public class PantallaRegistro extends JPanel {
                 boolean lowCarb = checkLowCarb.isSelected();
                 boolean halal = checkHalal.isSelected();
                 boolean highProtein = checkHighProtein.isSelected();
-                String userName = User.getUserName();
+                String userName = userName.getUserName();
                 String password = User.getPassword();
 
                 try {

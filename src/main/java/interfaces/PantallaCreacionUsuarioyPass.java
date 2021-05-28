@@ -18,6 +18,11 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 import classes.User;
+import exceptions.ContraseñaMuyCortaException;
+import exceptions.ContraseñaMuyLargaException;
+import exceptions.ContraseñaNoCoincideException;
+import exceptions.LongitudNombreIncorrectaException;
+import exceptions.NombreVacioException;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -100,12 +105,49 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
         registerButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseEntered(MouseEvent e) {
+        		registerButton.setBackground(new Color (200,0,0));
         	}
         	@Override
         	public void mouseExited(MouseEvent e) {
+        		registerButton.setBackground(null);
         	}
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		String userName = userNameField.getText();
+        		String password = new String (passwordField.getPassword());
+         		String confirmPassword = new String (passwordField_1.getPassword());
+        		
+        		try {
+					User creado = new User (userName, password, confirmPassword);
+					
+				} catch (ContraseñaMuyCortaException e1) {
+					JOptionPane.showMessageDialog(ventana,"Error", "La contraseña es demasiado corta", JOptionPane.ERROR_MESSAGE);
+					passwordField.setBackground(new Color (255, 210, 210)); 
+					
+				} catch (ContraseñaMuyLargaException e1) {
+					JOptionPane.showMessageDialog(ventana,"Error","La contraseña es demasiado larga", JOptionPane.ERROR_MESSAGE);
+					passwordField.setBackground(new Color (255, 210, 210)); 
+
+					
+				} catch (ContraseñaNoCoincideException e1) {
+					JOptionPane.showMessageDialog(ventana,"Error", "Las contraseñas no coinciden", JOptionPane.ERROR_MESSAGE);
+					passwordField.setBackground(new Color (255, 210, 210)); 
+
+					
+					
+				} catch (NombreVacioException e1) {
+					JOptionPane.showMessageDialog(ventana, "Error","El nombre no puede estar vacío", JOptionPane.ERROR_MESSAGE);
+					userNameField .setBackground(new Color (255, 210, 210));
+
+					
+				} catch ( LongitudNombreIncorrectaException e1){
+					JOptionPane.showMessageDialog(ventana , "Error",userName +"no es un nombre de usuario válido", JOptionPane.ERROR_MESSAGE);
+					userNameField .setBackground(new Color (255, 210, 210));
+					  
+				}
+        		ventana.goRegister();
+        		
+        		 
         	}
         });
         

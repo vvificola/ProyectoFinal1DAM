@@ -60,8 +60,11 @@ public class User {
         this.setUserName(userName);
         this.setPassword(password, passwordConfirm);
 
-    
     }
+    
+    
+    
+    
      
     //getter y setters
     public String getUserName() {
