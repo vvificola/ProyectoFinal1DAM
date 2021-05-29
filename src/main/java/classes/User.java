@@ -46,7 +46,7 @@ public class User {
     private ArrayList<User> usuarios;
     private ArrayList<Product> favoriteProducts;
     private ArrayList<Recipe> favoriteRecipes;
-    private  ArrayList<DietaryRestrictions> dietaryOptions;
+    private  ArrayList<DietaryRestrictions> dietaryOptions = new ArrayList <DietaryRestrictions>();
     private ArrayList<Menu> savedMenu;
     private PantallaRegistro p;
 
@@ -121,13 +121,6 @@ public class User {
     }
     
     	
-		
-     
-    
-   
-    
-    
-    
     
     //getter y setters
     public String getUserName() {
@@ -174,6 +167,27 @@ public class User {
           throw new EmailNoValidoException("No es un formato de mail correcto");
     	}
         this.email = email;
+    }
+    
+    
+    public void setDietaryOptions(boolean halal,boolean vegan, boolean lowCarb, boolean highProtein) {
+    	
+    	if (halal) {
+    		
+    		dietaryOptions.add(DietaryRestrictions.HALAL);
+  
+    	} else if (vegan) {
+    		dietaryOptions.add(DietaryRestrictions.VEGAN);
+    		
+    	} else if (lowCarb) {
+    		dietaryOptions.add(DietaryRestrictions.LOWCARB);
+    		
+    	} else if (highProtein) {
+    		
+    		dietaryOptions.add(DietaryRestrictions.HIGHPROTEIN);
+    	}
+    	
+       
     }
 
     public String getFirstName() {
@@ -260,25 +274,7 @@ public class User {
         return dietaryOptions;
     }
 
-    public void setDietaryOptions(boolean halal,boolean vegan, boolean lowCarb, boolean highProtein) {
-    	
-    	if (halal) {
-    		
-    		dietaryOptions.add(DietaryRestrictions.HALAL);
-  
-    	} else if (vegan) {
-    		dietaryOptions.add(DietaryRestrictions.VEGAN);
-    		
-    	} else if (lowCarb) {
-    		dietaryOptions.add(DietaryRestrictions.LOWCARB);
-    		
-    	} else if (highProtein) {
-    		
-    		dietaryOptions.add(DietaryRestrictions.HIGHPROTEIN);
-    	}
-    	
-       
-    }
+
 
     public ArrayList<Menu> getSavedMenu() {
         return savedMenu;

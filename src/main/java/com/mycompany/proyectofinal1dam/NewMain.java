@@ -7,9 +7,16 @@ package com.mycompany.proyectofinal1dam;
 
 
 
+import java.util.ArrayList;
+
+import classes.Product;
 import classes.User;
 import interfaces.PantallaRegistro;
 import interfaces.Ventana;
+import preferenceEnums.DietaryRestrictions;
+import preferenceEnums.Storage;
+import products.Vegetable;
+import typeOfEnums.TypeOfVegetable;
 
 
 /**
@@ -26,7 +33,8 @@ public class NewMain {
     	
     	
     	Ventana nuevaVentana = new Ventana();
-        
+    	
+        System.out.println(Product.class);
     
     }
     

@@ -5,6 +5,7 @@
  */
 package classes;
 
+import preferenceEnums.DietaryRestrictions;
 import preferenceEnums.RecipeDifficulty;
 import preferenceEnums.TypeOfCooking;
 
@@ -17,25 +18,34 @@ import java.util.ArrayList;
 public class Recipe extends NutritionalValues {
     
     private String name;
-    private TypeOfCooking style; 
-    private ArrayList<Product> ingredients;
-    private boolean needHeat; //true needs heat
     private RecipeDifficulty difficulty;
+    private TypeOfCooking style;
+    private ArrayList<Product> ingredients = new  ArrayList<Product>();
     private String description;
+    private boolean needsHeat; //true needs heat
+    private DietaryRestrictions restrictions;
+ 
+   
 
   
 
-    public Recipe(short caloricDensity, short carbs, short proteins, short fats, String name, TypeOfCooking style,
-			ArrayList<Product> ingredients, boolean needHeat, RecipeDifficulty difficulty, String description) {
+
+	public Recipe(short caloricDensity, short carbs, short proteins, short fats, String name,
+			RecipeDifficulty difficulty, TypeOfCooking style, ArrayList<Product> ingredients, String description,
+			boolean needsHeat, DietaryRestrictions restrictions) {
+		
 		super(caloricDensity, carbs, proteins, fats);
 		this.name = name;
+		this.difficulty = difficulty;
 		this.style = style;
 		this.ingredients = ingredients;
-		this.needHeat = needHeat;
-		this.difficulty = difficulty;
 		this.description = description;
+		this.needsHeat = needsHeat;
+		this.restrictions = restrictions;
 	}
 
+	
+	
 	public String getName() {
         return name;
     }
@@ -61,11 +71,11 @@ public class Recipe extends NutritionalValues {
     }
 
     public boolean isNeedHeat() {
-        return needHeat;
+        return needsHeat;
     }
 
     public void setNeedHeat(boolean needHeat) {
-        this.needHeat = needHeat;
+        this.needsHeat = needHeat;
     }
 
     public RecipeDifficulty getDifficulty() {

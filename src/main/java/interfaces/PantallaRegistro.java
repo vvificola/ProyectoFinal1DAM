@@ -135,13 +135,16 @@ public class PantallaRegistro extends JPanel {
         labelHeight.setBounds(190, 194, 58, 16);
         panelCentral.add(labelHeight);
 
-        JSpinner spinnerWeight = new JSpinner();
+        final JSpinner spinnerWeight = new JSpinner();
         spinnerWeight.setFont(new Font("Futura", Font.PLAIN, 10));
         String genre = fieldGenre.getSelectedItem().toString();
+        
         if (genre.equals("hombre")) {
+            
             spinnerWeight.setModel(new SpinnerNumberModel(70, 0, 150, 1));
+            
         } else if (genre.equals("mujer")) {
-
+        
             spinnerWeight.setModel(new SpinnerNumberModel(50, 0, 120, 1));
 
         }
@@ -180,7 +183,6 @@ public class PantallaRegistro extends JPanel {
         panelCentral.add(checkLowCarb);
 
         JCheckBox checkVegan = new JCheckBox("vegano");
-
         checkVegan.setFont(new Font("Futura", Font.PLAIN, 9));
         checkVegan.setBounds(15, 190, 71, 23);
         panelCentral.add(checkVegan);
@@ -213,10 +215,11 @@ public class PantallaRegistro extends JPanel {
         });
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	boolean halal;
-            	boolean vegan;
-            	boolean lowCarb;
-            	boolean highProtein;
+            	//inicializados a false
+            	boolean halal = false;
+            	boolean vegan = false;
+            	boolean lowCarb = false;
+            	boolean highProtein =false;
                 String firstName = firstNameField.getText();
                 String lastName = lastNameField.getText();
                 String secondLastName = secondLastNameField.getText();
@@ -228,19 +231,25 @@ public class PantallaRegistro extends JPanel {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate birthDate = LocalDate.parse(date, formatter);
                if (checkVegan.isSelected()) {
-            	   vegan = true;
+            	   vegan=true;
+            	   System.out.println(vegan);
+            	   
                } else {vegan = false;}
                
                if (checkLowCarb.isSelected()) {
             	   lowCarb = true;
+            	   System.out.println(lowCarb);
                } else { lowCarb = false;}
                
                if (checkHalal.isSelected()) {
                  halal = true;
+                 System.out.println(halal);
                } else { halal = false;}
                
                if (checkHighProtein.isSelected()) {
+            	   System.out.println(halal);
             	   highProtein = true;
+            	   
                }else {highProtein = false;}
                
                               

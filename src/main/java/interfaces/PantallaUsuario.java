@@ -150,11 +150,10 @@ public class PantallaUsuario  extends JPanel{
 		JLabel heightLabel = new JLabel("altura: "+ u.getHeight());
 		heightLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		heightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
-		heightLabel.setBounds(55, 299, 55, 16);
+		heightLabel.setBounds(55, 299, 71, 16);
 		panelCentral.add(heightLabel);
 		
-	
-	
+
 		JLabel weightLabel = new JLabel("peso: " + u.getWeight());
 		weightLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		weightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
@@ -164,15 +163,14 @@ public class PantallaUsuario  extends JPanel{
 		float imc = (float)u.calculateIMC(u.getWeight(), u.getHeight());
 		
 	    IMCGradation gradeIMC = u.gradeIMC(imc);
-	    
-	    
+	
 		JLabel imcLabel = new JLabel("IMC: ");
 		imcLabel.setFont(new Font("Futura", Font.PLAIN, 12));
 		imcLabel.setBounds(55, 318, 32, 16);
 		panelCentral.add(imcLabel);
 		
 		String n = "";
-		JLabel nutritionLabel = new JLabel("" + n );
+		JLabel nutritionLabel = new JLabel("" + " " + n );
 		nutritionLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		nutritionLabel.setBounds(95, 318, 123, 16);
@@ -184,7 +182,7 @@ public class PantallaUsuario  extends JPanel{
 			n+="desnutrición";
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (189, 0, 0));
-			nutritionLabel.setBounds(111, 341, 201, 14);
+			nutritionLabel.setBounds(95, 318, 123, 16);
 		    panelCentral.add(nutritionLabel);
 			break;
 		case NORMAL_WEIGHT:
@@ -192,7 +190,7 @@ public class PantallaUsuario  extends JPanel{
 		    nutritionLabel = new JLabel(imc + n);
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		    nutritionLabel.setForeground(new Color (112, 223, 0));
-			nutritionLabel.setBounds(111, 341, 201, 14);
+			nutritionLabel.setBounds(95, 318, 123, 16);
 		    panelCentral.add(nutritionLabel);
 			break;
 		case OVERWEIGHT:
@@ -200,42 +198,36 @@ public class PantallaUsuario  extends JPanel{
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (255, 223, 0));
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-			nutritionLabel.setBounds(111, 341, 201, 14);
-		    panelCentral.add(nutritionLabel);
+			nutritionLabel.setBounds(95, 318, 123, 16);
+			panelCentral.add(nutritionLabel);
 			break;
 		case OBESE:
 			n+="sobrepeso";
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (200, 0, 0));
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-			nutritionLabel.setBounds(111, 341, 201, 14);
-		    panelCentral.add(nutritionLabel);
+			nutritionLabel.setBounds(95, 318, 123, 16);
+			panelCentral.add(nutritionLabel);
 			break;
 		case EXTREMELY_OBESE:
 			n+="obesidad";
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (220, 0, 0));
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-			nutritionLabel.setBounds(111, 341, 201, 14);
-		    panelCentral.add(nutritionLabel);
+			nutritionLabel.setBounds(95, 318, 123, 16);
+			panelCentral.add(nutritionLabel);
 			break;
-			
-		
-		
 
 		}
-	    
-	  
-	  
 	    
 		JLabel lblNewLabel = new JLabel("Datos biométricos");
 		lblNewLabel.setBounds(53, 231, 155, 16);
 		panelCentral.add(lblNewLabel);
 		
 		
-		JLabel lblTipoDeDieta = new JLabel("Tipo de dieta:" + u.getDietaryOptions());
+		JLabel lblTipoDeDieta = new JLabel("Tipo de dieta: " + u.getDietaryOptions());
 		lblTipoDeDieta.setFont(new Font("Futura", Font.PLAIN, 12));
-		lblTipoDeDieta.setBounds(55, 339, 115, 16);
+		lblTipoDeDieta.setBounds(55, 339, 257, 16);
 		panelCentral.add(lblTipoDeDieta);
 		
         

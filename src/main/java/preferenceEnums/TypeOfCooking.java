@@ -17,6 +17,7 @@ public enum TypeOfCooking {
     AMERICAN, 
     FRENCH, 
     CHINESE, 
-    JAPANESE
+    JAPANESE, 
+    INDIFERENTE
     
 }
