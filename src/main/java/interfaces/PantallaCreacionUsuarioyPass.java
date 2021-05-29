@@ -51,7 +51,7 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
     private JLabel labelRepeatPassword;
 
     public PantallaCreacionUsuarioyPass(Ventana v) {
-
+   
         this.ventana = v;
         this.setSize(310, 199);
         setLayout(new BorderLayout(3, 0));
@@ -119,33 +119,35 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
         		
         		try {
 					User creado = new User (userName, password, confirmPassword);
+					JOptionPane.showConfirmDialog(ventana, "Usuario creado" + "\n" + "¿Desea continuar con el registro?");
+					ventana.goRegister(creado);
 					
 				} catch (ContraseñaMuyCortaException e1) {
-					JOptionPane.showMessageDialog(ventana,"Error", "La contraseña es demasiado corta", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana,"La contraseña es demasiado corta","Error",  JOptionPane.ERROR_MESSAGE);
 					passwordField.setBackground(new Color (255, 210, 210)); 
 					
 				} catch (ContraseñaMuyLargaException e1) {
-					JOptionPane.showMessageDialog(ventana,"Error","La contraseña es demasiado larga", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana,"La contraseña es demasiado larga", "Error", JOptionPane.ERROR_MESSAGE);
 					passwordField.setBackground(new Color (255, 210, 210)); 
 
 					
 				} catch (ContraseñaNoCoincideException e1) {
-					JOptionPane.showMessageDialog(ventana,"Error", "Las contraseñas no coinciden", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana,"Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
 					passwordField.setBackground(new Color (255, 210, 210)); 
 
 					
 					
 				} catch (NombreVacioException e1) {
-					JOptionPane.showMessageDialog(ventana, "Error","El nombre no puede estar vacío", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana,"El nombre no puede estar vacío",  "Error",JOptionPane.ERROR_MESSAGE);
 					userNameField .setBackground(new Color (255, 210, 210));
 
 					
 				} catch ( LongitudNombreIncorrectaException e1){
-					JOptionPane.showMessageDialog(ventana , "Error",userName +"no es un nombre de usuario válido", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ventana ,userName +"no es un nombre de usuario válido", "Error", JOptionPane.ERROR_MESSAGE);
 					userNameField .setBackground(new Color (255, 210, 210));
 					  
 				}
-        		ventana.goRegister();
+        		
         		
         		 
         	}

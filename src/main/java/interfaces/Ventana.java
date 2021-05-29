@@ -17,6 +17,7 @@ public class Ventana extends JFrame {
     private PantallaUsuario pantallaUsuario;
     private PantallaCreacionUsuarioyPass pantallaCreacionUsuario;
     private Ventana v;
+    private User u;
 
     public Ventana() {
 
@@ -72,10 +73,10 @@ public class Ventana extends JFrame {
 
     }
 
-    public void goRegister() {
+    public void goRegister(User creado) {
 
         if (this.pantallaRegistro == null) {
-            this.pantallaRegistro = new PantallaRegistro(this);
+            this.pantallaRegistro = new PantallaRegistro(this, creado );
         }
         this.pantallaInicio.setVisible(false);
         this.setTitle("pantalla registro");
@@ -90,7 +91,7 @@ public class Ventana extends JFrame {
     public void userLogged() {
 
         if (this.pantallaUsuario == null) {
-            this.pantallaUsuario = new PantallaUsuario(this);
+            this.pantallaUsuario = new PantallaUsuario(this, u);
         }
         this.pantallaInicio.setVisible(false);
         this.setContentPane(this.pantallaUsuario);
@@ -100,10 +101,10 @@ public class Ventana extends JFrame {
 
     }
 
-    public void userLoggedFromRegister() {
+    public void userLoggedFromRegister(User creado) {
 
         if (this.pantallaUsuario == null) {
-            this.pantallaUsuario = new PantallaUsuario(this);
+            this.pantallaUsuario = new PantallaUsuario(this, creado);
         }
 
         this.pantallaRegistro.setVisible(false);

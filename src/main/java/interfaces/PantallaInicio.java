@@ -83,6 +83,13 @@ public class PantallaInicio extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 ventana.goCreateUser();
             }
+        	@Override
+        	public void mouseEntered(MouseEvent e) {
+        		labelGoRegister.setForeground(new Color (207, 168, 43));
+        	}
+        	public void mouseExited(MouseEvent e) {
+        		labelGoRegister.setForeground(null);
+        	}
         });
         labelGoRegister.setForeground(new Color(0, 139, 139));
         labelGoRegister.setHorizontalAlignment(SwingConstants.CENTER);
@@ -95,13 +102,7 @@ public class PantallaInicio extends JPanel {
         panelSouth.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
         JButton loginButton = new JButton("Iniciar sesión");
-        loginButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                
-             User.checkPasswordUser(userNameField.toString(), passwordField.toString());
-              
-            }
-        });
+      
         loginButton.setForeground(new Color(0, 0, 0));
         panelSouth.add(loginButton);
 

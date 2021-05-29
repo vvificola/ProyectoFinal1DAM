@@ -25,10 +25,12 @@ import javax.swing.JTextPane;
 public class PantallaModificacionDatos extends JPanel{
 	
 	private Ventana ventana;
+	private User usuario;
 	
-	public PantallaModificacionDatos(Ventana v) {
+	public PantallaModificacionDatos(Ventana v, User u) {
 		
 		this.ventana=v;
+		this.usuario=u;
 		this.setSize(597, 319);
 		setLayout(null);
 		
@@ -43,25 +45,25 @@ public class PantallaModificacionDatos extends JPanel{
 		lblModificacion.setHorizontalAlignment(SwingConstants.CENTER);
 		panelCentral.add(lblModificacion);
 		
-		JLabel lblNewLabel = new JLabel("user:" + User.getUserName());
+		JLabel lblNewLabel = new JLabel("user:" + usuario.getUserName());
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Futura", Font.PLAIN, 12));
 		lblNewLabel.setBounds(0, 44, 300, 16);
 		panelCentral.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("nombre:" + User.getFirstName());
+		JLabel lblNewLabel_1_1 = new JLabel("nombre:" + usuario.getFirstName());
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
 		lblNewLabel_1_1.setBounds(0, 72, 300, 16);
 		panelCentral.add(lblNewLabel_1_1);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("primer apellido:"  + User.getLastName());
+		JLabel lblNewLabel_1_1_1 = new JLabel("primer apellido:"  + usuario.getLastName());
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
 		lblNewLabel_1_1_1.setBounds(0, 100, 300, 16);
 		panelCentral.add(lblNewLabel_1_1_1);
 		
-		JLabel lblNewLabel_1_1_1_2 = new JLabel("segundo apellido:" + User.getSecondLastName());
+		JLabel lblNewLabel_1_1_1_2 = new JLabel("segundo apellido:" + usuario.getSecondLastName());
 		lblNewLabel_1_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1_2.setFont(new Font("Futura", Font.PLAIN, 12));
 		lblNewLabel_1_1_1_2.setBounds(0, 128, 300, 16);
@@ -70,13 +72,13 @@ public class PantallaModificacionDatos extends JPanel{
 		
 		
 		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("peso:" +  User.getWeight());
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("peso:" +  usuario.getWeight());
 		lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
 		lblNewLabel_1_1_1_1.setBounds(0, 184, 300, 16);
 		panelCentral.add(lblNewLabel_1_1_1_1);
 		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("email:" + User.getEmail());
+		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("email:" + usuario.getEmail());
 		lblNewLabel_1_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
 		lblNewLabel_1_1_1_1_1.setBounds(0, 156, 300, 16);

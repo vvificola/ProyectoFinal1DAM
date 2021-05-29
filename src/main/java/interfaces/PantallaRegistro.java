@@ -50,9 +50,10 @@ public class PantallaRegistro extends JPanel {
     private Ventana ventana;
     private User user;
 
-    public PantallaRegistro(Ventana v) {
+    public PantallaRegistro(Ventana v, User creado) {
 
         this.ventana = v;
+        this.user = creado;
         
         this.setSize(323, 337);
         setLayout(new BorderLayout(0, 0));
@@ -212,6 +213,10 @@ public class PantallaRegistro extends JPanel {
         });
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	boolean halal;
+            	boolean vegan;
+            	boolean lowCarb;
+            	boolean highProtein;
                 String firstName = firstNameField.getText();
                 String lastName = lastNameField.getText();
                 String secondLastName = secondLastNameField.getText();
@@ -222,13 +227,26 @@ public class PantallaRegistro extends JPanel {
                 String date = (birthField.getText());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate birthDate = LocalDate.parse(date, formatter);
-                boolean vegan = checkVegan.isSelected();
-                boolean lowCarb = checkLowCarb.isSelected();
-                boolean halal = checkHalal.isSelected();
-                boolean highProtein = checkHighProtein.isSelected();
+               if (checkVegan.isSelected()) {
+            	   vegan = true;
+               } else {vegan = false;}
                
-                User registrado = new User (user.getUserName(), user.getPassword(), email, firstName, lastName, secondLastName, 
+               if (checkLowCarb.isSelected()) {
+            	   lowCarb = true;
+               } else { lowCarb = false;}
+               
+               if (checkHalal.isSelected()) {
+                 halal = true;
+               } else { halal = false;}
+               
+               if (checkHighProtein.isSelected()) {
+            	   highProtein = true;
+               }else {highProtein = false;}
+               
+                              
+                User registrado  = new User (creado.getUserName(), creado.getPassword(), email, firstName, lastName, secondLastName, 
                 		genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
+                ventana.userLoggedFromRegister(registrado);
                 
               
             }

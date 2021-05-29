@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -22,6 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.SoftBevelBorder;
 
 import classes.User;
+import enums.IMCGradation;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
@@ -31,10 +33,12 @@ public class PantallaUsuario  extends JPanel{
 	private JButton btnLoadMenu;
 	private JButton modifyUsername;
 	private JButton btnLogout;
+	private User usuario;
 	
 	
-	public PantallaUsuario(Ventana v) {
+	public PantallaUsuario(Ventana v, User u) {
 		this.ventana=v;
+		this.usuario=u;
 		this.setSize(585, 491);
 		v.setResizable(false);
 		setLayout(new BorderLayout(0, 0));
@@ -45,47 +49,58 @@ public class PantallaUsuario  extends JPanel{
 		btnLoadMenu = new JButton("cargar menú");
 		btnLoadMenu.setIcon(new ImageIcon("./images/baseline_sync_black_24dp.png"));
 		btnLoadMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		btnLoadMenu.setBounds(358, 82, 185, 42);
+		btnLoadMenu.setBounds(358, 44, 185, 42);
 		panelCentral.add(btnLoadMenu);
+	
+ 
 		
-		JLabel lblUser = new JLabel("user:" + User.getUserName());
+		JLabel lblUser = new JLabel("usuario:" +  u.getUserName());
 		lblUser.setHorizontalAlignment(SwingConstants.LEFT);
-		lblUser.setFont(new Font("Futura", Font.PLAIN, 12));
+		lblUser.setFont(new Font("Futura", Font.PLAIN, 10));
 		lblUser.setBounds(55, 44, 115, 16);
 		panelCentral.add(lblUser);
 		
-		JLabel firstNameLabel = new JLabel("nombre:" + User.getFirstName());
+		
+		
+		JLabel firstNameLabel = new JLabel("nombre:" + u.getFirstName());
 		firstNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		firstNameLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		firstNameLabel.setFont(new Font("Futura", Font.PLAIN, 10));
 		firstNameLabel.setBounds(55, 72, 115, 16);
 		panelCentral.add(firstNameLabel);
 		
-		JLabel lastNameLabel = new JLabel("primer apellido:"  + User.getLastName());
+		JLabel lastNameLabel = new JLabel("primer apellido:"  + u.getLastName());
 		lastNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lastNameLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		lastNameLabel.setFont(new Font("Futura", Font.PLAIN, 10));
 		lastNameLabel.setBounds(55, 100, 115, 16);
 		panelCentral.add(lastNameLabel);
 		
-		JLabel secondLastNameLabel = new JLabel("segundo apellido:" + User.getSecondLastName());
+		JLabel secondLastNameLabel = new JLabel("segundo apellido:" + u.getSecondLastName());
 		secondLastNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		secondLastNameLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		secondLastNameLabel.setFont(new Font("Futura", Font.PLAIN, 10));
 		secondLastNameLabel.setBounds(55, 128, 127, 16);
 		panelCentral.add(secondLastNameLabel);
 		
 		
-		
-		
-		JLabel heightLabel = new JLabel("altura: "+ User.getEmail());
-		heightLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		heightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
-		heightLabel.setBounds(55, 184, 115, 16);
-		panelCentral.add(heightLabel);
-		
-		JLabel emailLabel = new JLabel("email:" + User.getEmail());
+		JLabel emailLabel = new JLabel("email:" + u.getEmail());
 		emailLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		emailLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		emailLabel.setFont(new Font("Futura", Font.PLAIN, 10));
 		emailLabel.setBounds(55, 156, 127, 16);
 		panelCentral.add(emailLabel);
+		
+	
+		JLabel heightLabel = new JLabel("altura: "+ u.getHeight());
+		heightLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		heightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		heightLabel.setBounds(55, 299, 115, 16);
+		panelCentral.add(heightLabel);
+		
+	
+	
+		JLabel weightLabel = new JLabel("peso: " + u.getWeight());
+		weightLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		weightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		weightLabel.setBounds(55, 280, 115, 16);
+		panelCentral.add(weightLabel);
 		
 		JButton btnNewButton;
 		modifyUsername = new JButton("modificar");
@@ -97,18 +112,18 @@ public class PantallaUsuario  extends JPanel{
 		
 		JButton btnGenerateMenu = new JButton("generar menú");
 		btnGenerateMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		btnGenerateMenu.setBounds(358, 158, 185, 42);
+		btnGenerateMenu.setBounds(358, 102, 185, 42);
 		panelCentral.add(btnGenerateMenu);
 		
 		JButton btnSearch = new JButton("buscador recetas");
 		btnSearch.setIcon(new ImageIcon("./images/icon_busqueda.png"));
 		btnSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		btnSearch.setBounds(363, 325, 137, 30);
+		btnSearch.setBounds(358, 325, 185, 30);
 		panelCentral.add(btnSearch);
 		
 		JButton btnFavorites = new JButton("favoritos");
 		btnFavorites.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		btnFavorites.setBounds(73, 330, 185, 23);
+		btnFavorites.setBounds(358, 177, 185, 23);
 		panelCentral.add(btnFavorites);
 		
 		JButton modifyFirstName = new JButton("modificar");
@@ -135,23 +150,93 @@ public class PantallaUsuario  extends JPanel{
 		modifyEmail.setBounds(216, 160, 71, 12);
 		panelCentral.add(modifyEmail);
 		
-		JLabel weightLabel = new JLabel("peso:0");
-		weightLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		weightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
-		weightLabel.setBounds(55, 212, 115, 16);
-		panelCentral.add(weightLabel);
+		float imc = (float)u.calculateIMC(u.getWeight(), u.getHeight());
 		
-		JButton modifyHeight = new JButton("modificar");
-		modifyHeight.setVerticalAlignment(SwingConstants.TOP);
-		modifyHeight.setFont(new Font("Futura", Font.PLAIN, 9));
-		modifyHeight.setBounds(216, 188, 71, 12);
-		panelCentral.add(modifyHeight);
+	    IMCGradation gradeIMC = u.gradeIMC(imc);
+	    
+	    
+		JLabel imcLabel = new JLabel("IMC: ");
+		imcLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		imcLabel.setBounds(55, 318, 32, 16);
+		panelCentral.add(imcLabel);
 		
-		JButton modifyWeight = new JButton("modificar");
-		modifyWeight.setVerticalAlignment(SwingConstants.TOP);
-		modifyWeight.setFont(new Font("Futura", Font.PLAIN, 9));
-		modifyWeight.setBounds(216, 216, 71, 12);
-		panelCentral.add(modifyWeight);
+		String n = "";
+		JLabel nutritionLabel = new JLabel("" + n );
+		nutritionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		nutritionLabel.setBounds(111, 341, 201, 14);
+		panelCentral.add(nutritionLabel);
+		
+		switch (gradeIMC) {
+		
+		case UNDERWEIGHT:
+			n+="desnutrición";
+		    nutritionLabel = new JLabel(imc + n);
+		    nutritionLabel.setForeground(new Color (189, 0, 0));
+			nutritionLabel.setBounds(96, 279, 201, 12);
+		    panelCentral.add(nutritionLabel);
+			break;
+		case NORMAL_WEIGHT:
+			n+="peso ideal";
+		    nutritionLabel = new JLabel(imc + n);
+			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		    nutritionLabel.setForeground(new Color (112, 223, 0));
+			nutritionLabel.setBounds(96, 279, 201, 12);
+		    panelCentral.add(nutritionLabel);
+			break;
+		case OVERWEIGHT:
+			n+="ligero sobrepeso";
+		    nutritionLabel = new JLabel(imc + n);
+		    nutritionLabel.setForeground(new Color (255, 223, 0));
+			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+			nutritionLabel.setBounds(96, 279, 201, 12);
+		    panelCentral.add(nutritionLabel);
+			break;
+		case OBESE:
+			n+="sobrepeso";
+		    nutritionLabel = new JLabel(imc + n);
+		    nutritionLabel.setForeground(new Color (200, 0, 0));
+			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+			nutritionLabel.setBounds(96, 279, 201, 12);
+		    panelCentral.add(nutritionLabel);
+			break;
+		case EXTREMELY_OBESE:
+			n+="obesidad";
+		    nutritionLabel = new JLabel(imc + n);
+		    nutritionLabel.setForeground(new Color (220, 0, 0));
+			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+			nutritionLabel.setBounds(96, 279, 201, 12);
+		    panelCentral.add(nutritionLabel);
+			break;
+			
+		
+		
+
+		}
+	    
+	  
+	    //datos biométricos 
+	    
+	    
+		JLabel lblNewLabel = new JLabel("Datos biométricos");
+		lblNewLabel.setBounds(53, 231, 155, 16);
+		panelCentral.add(lblNewLabel);
+		
+		
+		JLabel lblTipoDeDieta = new JLabel("Tipo de dieta:" + u.getDietaryOptions());
+		lblTipoDeDieta.setFont(new Font("Futura", Font.PLAIN, 12));
+		lblTipoDeDieta.setBounds(55, 339, 115, 16);
+		panelCentral.add(lblTipoDeDieta);
+		
+        
+		JLabel lblEdad = new JLabel("edad: " + u.calculateAge(null));
+		lblEdad.setHorizontalAlignment(SwingConstants.LEFT);
+		lblEdad.setFont(new Font("Futura", Font.PLAIN, 12));
+		lblEdad.setBounds(55, 259, 115, 16);
+		panelCentral.add(lblEdad);
+		
+	
+	
 		
 		
 		JPanel panelSouth = new JPanel();

@@ -12,11 +12,14 @@ import exceptions.EmailNoValidoException;
 import exceptions.LongitudNombreIncorrectaException;
 import exceptions.NombreVacioException;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import enums.IMCGradation;
 import interfaces.PantallaRegistro;
 import preferenceEnums.DietaryRestrictions;
 
@@ -72,9 +75,57 @@ public class User {
     }
     
     
+    public float calculateIMC(int weight, int height) {
+		
+		float imc = 26;
+		return imc;
+    }
+    
+    public IMCGradation gradeIMC(float imc) {
+		 IMCGradation grade = null;
+    	//aquí no puedo aplicar switch/case así que no htengo otro remedio que hacerlo con else if
+    	
+    	if (imc <18.5) {
+    		grade = grade.UNDERWEIGHT;
+    	
+    	}else if (imc>=18.5 && imc<=24.9) {
+    		grade = grade.NORMAL_WEIGHT;
+    	
+    	}else if (imc>24.9 && imc<=29.9) {
+    		grade = grade.OVERWEIGHT;
+    	
+    	}else if (imc>=30 && imc<34.9) {
+    		grade = grade.OBESE;
+    	
+    	}else if (imc>=34.9) {
+    		grade = grade.EXTREMELY_OBESE;
+    	
+    	}
+    	
+    	System.out.println(grade);
+    	return grade;
+  
+    	
+    	}
     
     
+    public byte calculateAge (LocalDate birthDate) {
+    	
+    	 LocalDate today = LocalDate.now();   
+    	 byte age = (byte) ChronoUnit.YEARS.between(birthDate, today); 
+		 return age;
+    	
+    }
+    
+    	
+		
      
+    
+   
+    
+    
+    
+    
     //getter y setters
     public String getUserName() {
         return userName;

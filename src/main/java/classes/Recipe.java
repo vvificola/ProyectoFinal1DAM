@@ -23,18 +23,20 @@ public class Recipe extends NutritionalValues {
     private RecipeDifficulty difficulty;
     private String description;
 
-    public Recipe(short caloricDensity, short carbs, short proteins, short fats) {
-        super(caloricDensity, carbs, proteins, fats);
-        this.name=name;
-        this.style=style;
-        this.ingredients = ingredients;
-        this.needHeat=needHeat;
-        this.difficulty=difficulty;
-        this.description=description;
-        
-    }
+  
 
-    public String getName() {
+    public Recipe(short caloricDensity, short carbs, short proteins, short fats, String name, TypeOfCooking style,
+			ArrayList<Product> ingredients, boolean needHeat, RecipeDifficulty difficulty, String description) {
+		super(caloricDensity, carbs, proteins, fats);
+		this.name = name;
+		this.style = style;
+		this.ingredients = ingredients;
+		this.needHeat = needHeat;
+		this.difficulty = difficulty;
+		this.description = description;
+	}
+
+	public String getName() {
         return name;
     }
 
