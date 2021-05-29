@@ -32,6 +32,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Iterator;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -231,32 +235,58 @@ public class PantallaRegistro extends JPanel {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate birthDate = LocalDate.parse(date, formatter);
                if (checkVegan.isSelected()) {
-            	   vegan=true;
-            	   System.out.println(vegan);
-            	   
+            	   vegan=true;     	   
                } else {vegan = false;}
                
                if (checkLowCarb.isSelected()) {
             	   lowCarb = true;
-            	   System.out.println(lowCarb);
+            	
                } else { lowCarb = false;}
                
                if (checkHalal.isSelected()) {
                  halal = true;
-                 System.out.println(halal);
+                
                } else { halal = false;}
                
                if (checkHighProtein.isSelected()) {
-            	   System.out.println(halal);
             	   highProtein = true;
             	   
                }else {highProtein = false;}
                
+               
+               try {
                               
                 User registrado  = new User (creado.getUserName(), creado.getPassword(), email, firstName, lastName, secondLastName, 
                 		genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
+                
+                Connection c = DriverManager.getConnection("jdbc:mysql://127.0,0.1:3306/ProyectoFinal1DAM", 
+                		"root", "admin");
+                Statement smt = c.createStatement();
+                
+                
+                //executeQuery solo para los select
+                smt.executeUpdate(
+                		"insert into usuario"
+                + "values('"+creado.getUserName()+"', '"+creado.getPassword()+"', '"+email+"', '"+firstName+"', '"+lastName+"','"+secondLastName+"', '"+genre+"', '"+height+"','"birthDate"', '"halal"', '"vegan"','"lowCarb"', '"highProtein"')                 
+                            
+            
+                		
+                		
+                		);
+                
+                smt.close();
+                c.close();
                 ventana.userLoggedFromRegister(registrado);
                 
+                
+                
+               } catch (EmailNoValidoException ex1){
+            	   ex1.printStackTrace();
+   	 
+               } catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
               
             }
         });
