@@ -65,6 +65,8 @@ public class User {
         this.halal=halal;
         this.vegan=vegan;
         this.lowCarb=lowCarb;
+        this.setDietaryOptions(halal, vegan, lowCarb, highProtein);
+        
     
     }
     
@@ -77,7 +79,8 @@ public class User {
     
     public float calculateIMC(int weight, int height) {
 		
-		float imc = 26;
+    	//pasando de centímetros a metros para hacer el cálculo correcto
+		float imc =(100*100*weight)/(height*height); ;
 		return imc;
     }
     
@@ -257,8 +260,24 @@ public class User {
         return dietaryOptions;
     }
 
-    public void setDietaryOptions(ArrayList<DietaryRestrictions> dietaryOptions) {
-        this.dietaryOptions = dietaryOptions;
+    public void setDietaryOptions(boolean halal,boolean vegan, boolean lowCarb, boolean highProtein) {
+    	
+    	if (halal) {
+    		
+    		dietaryOptions.add(DietaryRestrictions.HALAL);
+  
+    	} else if (vegan) {
+    		dietaryOptions.add(DietaryRestrictions.VEGAN);
+    		
+    	} else if (lowCarb) {
+    		dietaryOptions.add(DietaryRestrictions.LOWCARB);
+    		
+    	} else if (highProtein) {
+    		
+    		dietaryOptions.add(DietaryRestrictions.HIGHPROTEIN);
+    	}
+    	
+       
     }
 
     public ArrayList<Menu> getSavedMenu() {

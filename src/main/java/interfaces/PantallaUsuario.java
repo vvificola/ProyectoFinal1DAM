@@ -54,6 +54,8 @@ public class PantallaUsuario  extends JPanel{
 	
  
 		
+		//datos usuario
+		
 		JLabel lblUser = new JLabel("usuario:" +  u.getUserName());
 		lblUser.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUser.setFont(new Font("Futura", Font.PLAIN, 10));
@@ -86,21 +88,7 @@ public class PantallaUsuario  extends JPanel{
 		emailLabel.setFont(new Font("Futura", Font.PLAIN, 10));
 		emailLabel.setBounds(55, 156, 127, 16);
 		panelCentral.add(emailLabel);
-		
 	
-		JLabel heightLabel = new JLabel("altura: "+ u.getHeight());
-		heightLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		heightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
-		heightLabel.setBounds(55, 299, 115, 16);
-		panelCentral.add(heightLabel);
-		
-	
-	
-		JLabel weightLabel = new JLabel("peso: " + u.getWeight());
-		weightLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		weightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
-		weightLabel.setBounds(55, 280, 115, 16);
-		panelCentral.add(weightLabel);
 		
 		JButton btnNewButton;
 		modifyUsername = new JButton("modificar");
@@ -150,6 +138,29 @@ public class PantallaUsuario  extends JPanel{
 		modifyEmail.setBounds(216, 160, 71, 12);
 		panelCentral.add(modifyEmail);
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		//datos biométricos 
+		JLabel heightLabel = new JLabel("altura: "+ u.getHeight());
+		heightLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		heightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		heightLabel.setBounds(55, 299, 55, 16);
+		panelCentral.add(heightLabel);
+		
+	
+	
+		JLabel weightLabel = new JLabel("peso: " + u.getWeight());
+		weightLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		weightLabel.setFont(new Font("Futura", Font.PLAIN, 12));
+		weightLabel.setBounds(55, 280, 60, 16);
+		panelCentral.add(weightLabel);
+	    
 		float imc = (float)u.calculateIMC(u.getWeight(), u.getHeight());
 		
 	    IMCGradation gradeIMC = u.gradeIMC(imc);
@@ -164,7 +175,7 @@ public class PantallaUsuario  extends JPanel{
 		JLabel nutritionLabel = new JLabel("" + n );
 		nutritionLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		nutritionLabel.setBounds(111, 341, 201, 14);
+		nutritionLabel.setBounds(95, 318, 123, 16);
 		panelCentral.add(nutritionLabel);
 		
 		switch (gradeIMC) {
@@ -173,7 +184,7 @@ public class PantallaUsuario  extends JPanel{
 			n+="desnutrición";
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (189, 0, 0));
-			nutritionLabel.setBounds(96, 279, 201, 12);
+			nutritionLabel.setBounds(111, 341, 201, 14);
 		    panelCentral.add(nutritionLabel);
 			break;
 		case NORMAL_WEIGHT:
@@ -181,7 +192,7 @@ public class PantallaUsuario  extends JPanel{
 		    nutritionLabel = new JLabel(imc + n);
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		    nutritionLabel.setForeground(new Color (112, 223, 0));
-			nutritionLabel.setBounds(96, 279, 201, 12);
+			nutritionLabel.setBounds(111, 341, 201, 14);
 		    panelCentral.add(nutritionLabel);
 			break;
 		case OVERWEIGHT:
@@ -189,7 +200,7 @@ public class PantallaUsuario  extends JPanel{
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (255, 223, 0));
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-			nutritionLabel.setBounds(96, 279, 201, 12);
+			nutritionLabel.setBounds(111, 341, 201, 14);
 		    panelCentral.add(nutritionLabel);
 			break;
 		case OBESE:
@@ -197,7 +208,7 @@ public class PantallaUsuario  extends JPanel{
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (200, 0, 0));
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-			nutritionLabel.setBounds(96, 279, 201, 12);
+			nutritionLabel.setBounds(111, 341, 201, 14);
 		    panelCentral.add(nutritionLabel);
 			break;
 		case EXTREMELY_OBESE:
@@ -205,7 +216,7 @@ public class PantallaUsuario  extends JPanel{
 		    nutritionLabel = new JLabel(imc + n);
 		    nutritionLabel.setForeground(new Color (220, 0, 0));
 			nutritionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-			nutritionLabel.setBounds(96, 279, 201, 12);
+			nutritionLabel.setBounds(111, 341, 201, 14);
 		    panelCentral.add(nutritionLabel);
 			break;
 			
@@ -215,8 +226,7 @@ public class PantallaUsuario  extends JPanel{
 		}
 	    
 	  
-	    //datos biométricos 
-	    
+	  
 	    
 		JLabel lblNewLabel = new JLabel("Datos biométricos");
 		lblNewLabel.setBounds(53, 231, 155, 16);
@@ -229,10 +239,10 @@ public class PantallaUsuario  extends JPanel{
 		panelCentral.add(lblTipoDeDieta);
 		
         
-		JLabel lblEdad = new JLabel("edad: " + u.calculateAge(null));
+		JLabel lblEdad = new JLabel("edad: " + u.calculateAge(u.getBirthDate()));
 		lblEdad.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEdad.setFont(new Font("Futura", Font.PLAIN, 12));
-		lblEdad.setBounds(55, 259, 115, 16);
+		lblEdad.setBounds(55, 259, 55, 16);
 		panelCentral.add(lblEdad);
 		
 	

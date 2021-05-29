@@ -51,38 +51,37 @@ public class PantallaModificacionDatos extends JPanel{
 		lblNewLabel.setBounds(0, 44, 300, 16);
 		panelCentral.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("nombre:" + usuario.getFirstName());
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
-		lblNewLabel_1_1.setBounds(0, 72, 300, 16);
-		panelCentral.add(lblNewLabel_1_1);
+		JLabel lblFirstName= new JLabel("nombre:" + usuario.getFirstName());
+		lblFirstName.setFont(new Font("Futura", Font.PLAIN, 12));
+		lblFirstName.setBounds(0, 72, 300, 16);
+		panelCentral.add(lblFirstName);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("primer apellido:"  + usuario.getLastName());
-		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
-		lblNewLabel_1_1_1.setBounds(0, 100, 300, 16);
-		panelCentral.add(lblNewLabel_1_1_1);
+		JLabel lblLastName = new JLabel("primer apellido:"  + usuario.getLastName());
+		lblLastName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLastName .setFont(new Font("Futura", Font.PLAIN, 12));
+		lblLastName .setBounds(0, 100, 300, 16);
+		panelCentral.add(lblLastName);
 		
-		JLabel lblNewLabel_1_1_1_2 = new JLabel("segundo apellido:" + usuario.getSecondLastName());
-		lblNewLabel_1_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1_2.setFont(new Font("Futura", Font.PLAIN, 12));
-		lblNewLabel_1_1_1_2.setBounds(0, 128, 300, 16);
-		panelCentral.add(lblNewLabel_1_1_1_2);
-		
+		JLabel lblsecondLastName = new JLabel("segundo apellido:" + usuario.getSecondLastName());
+		lblsecondLastName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblsecondLastName.setFont(new Font("Futura", Font.PLAIN, 12));
+		lblsecondLastName.setBounds(0, 128, 300, 16);
+		panelCentral.add(lblsecondLastName);
 		
 		
 		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("peso:" +  usuario.getWeight());
-		lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
-		lblNewLabel_1_1_1_1.setBounds(0, 184, 300, 16);
-		panelCentral.add(lblNewLabel_1_1_1_1);
 		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("email:" + usuario.getEmail());
-		lblNewLabel_1_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1_1_1.setFont(new Font("Futura", Font.PLAIN, 12));
-		lblNewLabel_1_1_1_1_1.setBounds(0, 156, 300, 16);
-		panelCentral.add(lblNewLabel_1_1_1_1_1);
+		JLabel lblWeight = new JLabel("peso:" +  usuario.getWeight());
+		lblWeight .setHorizontalAlignment(SwingConstants.CENTER);
+		lblWeight .setFont(new Font("Futura", Font.PLAIN, 12));
+		lblWeight .setBounds(0, 184, 300, 16);
+		panelCentral.add(lblWeight);
+		
+		JLabel lblEmail = new JLabel("email:" + usuario.getEmail());
+		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEmail.setFont(new Font("Futura", Font.PLAIN, 12));
+		lblEmail.setBounds(0, 156, 300, 16);
+		panelCentral.add(lblEmail);
 		
 		JButton btnNewButton = new JButton("modificar");
 		btnNewButton.setFont(new Font("Futura", Font.PLAIN, 11));
