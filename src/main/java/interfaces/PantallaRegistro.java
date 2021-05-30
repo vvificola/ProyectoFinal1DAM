@@ -59,7 +59,7 @@ public class PantallaRegistro extends JPanel {
         this.ventana = v;
         this.user = creado;
         
-        this.setSize(351, 390);
+        this.setSize(351, 417);
         ventana.setTitle("pantalla de registro");
 
         setLayout(new BorderLayout(0, 0));

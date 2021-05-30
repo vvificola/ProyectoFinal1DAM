@@ -60,21 +60,7 @@ public class Ventana extends JFrame {
     
  
 
-    public void goLoginfromCreateUSer() {
 
-        if (this.pantallaInicio == null) {
-
-            if (this.pantallaInicio == null) {
-                this.pantallaInicio = new PantallaInicio(this);
-            }
-            this.pantallaCreacionUsuario.setVisible(false);
-            this.setTitle("login");
-            this.setContentPane(this.pantallaInicio);
-            this.setSize(pantallaInicio.getSize());
-            this.pantallaInicio.setVisible(true);
-        }
-
-    }
 
     public void goRegister(User creado) {
 
@@ -91,7 +77,7 @@ public class Ventana extends JFrame {
 
  
 
-    public void userLogged() {
+    public void userLogged(User u) {
 
         if (this.pantallaUsuario == null) {
             this.pantallaUsuario = new PantallaUsuario(this, u);
