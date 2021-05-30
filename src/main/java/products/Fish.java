@@ -17,9 +17,12 @@ import typeOfEnums.TypeOfFish;
 public class Fish  extends Product {
     private TypeOfFish typeOfFish;
 
-    public Fish(String productName, Short weight, Storage storage, DietaryRestrictions dietary, short caloricDensity, short carbs, short proteins, short fats, TypeOfFish typeOfFish) {
-        super(productName, weight, storage, dietary, caloricDensity, carbs, proteins, fats);
-        this.typeOfFish = typeOfFish;
-    }
+	public Fish(short caloricDensity, short carbs, short proteins, short fats, String productName, Short weight,
+			Storage storage, boolean vegan, boolean halal, boolean highProtein, boolean lowCarb,
+			TypeOfFish typeOfFish) {
+		super(caloricDensity, carbs, proteins, fats, productName, weight, storage, vegan, halal, highProtein, lowCarb);
+		this.typeOfFish = typeOfFish;
+	}
+
     
 }

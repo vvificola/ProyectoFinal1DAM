@@ -18,9 +18,12 @@ import typeOfEnums.TypeOfLegume;
     
     private TypeOfLegume typeOfLegume;
 
-    public Legume(String productName, Short weight, Storage storage, DietaryRestrictions dietary, short caloricDensity, short carbs, short proteins, short fats,TypeOfLegume typeOfLegume ) {
-        super(productName, weight, storage, dietary, caloricDensity, carbs, proteins, fats);
-        this.typeOfLegume=typeOfLegume;
-    }
-    
+	public Legume(short caloricDensity, short carbs, short proteins, short fats, String productName, Short weight,
+			Storage storage, boolean vegan, boolean halal, boolean highProtein, boolean lowCarb,
+			TypeOfLegume typeOfLegume) {
+		super(caloricDensity, carbs, proteins, fats, productName, weight, storage, vegan, halal, highProtein, lowCarb);
+		this.typeOfLegume = typeOfLegume;
+	}
+
+  
 }

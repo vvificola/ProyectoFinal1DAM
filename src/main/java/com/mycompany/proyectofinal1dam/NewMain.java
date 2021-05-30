@@ -34,7 +34,6 @@ public class NewMain {
     	
     	Ventana nuevaVentana = new Ventana();
     	
-        System.out.println(Product.class);
     
     }
     

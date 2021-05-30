@@ -16,10 +16,13 @@ import typeOfEnums.TypeOfFruit;
  */
 public class Fruit  extends Product {
     private TypeOfFruit typeOfFruit;
+
+	public Fruit(short caloricDensity, short carbs, short proteins, short fats, String productName, Short weight,
+			Storage storage, boolean vegan, boolean halal, boolean highProtein, boolean lowCarb,
+			TypeOfFruit typeOfFruit) {
+		super(caloricDensity, carbs, proteins, fats, productName, weight, storage, vegan, halal, highProtein, lowCarb);
+		this.typeOfFruit = typeOfFruit;
+	}
     
-    public Fruit(String productName, Short weight, Storage storage, DietaryRestrictions dietary, short caloricDensity, short carbs, short proteins, short fats,TypeOfFruit typeOfFruit ) {
-        super(productName, weight, storage, dietary, caloricDensity, carbs, proteins, fats);
-        this.typeOfFruit = typeOfFruit;
-    }
-    
+ 
 }

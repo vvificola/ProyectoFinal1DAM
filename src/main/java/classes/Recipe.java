@@ -96,7 +96,7 @@ public class Recipe extends NutritionalValues {
 
     @Override
     public String toString() {
-        return "Recipe{" + "name=" + name + ", style=" + style + ", ingredients=" + ingredients + ", needHeat=" + needHeat + ", difficulty=" + difficulty + ", description=" + description + '}';
+        return "Recipe{" + "name=" + name + ", style=" + style + ", ingredients=" + ingredients + ", needHeat=" + needsHeat + ", difficulty=" + difficulty + ", description=" + description + '}';
     }
     
     

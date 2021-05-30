@@ -259,29 +259,21 @@ public class PantallaRegistro extends JPanel {
                 User registrado  = new User (creado.getUserName(), creado.getPassword(), email, firstName, lastName, secondLastName, 
                 		genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
                 
-                Connection c = DriverManager.getConnection("jdbc:mysql://127.0,0.1:3306/ProyectoFinal1DAM", 
-                		"root", "admin");
+                Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ServidorProyectoFinal", 
+                		"root", "UXa19661!");
                 Statement smt = c.createStatement();
                 
                 
                 //executeQuery solo para los select
                 smt.executeUpdate(
                 		"insert into usuario"
-                + "values('"+creado.getUserName()+"', '"+creado.getPassword()+"', '"+email+"', '"+firstName+"', '"+lastName+"','"+secondLastName+"', '"+genre+"', '"+height+"','"birthDate"', '"halal"', '"vegan"','"lowCarb"', '"highProtein"')                 
-                            
-            
-                		
-                		
-                		);
-                
+                + "values('"+creado.getUserName()+"', '"+creado.getPassword()+"', '"+email+"', '"+firstName+"', '"+lastName+"','"+secondLastName+"', '"+genre+"', '"+height+"', '"+weight+"','"+birthDate+"', '"+halal+"', '"+vegan+"','"+lowCarb+"', '"+highProtein+"'");
                 smt.close();
                 c.close();
                 ventana.userLoggedFromRegister(registrado);
                 
                 
-                
-               } catch (EmailNoValidoException ex1){
-            	   ex1.printStackTrace();
+               
    	 
                } catch (SQLException e1) {
 				// TODO Auto-generated catch block
