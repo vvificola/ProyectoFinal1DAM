@@ -46,8 +46,7 @@ public class PantallaInicio extends JPanel {
 
     public PantallaInicio(Ventana v) {
         this.ventana = v;
-        User u = null;
-		this.usuario = u;
+   
         this.setSize(307, 167);
         setLayout(new BorderLayout(0, 0));
         
@@ -119,7 +118,7 @@ public class PantallaInicio extends JPanel {
         loginButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		
+        		User logged = null;
         		String userName = userNameField.getText();
         		String pass =new String(passwordField.getPassword());
         		
@@ -151,10 +150,13 @@ public class PantallaInicio extends JPanel {
 			             LocalDate birthDate = r.getDate("birthDate").toLocalDate();
 						
 
-						  User logged = new User(userName, pass, email, firstName, lastName, secondLastName, genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
+						  logged = new User(userName, pass, email, firstName, lastName, secondLastName, genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
+						  
+						
 					  }
+					  
+					  ventana.userLogged(logged);
 					 
-					  ventana.userLogged(u);
 					  smt.close();
 					  c.close();
 				} catch (SQLException e1) {

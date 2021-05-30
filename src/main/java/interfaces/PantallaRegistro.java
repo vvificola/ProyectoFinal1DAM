@@ -242,7 +242,7 @@ public class PantallaRegistro extends JPanel {
                 int weight = (int) spinnerWeight.getValue();
                 String email = mailField.getText();
                 String date = (birthField.getText());
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/uuuu");
                 LocalDate birthDate = LocalDate.parse(date, formatter);
                if (checkVegan.isSelected()) {
             	   vegan=true;     	   
@@ -276,19 +276,19 @@ public class PantallaRegistro extends JPanel {
                 
                 //executeQuery solo para los select
                 smt.executeUpdate("insert into user "
-                		+ "values ('"+creado.getUserName()+"', '"+creado.getPassword()+"', '"+email+"', '"+firstName+"', '"+lastName+"',  '"+secondLastName+"',  "+genre+",  "+halal+",  "+vegan+",  "+lowCarb+",  "+highProtein+",  "+height+",  "+weight+");");           
+                		+ "values ('"+creado.getUserName()+"', '"+creado.getPassword()+"', '"+email+"', '"+firstName+"', '"+lastName+"',  '"+secondLastName+"',  '"+birthDate.toString()+"', "+genre+",  "+halal+",  "+vegan+",  "+lowCarb+",  "+highProtein+",  "+height+",  "+weight+");");           
  
                 smt.close();
                 c.close();
                 JOptionPane.showMessageDialog(ventana, "Usuario registrado", "Se ha completado el registro", JOptionPane.INFORMATION_MESSAGE);
-                ventana.userLoggedFromRegister(registrado);
+                ventana.userLogged(registrado);
                 
                 
                
    	 
                } catch (SQLException e1) {
 				// TODO Auto-generated catch block
-            	   JOptionPane.showMessageDialog(ventana, "Problema base de datos", "Ha habido un problema completando el registro", JOptionPane.ERROR_MESSAGE);
+            	   JOptionPane.showMessageDialog(ventana,  "Ha habido un problema completando el registro", "Problema base de datos", JOptionPane.ERROR_MESSAGE);
 			}
               
             }
