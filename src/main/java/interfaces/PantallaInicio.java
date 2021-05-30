@@ -16,8 +16,10 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 import classes.User;
+import exceptions.CampoVacioException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JToggleButton;
@@ -128,12 +130,12 @@ public class PantallaInicio extends JPanel {
 					  		"root", "UXa19661!");
 					  Statement smt = c.createStatement();
 					  
-					 ResultSet r = smt.executeQuery(
+					  ResultSet r = smt.executeQuery(
 							  "select* from user where userName = '"+userName+"' and  pass = '"+pass+"'"
 							  
 							  );
 					 
-					  while(r.next()){
+					 if(r.next()){
 						 userName = r.getString("userName");
 						 pass = r.getString("pass");
 						 String email = r.getString("email");
@@ -151,9 +153,10 @@ public class PantallaInicio extends JPanel {
 						
 
 						  logged = new User(userName, pass, email, firstName, lastName, secondLastName, genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
+						  JOptionPane.showMessageDialog(loginButton,"Login", "Login correcto", JOptionPane.INFORMATION_MESSAGE);
 						  
 						
-					  }
+					  } else {JOptionPane.showMessageDialog(loginButton,"Error", "Usuario no encontrado", JOptionPane.ERROR_MESSAGE);}
 					  
 					  ventana.userLogged(logged);
 					 
@@ -162,6 +165,10 @@ public class PantallaInicio extends JPanel {
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+
+				} catch (CampoVacioException e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(loginButton,"Error", "No puede haber campos vacíos", JOptionPane.ERROR_MESSAGE);
 				}
                 
                 

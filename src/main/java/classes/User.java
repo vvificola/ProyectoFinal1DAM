@@ -5,6 +5,7 @@
  */
 package classes;
 
+import exceptions.CampoVacioException;
 import exceptions.ContraseñaMuyCortaException;
 import exceptions.ContraseñaMuyLargaException;
 import exceptions.ContraseñaNoCoincideException;
@@ -123,7 +124,7 @@ public class User {
     	
     
     //getter y setters
-    public String getUserName() {
+    public String getUserName()  throws CampoVacioException{
         return userName;
     }
 

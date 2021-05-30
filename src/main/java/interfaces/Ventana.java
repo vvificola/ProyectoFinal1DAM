@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import classes.User;
+import exceptions.CampoVacioException;
 
 public class Ventana extends JFrame {
 
@@ -77,7 +78,7 @@ public class Ventana extends JFrame {
 
  
 
-    public void userLogged(User u) {
+    public void userLogged(User u) throws CampoVacioException {
 
         if (this.pantallaUsuario == null) {
             this.pantallaUsuario = new PantallaUsuario(this, u);
@@ -90,7 +91,7 @@ public class Ventana extends JFrame {
 
     }
 
-    public void userLoggedFromRegister(User creado) {
+   /* public void userLoggedFromRegister(User creado) {
 
         if (this.pantallaUsuario == null) {
             this.pantallaUsuario = new PantallaUsuario(this, creado);
@@ -101,6 +102,6 @@ public class Ventana extends JFrame {
         this.setSize(pantallaUsuario.getSize());
         this.pantallaUsuario.setVisible(true);
 
-    }
+    }*/
 
 }

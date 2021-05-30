@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import classes.User;
+import exceptions.CampoVacioException;
 
 import javax.swing.JTextPane;
 
@@ -27,7 +28,7 @@ public class PantallaModificacionDatos extends JPanel{
 	private Ventana ventana;
 	private User usuario;
 	
-	public PantallaModificacionDatos(Ventana v, User u) {
+	public PantallaModificacionDatos(Ventana v, User u) throws CampoVacioException {
 		
 		this.ventana=v;
 		this.usuario=u;

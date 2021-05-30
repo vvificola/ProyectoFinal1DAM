@@ -16,6 +16,7 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 import classes.User;
+import exceptions.CampoVacioException;
 import exceptions.EmailNoValidoException;
 
 import javax.swing.JLabel;
@@ -283,12 +284,13 @@ public class PantallaRegistro extends JPanel {
                 JOptionPane.showMessageDialog(ventana, "Usuario registrado", "Se ha completado el registro", JOptionPane.INFORMATION_MESSAGE);
                 ventana.userLogged(registrado);
                 
-                
-               
    	 
                } catch (SQLException e1) {
 				// TODO Auto-generated catch block
             	   JOptionPane.showMessageDialog(ventana,  "Ha habido un problema completando el registro", "Problema base de datos", JOptionPane.ERROR_MESSAGE);
+			  } catch (CampoVacioException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
               
             }
