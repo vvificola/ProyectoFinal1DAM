@@ -49,13 +49,16 @@ public class Ventana extends JFrame {
         if (this.pantallaInicio == null) {
             this.pantallaInicio = new PantallaInicio(this);
         }
-        this.pantallaRegistro.setVisible(false);
+        if (this.pantallaRegistro != null) {   pantallaRegistro.setVisible(false);}
+        if (this.pantallaCreacionUsuario != null) {pantallaCreacionUsuario.setVisible(false);}
         this.setTitle("login");
         this.setContentPane(this.pantallaInicio);
         this.setSize(pantallaInicio.getSize());
         this.pantallaInicio.setVisible(true);
 
     }
+    
+ 
 
     public void goLoginfromCreateUSer() {
 

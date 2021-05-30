@@ -45,7 +45,6 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
     private JPasswordField passwordField_1;
     private Ventana ventana;
     private User user;
-    private JLabel lblNewLabel;
     private JLabel labelUsername;
     private JLabel labelPassword;
     private JLabel labelRepeatPassword;
@@ -53,7 +52,7 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
     public PantallaCreacionUsuarioyPass(Ventana v) {
    
         this.ventana = v;
-        this.setSize(310, 199);
+        this.setSize(365, 221);
         setLayout(new BorderLayout(3, 0));
 
         JPanel panelCentral = new JPanel();
@@ -62,43 +61,33 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
 
         userNameField = new JTextField();
         userNameField.setColumns(10);
-        userNameField.setBounds(132, 53, 149, 17);
+        userNameField.setBounds(189, 34, 149, 17);
         panelCentral.add(userNameField);
 
         passwordField = new JPasswordField();
-        passwordField.setBounds(132, 82, 149, 17);
+        passwordField.setBounds(189, 62, 149, 17);
         panelCentral.add(passwordField);
 
         passwordField_1 = new JPasswordField();
-        passwordField_1.setBounds(132, 111, 149, 17);
+        passwordField_1.setBounds(189, 89, 149, 17);
         panelCentral.add(passwordField_1);
-
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.LIGHT_GRAY);
-        panel.setBounds(0, 0, 309, 26);
-        panelCentral.add(panel);
-
-        lblNewLabel = new JLabel("creacion usuario y contraseña");
-        panel.add(lblNewLabel);
-        lblNewLabel.setFont(new Font("Futura", Font.PLAIN, 12));
-        lblNewLabel.setForeground(Color.BLACK);
 
         labelUsername = new JLabel("nombre usuario");
         labelUsername.setHorizontalAlignment(SwingConstants.CENTER);
         labelUsername.setFont(new Font("Futura", Font.PLAIN, 12));
-        labelUsername.setBounds(0, 54, 139, 16);
+        labelUsername.setBounds(25, 35, 139, 16);
         panelCentral.add(labelUsername);
 
         labelPassword = new JLabel("contraseña");
         labelPassword.setHorizontalAlignment(SwingConstants.CENTER);
         labelPassword.setFont(new Font("Futura", Font.PLAIN, 12));
-        labelPassword.setBounds(0, 82, 139, 16);
+        labelPassword.setBounds(25, 63, 139, 16);
         panelCentral.add(labelPassword);
 
         labelRepeatPassword = new JLabel("repita contraseña");
         labelRepeatPassword.setHorizontalAlignment(SwingConstants.CENTER);
         labelRepeatPassword.setFont(new Font("Futura", Font.PLAIN, 12));
-        labelRepeatPassword.setBounds(0, 111, 139, 16);
+        labelRepeatPassword.setBounds(25, 90, 139, 16);
         panelCentral.add(labelRepeatPassword);
 
         JButton registerButton = new JButton("crear usuario");
@@ -153,9 +142,19 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
         	}
         });
         
-        registerButton.setFont(new Font("Futura", Font.PLAIN, 11));
-        registerButton.setBounds(104, 138, 100, 29);
+        registerButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+        registerButton.setBounds(189, 132, 127, 23);
         panelCentral.add(registerButton);
+        
+        JButton btnNewButton = new JButton("volver a inicio");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		ventana.goLogin();
+        		JOptionPane.showConfirmDialog(ventana, "¿Desea descartar la creación de usuario?");
+        	}
+        });
+        btnNewButton.setBounds(25, 132, 127, 23);
+        panelCentral.add(btnNewButton);
 
     }
 }

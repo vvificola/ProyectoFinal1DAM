@@ -38,8 +38,12 @@ public class PantallaInicio extends JPanel {
 
     public PantallaInicio(Ventana v) {
         this.ventana = v;
-        this.setSize(307, 207);
+        this.setSize(307, 167);
         setLayout(new BorderLayout(0, 0));
+        
+        
+        
+        
 
         JPanel panelCentral = new JPanel();
         add(panelCentral, BorderLayout.CENTER);
@@ -93,8 +97,8 @@ public class PantallaInicio extends JPanel {
         });
         labelGoRegister.setForeground(new Color(0, 139, 139));
         labelGoRegister.setHorizontalAlignment(SwingConstants.CENTER);
-        labelGoRegister.setFont(new Font("Futura", Font.PLAIN, 10));
-        labelGoRegister.setBounds(0, 102, 323, 16);
+        labelGoRegister.setFont(new Font("Tahoma", Font.BOLD, 12));
+        labelGoRegister.setBounds(0, 96, 307, 16);
         panelCentral.add(labelGoRegister);
 
         JPanel panelSouth = new JPanel();
@@ -102,15 +106,18 @@ public class PantallaInicio extends JPanel {
         panelSouth.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
         JButton loginButton = new JButton("Iniciar sesión");
+        loginButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		
+        		String userName = userNameField.getText();
+        		String pass =new String(passwordField.getPassword());
+        		
+        		//verificacion 
+        	}
+        });
       
         loginButton.setForeground(new Color(0, 0, 0));
         panelSouth.add(loginButton);
-
-        JLabel titulo = new JLabel("inicio de sesión");
-        titulo.setFont(new Font("Futura", Font.PLAIN, 14));
-        titulo.setForeground(Color.BLACK);
-        titulo.setBackground(Color.DARK_GRAY);
-        titulo.setHorizontalAlignment(SwingConstants.CENTER);
-        add(titulo, BorderLayout.NORTH);
     }
 }
