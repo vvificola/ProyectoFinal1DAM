@@ -85,6 +85,26 @@ public class User {
 		return imc;
     }
     
+    
+    public float calculateMBI (int weight, int height, boolean genre, int edad) {
+		float mbi = 0;
+    	
+    	if (genre) {
+    		
+    		mbi  = (float) ((10*weight) + (6.25*height) - (5*edad)+5);
+    		
+    	} else {
+    		
+    		mbi  = (float) ((10*weight) + (6.25*height) - (5*edad)-1615);
+    	}
+		
+		
+		
+    	
+    	return mbi;
+
+    }
+    
     public IMCGradation gradeIMC(float imc) {
 		 IMCGradation grade = null;
     	//aquí no puedo aplicar switch/case así que no htengo otro remedio que hacerlo con else if

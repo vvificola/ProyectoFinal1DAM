@@ -5,6 +5,8 @@
  */
 package classes;
 
+import java.io.File;
+
 /**
  *
  * @author carlac
@@ -14,6 +16,7 @@ public abstract class NutritionalValues {
     private short carbs; //each 100 grams
     private short proteins; //each 100 grams
     private short fats; //each 100 grams
+    private File image;
 
     public NutritionalValues(short caloricDensity, short carbs, short proteins, short fats) {
         this.caloricDensity = caloricDensity;

@@ -37,7 +37,7 @@ public class PantallaBuscador extends JPanel {
 	
 	public PantallaBuscador(Ventana v) {
 		this.ventana=v; 
-		this.setSize(379, 270);
+		this.setSize(509, 416);
 		setLayout(new BorderLayout(0, 0));
 	
 		JPanel panelCentral = new JPanel();
@@ -46,86 +46,86 @@ public class PantallaBuscador extends JPanel {
 		
 		JComboBox cookingComboBox = new JComboBox();
 		cookingComboBox.setModel(new DefaultComboBoxModel(TypeOfCooking.values()));
-		cookingComboBox.setBounds(123, 32, 189, 27);
+		cookingComboBox.setBounds(217, 37, 189, 27);
 		panelCentral.add(cookingComboBox);
 		
 		JComboBox difficultyComboBox = new JComboBox();
 		difficultyComboBox.setModel(new DefaultComboBoxModel(RecipeDifficulty.values()));
-		difficultyComboBox.setBounds(123, 71, 189, 27);
+		difficultyComboBox.setBounds(217, 76, 189, 27);
 		panelCentral.add(difficultyComboBox);
 		
 		JComboBox restrictionsComboBox = new JComboBox();
 		restrictionsComboBox.setModel(new DefaultComboBoxModel(DietaryRestrictions.values()));
-		restrictionsComboBox.setBounds(123, 146, 189, 27);
+		restrictionsComboBox.setBounds(217, 151, 189, 27);
 		panelCentral.add(restrictionsComboBox);
 		
 		JLabel difficultyLabel = new JLabel("por dificultad");
-		difficultyLabel.setFont(new Font("Futura", Font.PLAIN, 10));
-		difficultyLabel.setBounds(52, 76, 59, 16);
+		difficultyLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		difficultyLabel.setBounds(32, 76, 117, 16);
 		panelCentral.add(difficultyLabel);
 		
 		JLabel cookinLabel = new JLabel("por tipo de cocina");
-		cookinLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		cookinLabel.setFont(new Font("Futura", Font.PLAIN, 10));
-		cookinLabel.setBounds(26, 37, 97, 16);
+		cookinLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		cookinLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		cookinLabel.setBounds(32, 37, 134, 16);
 		panelCentral.add(cookinLabel);
 		
 		JLabel nutritionalLabel = new JLabel("por aporte nutricional");
-		nutritionalLabel.setFont(new Font("Futura", Font.PLAIN, 10));
-		nutritionalLabel.setBounds(17, 112, 106, 16);
+		nutritionalLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		nutritionalLabel.setBounds(32, 120, 134, 16);
 		panelCentral.add(nutritionalLabel);
 		
 		JLabel restrictionsLabel = new JLabel("otras restricciones");
-		restrictionsLabel.setFont(new Font("Futura", Font.PLAIN, 10));
-		restrictionsLabel.setBounds(32, 151, 91, 16);
+		restrictionsLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		restrictionsLabel.setBounds(32, 157, 117, 16);
 		panelCentral.add(restrictionsLabel);
 		
 		JComboBox nutritionalComboBox = new JComboBox();
 		nutritionalComboBox.setModel(new DefaultComboBoxModel(new String[] {"LOWCARB", "HIGH PROTEIN"}));
-		nutritionalComboBox.setBounds(123, 110, 189, 27);
+		nutritionalComboBox.setBounds(217, 114, 189, 27);
 		panelCentral.add(nutritionalComboBox);
 		
 		JCheckBox checkType = new JCheckBox("");
-		checkType.setBounds(324, 32, 28, 23);
+		checkType.setBounds(412, 37, 21, 23);
 		panelCentral.add(checkType);
 		
 		JCheckBox checkDifficulty = new JCheckBox("");
-		checkDifficulty.setBounds(324, 71, 28, 23);
+		checkDifficulty.setBounds(412, 76, 21, 23);
 		panelCentral.add(checkDifficulty);
 		
 		JCheckBox checkNutritional = new JCheckBox("");
-		checkNutritional.setBounds(324, 110, 28, 23);
+		checkNutritional.setBounds(412, 114, 21, 23);
 		panelCentral.add(checkNutritional);
 		
 		JCheckBox checkRestrictions = new JCheckBox("");
-		checkRestrictions.setBounds(324, 146, 28, 23);
+		checkRestrictions.setBounds(412, 151, 21, 23);
 		panelCentral.add(checkRestrictions);
 		
-		JLabel labelSearch = new JLabel("por palabra clave");
-		labelSearch.setFont(new Font("Futura", Font.PLAIN, 10));
-		labelSearch.setBounds(32, 191, 91, 16);
-		panelCentral.add(labelSearch);
+		JLabel searchLabel = new JLabel("por palabra clave");
+		searchLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		searchLabel.setBounds(32, 201, 117, 16);
+		panelCentral.add(searchLabel);
 		
 		searchField = new JTextField();
-		searchField.setBounds(123, 185, 189, 26);
+		searchField.setBounds(217, 191, 189, 26);
 		panelCentral.add(searchField);
 		searchField.setColumns(10);
 		
-		JButton btnSearch = new JButton("buscar");
-		btnSearch.addMouseListener(new MouseAdapter() {
+		JButton searchButton = new JButton("buscar");
+		searchButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-            	btnSearch.setBackground(new Color(84, 117, 166));
+            	searchButton.setBackground(new Color(84, 117, 166));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-            	btnSearch.setBackground(null);
+            	searchButton.setBackground(null);
             }
         });
 	
 		
-		btnSearch.addActionListener(new ActionListener() {
+		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -134,16 +134,9 @@ public class PantallaBuscador extends JPanel {
 				
 			}
 		});
-		btnSearch.setIcon(new ImageIcon("/Users/carlac/NetBeansProjects/ProyectoFinal1DAM/images/icon_busqueda.png"));
-		btnSearch.setFont(new Font("Futura", Font.PLAIN, 12));
-		btnSearch.setBounds(131, 215, 117, 29);
-		panelCentral.add(btnSearch);
-		
-		JLabel titulo = new JLabel("buscador recetas");
-		titulo.setFont(new Font("Futura", Font.PLAIN, 14));
-		titulo.setForeground(Color.BLACK);
-		titulo.setBackground(Color.DARK_GRAY);
-		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		add(titulo, BorderLayout.NORTH);
+		searchButton.setIcon(new ImageIcon("/Users/carlac/NetBeansProjects/ProyectoFinal1DAM/images/icon_busqueda.png"));
+		searchButton.setFont(new Font("Futura", Font.PLAIN, 12));
+		searchButton.setBounds(198, 292, 117, 29);
+		panelCentral.add(searchButton);
 	}
 }

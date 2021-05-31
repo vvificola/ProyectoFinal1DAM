@@ -54,7 +54,7 @@ public class PantallaInicio extends JPanel {
         
         
         
-        
+       
 
         JPanel panelCentral = new JPanel();
         add(panelCentral, BorderLayout.CENTER);
@@ -153,12 +153,16 @@ public class PantallaInicio extends JPanel {
 						
 
 						  logged = new User(userName, pass, email, firstName, lastName, secondLastName, genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
-						  JOptionPane.showMessageDialog(loginButton,"Login", "Login correcto", JOptionPane.INFORMATION_MESSAGE);
+						  JOptionPane.showMessageDialog(loginButton,"Login correcto", "Login",  JOptionPane.INFORMATION_MESSAGE);
+						  
+						  
 						  
 						
-					  } else {JOptionPane.showMessageDialog(loginButton,"Error", "Usuario no encontrado", JOptionPane.ERROR_MESSAGE);}
+					  } else {JOptionPane.showMessageDialog(loginButton, "Usuario no encontrado","Error", JOptionPane.ERROR_MESSAGE);}
 					  
 					  ventana.userLogged(logged);
+					  JOptionPane.showMessageDialog(loginButton,"Bienvenido de nuevo, " + userName, "Bienvenido",  JOptionPane.INFORMATION_MESSAGE);
+					  
 					 
 					  smt.close();
 					  c.close();
