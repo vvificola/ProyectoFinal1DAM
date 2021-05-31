@@ -16,16 +16,28 @@ public abstract class NutritionalValues {
     private short carbs; //each 100 grams
     private short proteins; //each 100 grams
     private short fats; //each 100 grams
-    private File image;
+    private boolean vegan; 
+    private boolean halal; 
+    private boolean highProtein;
+    private boolean lowCarb;
+   
 
-    public NutritionalValues(short caloricDensity, short carbs, short proteins, short fats) {
-        this.caloricDensity = caloricDensity;
-        this.carbs = carbs;
-        this.proteins = proteins;
-        this.fats = fats;
-    }
+ 
 
-    public short getCaloricDensity() {
+    public NutritionalValues(short caloricDensity, short carbs, short proteins, short fats, boolean vegan,
+			boolean halal, boolean highProtein, boolean lowCarb) {
+		super();
+		this.caloricDensity = caloricDensity;
+		this.carbs = carbs;
+		this.proteins = proteins;
+		this.fats = fats;
+		this.vegan = vegan;
+		this.halal = halal;
+		this.highProtein = highProtein;
+		this.lowCarb = lowCarb;
+	}
+
+	public short getCaloricDensity() {
         return caloricDensity;
     }
 

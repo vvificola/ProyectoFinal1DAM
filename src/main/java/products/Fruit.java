@@ -5,9 +5,12 @@
  */
 package products;
 
+import java.util.ArrayList;
+
 import classes.Product;
 import preferenceEnums.DietaryRestrictions;
 import preferenceEnums.Storage;
+import typeOfEnums.TypeOfFish;
 import typeOfEnums.TypeOfFruit;
 
 /**
@@ -17,12 +20,14 @@ import typeOfEnums.TypeOfFruit;
 public class Fruit  extends Product {
     private TypeOfFruit typeOfFruit;
 
-	public Fruit(short caloricDensity, short carbs, short proteins, short fats, String productName, Short weight,
-			Storage storage, boolean vegan, boolean halal, boolean highProtein, boolean lowCarb,
-			TypeOfFruit typeOfFruit) {
-		super(caloricDensity, carbs, proteins, fats, productName, weight, storage, vegan, halal, highProtein, lowCarb);
+    public Fruit(String productName, TypeOfFruit typeOfFruit, short caloricDensity, short carbs, short proteins, short fats, short weight, Storage storage, boolean vegan, boolean halal,
+			boolean highProtein, boolean lowCarb,  
+			ArrayList<DietaryRestrictions> restrictions) {
+		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, productName, weight, storage,
+				restrictions);
 		this.typeOfFruit = typeOfFruit;
 	}
+
     
  
 }

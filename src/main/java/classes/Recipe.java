@@ -23,18 +23,18 @@ public class Recipe extends NutritionalValues {
     private ArrayList<Product> ingredients = new  ArrayList<Product>();
     private String description;
     private boolean needsHeat; //true needs heat
-    private DietaryRestrictions restrictions;
+    private ArrayList <DietaryRestrictions> restrictions;
  
    
 
   
 
 
-	public Recipe(short caloricDensity, short carbs, short proteins, short fats, String name,
-			RecipeDifficulty difficulty, TypeOfCooking style, ArrayList<Product> ingredients, String description,
-			boolean needsHeat, DietaryRestrictions restrictions) {
-		
-		super(caloricDensity, carbs, proteins, fats);
+	
+	
+	public Recipe(String name,  String description,  RecipeDifficulty difficulty, TypeOfCooking style, short caloricDensity, short carbs, short proteins, short fats, boolean vegan, boolean halal,
+			boolean highProtein, boolean lowCarb, ArrayList<Product> ingredients, boolean needsHeat, ArrayList <DietaryRestrictions> restrictions) {
+		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb);
 		this.name = name;
 		this.difficulty = difficulty;
 		this.style = style;
@@ -44,8 +44,6 @@ public class Recipe extends NutritionalValues {
 		this.restrictions = restrictions;
 	}
 
-	
-	
 	public String getName() {
         return name;
     }

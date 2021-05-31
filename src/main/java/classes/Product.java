@@ -22,46 +22,27 @@ public class Product  extends NutritionalValues {
     private String productName;
     private Short weight;
     private Storage storage;
-    private boolean vegan; 
-    private boolean halal; 
-    private boolean highProtein;
-    private boolean lowCarb;
+   
     private ArrayList <DietaryRestrictions> restrictions = new ArrayList <DietaryRestrictions>();
    
 
     
 
-   
-
-   
-
 	
-	
-	public Product(short caloricDensity, short carbs, short proteins, short fats, String productName, Short weight,
-			Storage storage, boolean vegan, boolean halal, boolean highProtein, boolean lowCarb)
-			 {
-		super(caloricDensity, carbs, proteins, fats);
+
+
+
+	public Product(short caloricDensity, short carbs, short proteins, short fats, boolean vegan, boolean halal,
+			boolean highProtein, boolean lowCarb, String productName, Short weight, Storage storage,
+			ArrayList<DietaryRestrictions> restrictions) {
+		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb);
 		this.productName = productName;
 		this.weight = weight;
 		this.storage = storage;
-		this.vegan = vegan;
-		this.halal = halal;
-		this.highProtein = highProtein;
-		this.lowCarb = lowCarb;
-		this.setRestrictions(vegan, halal, highProtein, lowCarb);
-		
-		
+		this.restrictions = restrictions;
 	}
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
+
 
 	public void setRestrictions(boolean vegan, boolean halal, boolean highProtein, boolean lowCarb) {
 		

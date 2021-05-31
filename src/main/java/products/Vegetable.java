@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import classes.Product;
 import preferenceEnums.DietaryRestrictions;
 import preferenceEnums.Storage;
+import typeOfEnums.TypeOfFish;
 import typeOfEnums.TypeOfVegetable;
 
 /**
@@ -21,18 +22,16 @@ public class Vegetable  extends Product {
     private TypeOfVegetable typeOfVegetable;
  
 
-	public Vegetable(String productName, TypeOfVegetable typeOfVegetable, short caloricDensity, short carbs, short proteins, short fats, Short weight,
-			Storage storage, boolean vegan, boolean halal, boolean highProtein, boolean lowCarb) {
-		super(caloricDensity, carbs, proteins, fats, productName, weight, storage, vegan, halal, highProtein, lowCarb);
+    public Vegetable(String productName, TypeOfVegetable typeOfVegetable, short caloricDensity, short carbs, short proteins, short fats, short weight, Storage storage, boolean vegan, boolean halal,
+			boolean highProtein, boolean lowCarb,  
+			ArrayList<DietaryRestrictions> restrictions) {
+		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, productName, weight, storage,
+				restrictions);
 		this.typeOfVegetable = typeOfVegetable;
-		
-		
 	}
+
 	
-	
-	Product tomate = new Vegetable("Tomate rama", TypeOfVegetable.TOMATO,(short) 0,(short) 10, (short)10, (short)10, (short)10,  
-			Storage.DRY, true, true, false ,true);
-	
+
 	
 	
 

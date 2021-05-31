@@ -5,9 +5,12 @@
  */
 package products;
 
+import java.util.ArrayList;
+
 import classes.Product;
 import preferenceEnums.DietaryRestrictions;
 import preferenceEnums.Storage;
+import typeOfEnums.TypeOfFish;
 import typeOfEnums.TypeOfLegume;
 
 /**
@@ -18,10 +21,11 @@ import typeOfEnums.TypeOfLegume;
     
     private TypeOfLegume typeOfLegume;
 
-	public Legume(short caloricDensity, short carbs, short proteins, short fats, String productName, Short weight,
-			Storage storage, boolean vegan, boolean halal, boolean highProtein, boolean lowCarb,
-			TypeOfLegume typeOfLegume) {
-		super(caloricDensity, carbs, proteins, fats, productName, weight, storage, vegan, halal, highProtein, lowCarb);
+    public Legume(String productName, TypeOfLegume typeOfLegume, short caloricDensity, short carbs, short proteins, short fats, short weight, Storage storage, boolean vegan, boolean halal,
+			boolean highProtein, boolean lowCarb,  
+			ArrayList<DietaryRestrictions> restrictions) {
+		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, productName, weight, storage,
+				restrictions);
 		this.typeOfLegume = typeOfLegume;
 	}
 
