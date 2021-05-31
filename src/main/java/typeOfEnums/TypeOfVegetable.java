@@ -17,11 +17,10 @@ public enum TypeOfVegetable {
     TOMATO,
     CARROT,
     ASPARAGUS,
-    REDPEPPER,
-    GREENPEPPER,
+    PEPPER,
     PUMPKIN,
     ZUCHINNI,
     GARLIC,
-    VEGANMEAT
+    VEGAN_MEAT
 
 }
