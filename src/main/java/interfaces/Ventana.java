@@ -17,7 +17,7 @@ public class Ventana extends JFrame {
     private PantallaInicio pantallaInicio;
     private PantallaUsuario pantallaUsuario;
     private PantallaCreacionUsuarioyPass pantallaCreacionUsuario;
-    private PantallaBuscadorRecetas pantallaBuscadorRecetas;
+    private PantallaBuscador pantallaBuscador;
     private Ventana v;
     private User u;
 
@@ -95,15 +95,14 @@ public class Ventana extends JFrame {
     
     public void goSearchRecipes (User u)  throws CampoVacioException {
     	
-    	 if (this.pantallaBuscadorRecetas == null) {
-             this.pantallaBuscadorRecetas = new PantallaBuscadorRecetas(this, u);
+    	 if (this.pantallaBuscador == null) {
+             this.pantallaBuscador = new PantallaBuscador(this, u);
          }
          this.pantallaUsuario.setVisible(false);
-         this.setContentPane(this.pantallaBuscadorRecetas);
-         this.setSize(pantallaBuscadorRecetas.getSize());
+         this.setContentPane(this.pantallaBuscador);
+         this.setSize(pantallaBuscador.getSize());
          this.setTitle("buscador de recetas");
-         
-         this.pantallaBuscadorRecetas.setVisible(true);
+         this.pantallaBuscador.setVisible(true);
 
      }
     	
@@ -134,4 +133,4 @@ public class Ventana extends JFrame {
 
     }*/
 
-}
+

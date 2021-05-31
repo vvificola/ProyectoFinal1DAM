@@ -110,6 +110,14 @@ public class PantallaUsuario  extends JPanel{
 		JButton searchRecipesButton = new JButton("buscador recetas");
 		searchRecipesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//este try catch me lo pide el IDE auqnue no se muy bien por qué ya que es un botón 
+				try {
+					ventana.goSearchRecipes(u);
+				} catch (CampoVacioException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		searchRecipesButton.setIcon(new ImageIcon("./images/icon_busqueda.png"));
