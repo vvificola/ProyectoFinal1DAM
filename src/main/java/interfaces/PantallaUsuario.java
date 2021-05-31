@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -29,6 +32,7 @@ import exceptions.CampoVacioException;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
+import javax.swing.JProgressBar;
 
 public class PantallaUsuario  extends JPanel{
 	private Ventana ventana;
@@ -41,7 +45,7 @@ public class PantallaUsuario  extends JPanel{
 	public PantallaUsuario(Ventana v, User u) throws CampoVacioException {
 		this.ventana=v;
 		this.usuario=u;
-		this.setSize(713, 491);
+		this.setSize(713, 551);
 	
 
 		v.setResizable(false);
@@ -53,8 +57,12 @@ public class PantallaUsuario  extends JPanel{
 		btnLoadMenu = new JButton("cargar menú");
 		btnLoadMenu.setIcon(new ImageIcon("./images/baseline_sync_black_24dp.png"));
 		btnLoadMenu.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnLoadMenu.setBounds(427, 44, 185, 42);
+		btnLoadMenu.setBounds(427, 37, 212, 30);
 		panelCentral.add(btnLoadMenu);
+		
+		LocalDate date = LocalDate.now();
+		TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear(); 
+		byte weekNumber = (byte) date.get(woy);
 	
  
 		
@@ -80,17 +88,11 @@ public class PantallaUsuario  extends JPanel{
 		lastNameLabel.setBounds(41, 100, 167, 16);
 		panelCentral.add(lastNameLabel);
 		
-		JLabel secondLastNameLabel = new JLabel("segundo apellido:" + u.getSecondLastName());
-		secondLastNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		secondLastNameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
-		secondLastNameLabel.setBounds(41, 128, 177, 16);
-		panelCentral.add(secondLastNameLabel);
-		
 		
 		JLabel emailLabel = new JLabel("email:" + u.getEmail());
 		emailLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		emailLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
-		emailLabel.setBounds(41, 156, 177, 16);
+		emailLabel.setBounds(41, 128, 177, 16);
 		panelCentral.add(emailLabel);
 	
 		
@@ -100,12 +102,6 @@ public class PantallaUsuario  extends JPanel{
 		modifyUsername.setFont(new Font("Futura", Font.PLAIN, 9));
 		modifyUsername.setBounds(242, 44, 85, 16);
 		panelCentral.add(modifyUsername);
-		
-		
-		JButton btnGenerateMenu = new JButton("generar menú");
-		btnGenerateMenu.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnGenerateMenu.setBounds(427, 97, 185, 42);
-		panelCentral.add(btnGenerateMenu);
 		
 		JButton searchRecipesButton = new JButton("buscador recetas");
 		searchRecipesButton.addActionListener(new ActionListener() {
@@ -122,12 +118,12 @@ public class PantallaUsuario  extends JPanel{
 		});
 		searchRecipesButton.setIcon(new ImageIcon("./images/icon_busqueda.png"));
 		searchRecipesButton.setFont(new Font("SansSerif", Font.BOLD, 12));
-		searchRecipesButton.setBounds(427, 285, 185, 30);
+		searchRecipesButton.setBounds(427, 128, 212, 30);
 		panelCentral.add(searchRecipesButton);
 		
 		JButton btnFavorites = new JButton("favoritos");
 		btnFavorites.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnFavorites.setBounds(427, 172, 185, 23);
+		btnFavorites.setBounds(427, 94, 212, 30);
 		panelCentral.add(btnFavorites);
 		
 		
@@ -214,7 +210,7 @@ public class PantallaUsuario  extends JPanel{
 		
 		JLabel lblTipoDeDieta = new JLabel("Tipo de dieta: " + u.getDietaryOptions());
 		lblTipoDeDieta.setFont(new Font("SansSerif", Font.BOLD, 12));
-		lblTipoDeDieta.setBounds(427, 340, 271, 16);
+		lblTipoDeDieta.setBounds(41, 156, 177, 16);
 		panelCentral.add(lblTipoDeDieta);
 		
         
@@ -276,6 +272,47 @@ public class PantallaUsuario  extends JPanel{
 		modifyEmail.setBounds(242, 158, 85, 16);
 		panelCentral.add(modifyEmail);
 		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setValue(weekNumber);
+		progressBar.setMaximum(52);
+		progressBar.setBounds(427, 224, 212, 20);
+		panelCentral.add(progressBar);
+		
+				JLabel titulo = new JLabel("Estás en la semana" + " " +  weekNumber + " " + "del año." + " " + "¡Sigue así!");
+				titulo.setBounds(389, 203, 286, 17);
+				panelCentral.add(titulo);
+				titulo.setFont(new Font("SansSerif", Font.BOLD, 10));
+				titulo.setForeground(Color.BLACK);
+				titulo.setBackground(Color.DARK_GRAY);
+				titulo.setHorizontalAlignment(SwingConstants.CENTER);
+				
+				JButton btnGenerateMenu_1 = new JButton("generar menú");
+				btnGenerateMenu_1.setFont(new Font("SansSerif", Font.BOLD, 12));
+				btnGenerateMenu_1.setBounds(427, 66, 212, 30);
+				panelCentral.add(btnGenerateMenu_1);
+				
+				JLabel lblNewLabel = new JLabel("");
+				if (LocalDate.now().getDayOfYear()>=354 || LocalDate.now().getDayOfYear()<=81) {
+				lblNewLabel.setIcon(new ImageIcon("./images/invierno.jpeg"));}
+				
+				else if (LocalDate.now().getDayOfYear()>81 || LocalDate.now().getDayOfYear()<=173) {
+					lblNewLabel.setIcon(new ImageIcon("./images/primavera.jpeg"));
+				}
+				
+				else if (LocalDate.now().getDayOfYear()>173 || LocalDate.now().getDayOfYear()<=264) {
+					lblNewLabel.setIcon(new ImageIcon("./images/verano.jpeg"));
+					
+				}
+				
+				else if (LocalDate.now().getDayOfYear()>264 || LocalDate.now().getDayOfYear()<=354) {
+					lblNewLabel.setIcon(new ImageIcon("./images/otono.jpeg"));
+					
+				}
+				
+				
+				lblNewLabel.setBounds(437, 259, 200, 200);
+				panelCentral.add(lblNewLabel);
+		
 	
 	
 		
@@ -293,12 +330,7 @@ public class PantallaUsuario  extends JPanel{
 		btnLogout.setFont(new Font("SansSerif", Font.BOLD, 12));
 		panelSouth.add(btnLogout);
 		
-		JLabel titulo = new JLabel("pantalla usuario ");
-		titulo.setFont(new Font("Futura", Font.PLAIN, 12));
-		titulo.setForeground(Color.BLACK);
-		titulo.setBackground(Color.DARK_GRAY);
-		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		add(titulo, BorderLayout.NORTH);
+		
 	}
 }
 
