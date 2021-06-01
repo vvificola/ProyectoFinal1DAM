@@ -21,6 +21,7 @@ public enum TypeOfVegetable {
     PUMPKIN,
     ZUCHINNI,
     GARLIC,
+    SPINACH,
     VEGAN_MEAT
 
 }

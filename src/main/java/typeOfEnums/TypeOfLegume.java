@@ -16,7 +16,8 @@ public enum TypeOfLegume {
     BEANS,
     LENTILLS,
     PEAS, 
-    LUPINS
+    LUPINS, 
+    ALMONDS
     
     
 }

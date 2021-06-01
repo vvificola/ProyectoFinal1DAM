@@ -32,8 +32,8 @@ public class Product  extends NutritionalValues {
 
 
 
-	public Product(short caloricDensity, short carbs, short proteins, short fats, boolean vegan, boolean halal,
-			boolean highProtein, boolean lowCarb, String productName, Short weight, Storage storage,
+	public Product(String productName, short caloricDensity, short carbs, short proteins, short fats, boolean vegan, boolean halal,
+			boolean highProtein, boolean lowCarb,  short weight, Storage storage,
 			ArrayList<DietaryRestrictions> restrictions) {
 		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb);
 		this.productName = productName;

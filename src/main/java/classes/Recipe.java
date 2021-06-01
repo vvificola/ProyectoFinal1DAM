@@ -9,6 +9,7 @@ import preferenceEnums.DietaryRestrictions;
 import preferenceEnums.RecipeDifficulty;
 import preferenceEnums.TypeOfCooking;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -17,32 +18,39 @@ import java.util.ArrayList;
  */
 public class Recipe extends NutritionalValues {
     
-    private String name;
+    private String filePath;
+    private File image;
     private RecipeDifficulty difficulty;
     private TypeOfCooking style;
     private ArrayList<Product> ingredients = new  ArrayList<Product>();
     private String description;
     private boolean needsHeat; //true needs heat
     private ArrayList <DietaryRestrictions> restrictions;
+    private String name;
  
    
 
   
 
+	
 
-	
-	
-	public Recipe(String name,  String description,  RecipeDifficulty difficulty, TypeOfCooking style, short caloricDensity, short carbs, short proteins, short fats, boolean vegan, boolean halal,
-			boolean highProtein, boolean lowCarb, ArrayList<Product> ingredients, boolean needsHeat, ArrayList <DietaryRestrictions> restrictions) {
+	public Recipe(String name, String desayunoImagePath, short caloricDensity, short carbs, short proteins, short fats, boolean vegan, boolean halal,
+			boolean highProtein,  boolean lowCarb ) {
 		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb);
 		this.name = name;
+		this.image = image;
 		this.difficulty = difficulty;
 		this.style = style;
-		this.ingredients = ingredients;
-		this.description = description;
-		this.needsHeat = needsHeat;
-		this.restrictions = restrictions;
 	}
+
+
+	
+
+
+
+
+
+
 
 	public String getName() {
         return name;
