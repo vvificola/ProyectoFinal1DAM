@@ -22,18 +22,17 @@ public class Vegetable  extends Product {
     private TypeOfVegetable typeOfVegetable;
  
 
-    public Vegetable(String productName, TypeOfVegetable typeOfVegetable, short caloricDensity, short carbs, short proteins, short fats, short weight, Storage storage, boolean vegan, boolean halal,
-			boolean highProtein, boolean lowCarb,  
-			ArrayList<DietaryRestrictions> restrictions) {
-		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, productName, weight, storage,
+
+
+	public Vegetable(String productName, short caloricDensity, short carbs, short proteins, short fats, boolean vegan,
+			boolean halal, boolean highProtein, boolean lowCarb, short weight, Storage storage,
+			ArrayList<DietaryRestrictions> restrictions, TypeOfVegetable typeOfVegetable) {
+		super(productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, weight, storage,
 				restrictions);
 		this.typeOfVegetable = typeOfVegetable;
 	}
 
-	
 
-	
-	
 
 
 	@Override

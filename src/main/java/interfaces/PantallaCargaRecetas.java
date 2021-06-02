@@ -5,11 +5,20 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import classes.Product;
 import classes.User;
 import exceptions.CampoVacioException;
+import preferenceEnums.DietaryRestrictions;
 import preferenceEnums.RecipeDifficulty;
 import preferenceEnums.Storage;
 import preferenceEnums.TypeOfCooking;
+import products.Condiment;
+import products.Fish;
+import products.Fruit;
+import products.Meat;
+import products.Vegetable;
+import products.Legume;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -35,6 +44,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.beans.PropertyChangeEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -68,10 +78,10 @@ public class PantallaCargaRecetas extends JPanel {
 		labelTipoDeProducto.setBounds(34, 45, 127, 16);
 		panelCentral.add(labelTipoDeProducto);
 		
-		JComboBox comboBoxTipo = new JComboBox();
-		comboBoxTipo.setModel(new DefaultComboBoxModel(TypeOfCondiment.values()));
-		comboBoxTipo.setBounds(185, 86, 225, 27);
-		panelCentral.add(comboBoxTipo);
+		JComboBox comboBoxCategoriaProducto = new JComboBox();
+		comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfCondiment.values()));
+		comboBoxCategoriaProducto.setBounds(185, 86, 225, 27);
+		panelCentral.add(comboBoxCategoriaProducto);
 		
 		JComboBox comboBoxTipoProducto = new JComboBox();
 		comboBoxTipoProducto.setModel(new DefaultComboBoxModel(new String[] {"Condimento", "Pescado", "Fruta", "Legumbre", "Carne", "Verdura"}));
@@ -84,22 +94,22 @@ public class PantallaCargaRecetas extends JPanel {
 				switch (index) {
 				
 				case 0: 
-					comboBoxTipo.setModel(new DefaultComboBoxModel(TypeOfCondiment.values()));
+					comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfCondiment.values()));
 					break;
 				case 1: 
-					comboBoxTipo.setModel(new DefaultComboBoxModel(TypeOfFish.values()));
+					comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfFish.values()));
 					break;
 				case 2: 
-					comboBoxTipo.setModel(new DefaultComboBoxModel(TypeOfFruit.values()));
+					comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfFruit.values()));
 					break;
 				case 3: 
-					comboBoxTipo.setModel(new DefaultComboBoxModel(TypeOfLegume.values()));
+					comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfLegume.values()));
 					break;
 				case 4: 
-					comboBoxTipo.setModel(new DefaultComboBoxModel(TypeOfMeat.values()));
+					comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfMeat.values()));
 					break;
 				case 5: 
-					comboBoxTipo.setModel(new DefaultComboBoxModel(TypeOfVegetable.values()));
+					comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfVegetable.values()));
 					break;
 
 				}
@@ -158,9 +168,9 @@ public class PantallaCargaRecetas extends JPanel {
 		spinnerProtein.setBounds(251, 229, 30, 20);
 		panelCentral.add(spinnerProtein);
 		
-		JSpinner spinnerGrease= new JSpinner();
-		spinnerGrease.setBounds(380, 229, 30, 20);
-		panelCentral.add(spinnerGrease);
+		JSpinner spinnerFats= new JSpinner();
+		spinnerFats.setBounds(380, 229, 30, 20);
+		panelCentral.add(spinnerFats);
 		
 		JLabel carbsLabel = new JLabel("carbohidratos");
 		carbsLabel.setBounds(41, 232, 75, 14);
@@ -199,9 +209,9 @@ public class PantallaCargaRecetas extends JPanel {
 		lblGr_2.setBounds(335, 245, 75, 14);
 		panelCentral.add(lblGr_2);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("vegano");
-		chckbxNewCheckBox.setBounds(24, 352, 97, 23);
-		panelCentral.add(chckbxNewCheckBox);
+		JCheckBox chckbxVegan = new JCheckBox("vegano");
+		chckbxVegan.setBounds(24, 352, 97, 23);
+		panelCentral.add(chckbxVegan);
 		
 		JCheckBox chckbxHalal = new JCheckBox("halal");
 		chckbxHalal.setBounds(145, 352, 97, 23);
@@ -219,29 +229,113 @@ public class PantallaCargaRecetas extends JPanel {
 		btnCargar.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 	            	//inicializados a false
+				    ArrayList<DietaryRestrictions> restrictions = new ArrayList <DietaryRestrictions>();
 	            	boolean halal = false;
 	            	boolean vegan = false;
 	            	boolean lowCarb = false;
 	            	boolean highProtein =false;
 	                String productName = textField.getText();
 	                String insert;
+	                String typeOfProduct;
 	                byte typeOf = (byte)comboBoxTipoProducto.getSelectedIndex();
+	                byte indexCategoria = (byte)comboBoxCategoriaProducto.getSelectedIndex();
 	                switch (typeOf) {
 					
 					case 0: 
 						 insert = "CONDIMENT";
+						 switch (indexCategoria) {
+						 case 0: 
+						 typeOfProduct = TypeOfCondiment.OIL.toString();
+					     break;
+						 case 1: 
+						 typeOfProduct = TypeOfCondiment.SWEETENER.toString();
+						 break;
+						 case 2: 
+					     typeOfProduct = TypeOfCondiment.SALT.toString();
+						 break;
+						 case 3: 
+						 typeOfProduct = TypeOfCondiment.SPICES.toString();
+						 break;
+						 case 4: 
+						typeOfProduct = TypeOfCondiment.OTHER.toString();
+						 break;
+						 }
 						break;
+						
 					case 1: 
 						 insert = "FISH";
+						 switch (indexCategoria) {
+						 case 0: 
+					    typeOfProduct = TypeOfFish.BLUEFISH.toString();
+					     break;
+						 case 1: 
+							 typeOfProduct = TypeOfFish.WHITEFISH.toString();
+						 break;
+						 case 2: 
+							 typeOfProduct = TypeOfFish.SEAFOOD.toString();
+						 break;
+						 }
 						break;
+						
+						
+						
 					case 2: 
 						 insert = "FRUIT";
+						 switch (indexCategoria) {
+						 case 0: 
+					     typeOfProduct = TypeOfFruit.APPLE.toString();
+					     break;
+						 case 1: 
+					     typeOfProduct = TypeOfFruit.PEAR.toString();
+						 break;
+						 case 2: 
+						 typeOfProduct = TypeOfFruit.WATERMELON.toString();
+						 break;
+						 case 3: 
+						 typeOfProduct = TypeOfFruit.LEMON.toString();
+						 break;
+					     case 4: 
+						 typeOfProduct = TypeOfFruit.ORANGE.toString();
+						 break;
+						 case 5: 
+						 typeOfProduct = TypeOfFruit.STRAWBERRY.toString();
+						 break; 
+						 case 6: 
+						 typeOfProduct = TypeOfFruit.BANANA.toString();
+						 break;
+				   	     case 7: 
+						 typeOfProduct = TypeOfFruit.PEACH.toString();
+						 break;
+						 case 8: 
+						 typeOfProduct = TypeOfFruit.PINNEAPPLE.toString();
+						 break;
+						 case 9: 
+						 typeOfProduct = TypeOfFruit.AVOCADO.toString();
+						 break;
+						 }
 						break;
+						
 					case 3: 
 						 insert = "LEGUME";
-						break;
+						 switch (indexCategoria) {
+						 case 0: 
+					     typeOfProduct = TypeOfLegume.PEANUTS.toString();
+					     break;
+						 case 1: 
+						 typeOfProduct =TypeOfLegume.LENTILLS.toString();
+						 break;
+						 case 2: 
+						 typeOfProduct =TypeOfLegume.PEAS.toString();
+						 break;
+						 case 3: 
+						 typeOfProduct =TypeOfLegume.LUPINS.toString();
+						 break;
+						 case 4:
+					     typeOfProduct =TypeOfLegume.ALMONDS.toString();	
+					     break;
 					case 4: 
 						 insert = "MEAT";
+						 
 						break;
 					case 5: 
 						 insert = "VEGETABLE";
@@ -251,35 +345,68 @@ public class PantallaCargaRecetas extends JPanel {
 	                
 	   
 	                short caloricDensity = (short)sliderCalories.getValue();
-	                short protein = 
-	                String date = (birthField.getText());
-	                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/uuuu");
-	                LocalDate birthDate = LocalDate.parse(date, formatter);
-	               if (checkVegan.isSelected()) {
-	            	   vegan=true;     	   
+	                short proteins =  (short) spinnerProtein.getValue();
+	                short fats =  (short) spinnerFats.getValue();
+	                short carbs = (short) spinnerCarbs.getValue();
+
+	                
+	               if (chckbxVegan.isSelected()) {
+	            	   vegan=true; 
+	            	   restrictions.add(DietaryRestrictions.VEGAN);
 	               } else {vegan = false;}
 	               
-	               if (checkLowCarb.isSelected()) {
+	               if (chckbxCarb.isSelected()) {
 	            	   lowCarb = true;
-	            	
+	            	   restrictions.add(DietaryRestrictions.LOWCARB);
 	               } else { lowCarb = false;}
 	               
-	               if (checkHalal.isSelected()) {
+	               if (chckbxHalal.isSelected()) {
 	                 halal = true;
+	                 restrictions.add(DietaryRestrictions.HALAL);
 	                
 	               } else { halal = false;}
 	               
-	               if (checkHighProtein.isSelected()) {
+	               if (chckbxProt.isSelected()) {
 	            	   highProtein = true;
+	            	   restrictions.add(DietaryRestrictions.HIGHPROTEIN);
 	            	   
 	               }else {highProtein = false;}
 	               
 	               
+	               
 	               try {
-	                              
-	                User registrado  = new User (creado.getUserName(), creado.getPassword(), email, firstName, lastName, secondLastName, 
-	                		genre, height, weight, birthDate, halal, vegan, lowCarb, highProtein);
-	                
+	            	   switch (typeOf) {
+						
+						case 0: 
+							 insert = "CONDIMENT";
+							 Product newCondiment = new Condiment (productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.DRY, restrictions, null);
+							break;
+						case 1: 
+						     insert = "FISH";
+						     Product newFish = new Fish (productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.COLD, restrictions, null);
+							break;
+						case 2: 
+							 Product newFruit = new Fruit (productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.COLD, restrictions, null);
+							 insert = "FRUIT";
+							break;
+						case 3: 
+							 Product newLegume = new Legume (productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.COLD, restrictions, null);
+							 insert = "LEGUME";
+							break;
+						case 4: 
+							 Product newMeat = new Meat (productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.COLD, restrictions, null);
+							 insert = "MEAT";
+							break;
+						case 5: 
+							 Product newVegetable = new Vegetable  (productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.COLD, restrictions, null);
+
+							 insert = "VEGETABLE";
+							break;
+
+						}
+	            	   
+	            	   
+	            	   
 	                Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/esquematablasproyecto", 
 	                		"root", "UXa19661!");
 	                Statement smt = c.createStatement();
@@ -291,8 +418,7 @@ public class PantallaCargaRecetas extends JPanel {
 	 
 	                smt.close();
 	                c.close();
-	                JOptionPane.showMessageDialog(ventana, "Usuario registrado", "Se ha completado el registro", JOptionPane.INFORMATION_MESSAGE);
-	                ventana.userLogged(registrado);
+	                JOptionPane.showMessageDialog(ventana, "", "Se ha dado de alta el producto satisfactoriamente", JOptionPane.INFORMATION_MESSAGE);
 	                
 	   	 
 	               } catch (SQLException e1) {

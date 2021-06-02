@@ -17,7 +17,7 @@ import typeOfEnums.TypeOfLegume;
  *
  * @author carlac
  */
-  class Legume  extends Product{
+  public class Legume  extends Product{
     
     private TypeOfLegume typeOfLegume;
 

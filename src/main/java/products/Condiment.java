@@ -23,7 +23,7 @@ public class Condiment extends Product {
 		this.typeOfCondiment = typeOfCondiment;
 	}
 
-
+	
 	
 
 
