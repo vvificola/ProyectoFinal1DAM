@@ -201,10 +201,7 @@ public class PantallaBuscador extends JPanel {
 					checkDifficulty.setSelected(false);
 					checkRestrictions.setSelected(false);
 					checkType.setSelected(false);
-					
-
-
-
+			
 					
 				}
 			}

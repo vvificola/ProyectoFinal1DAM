@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import classes.Menu;
 import classes.User;
 import enums.IMCGradation;
 import exceptions.CampoVacioException;
@@ -38,11 +39,12 @@ import java.awt.SystemColor;
 public class PantallaDisplayMenu  extends JPanel{
 	private Ventana ventana;
 	private User usuario;
+	private Menu menu;
 	
 	
 	public PantallaDisplayMenu(Ventana v, User u)  {
 		setBackground(SystemColor.controlLtHighlight);
-		
+		this.menu= menu;
 		this.ventana=v;
 		this.usuario=u;
 		this.setSize(1051, 585);
@@ -160,7 +162,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("New label");
-		Sting imagePath = labelBreakfast.
+		String imagePath = menu.getPlanningCena().get()
 		lblNewLabel_4_1.setIcon(new ImageIcon("\\\\MACBOOKPRO-EF2E\\NetBeansProjects\\ProyectoFinal1DAM\\images\\desayuno_halal.jpeg"));
 		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1.setBackground(SystemColor.textHighlight);

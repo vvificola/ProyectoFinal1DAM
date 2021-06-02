@@ -18,6 +18,8 @@ public class Ventana extends JFrame {
     private PantallaUsuario pantallaUsuario;
     private PantallaCreacionUsuarioyPass pantallaCreacionUsuario;
     private PantallaBuscador pantallaBuscador;
+    private PantallaCargaRecetas pantallaCargaRecetas;
+
     private Ventana v;
     private User u;
 
@@ -105,6 +107,24 @@ public class Ventana extends JFrame {
          this.pantallaBuscador.setVisible(true);
 
      }
+    
+    
+    
+    public void goChargeProducts (User u)  throws CampoVacioException {
+    	
+    	 if (this.pantallaCargaRecetas == null) {
+             this.pantallaCargaRecetas = new PantallaCargaRecetas(this, u);
+         }
+         this.pantallaUsuario.setVisible(false);
+         this.setContentPane(this.pantallaCargaRecetas);
+         this.setSize(pantallaCargaRecetas.getSize());
+         this.setTitle("carga de recetas");
+         this.pantallaCargaRecetas.setVisible(true);
+
+     }
+    
+    
+    
     	
     	
     	

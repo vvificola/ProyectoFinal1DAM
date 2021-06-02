@@ -22,16 +22,6 @@ public class Menu {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 	public Menu(HashMap<DayofWeek, Recipe> planningDesayuno,
 			HashMap<DayofWeek, ArrayList<Recipe>> planningComida, HashMap<DayofWeek, ArrayList<Recipe>> planningCena) {
 		super();
@@ -51,9 +41,10 @@ public class Menu {
 
 
 
-	public void setPlanningDesayuno(User u, DayofWeek d, ArrayList <Recipe> recetasDesayuno, String path) {
+	public void setPlanningDesayuno(User u, ArrayList <Recipe> recetasDesayuno, String path) {
 		
 		
+		 
 		
 	}
 
