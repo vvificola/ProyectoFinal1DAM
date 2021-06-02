@@ -20,14 +20,15 @@ import typeOfEnums.TypeOfMeat;
 public class Meat extends Product {
     private TypeOfMeat typeOfMeat;
 
-    public Meat(String productName, TypeOfMeat typeOfMeat, short caloricDensity, short carbs, short proteins, short fats, short weight, Storage storage, boolean vegan, boolean halal,
-			boolean highProtein, boolean lowCarb,  
-			ArrayList<DietaryRestrictions> restrictions) {
-		super(caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, productName, weight, storage,
+	public Meat(String productName, short caloricDensity, short carbs, short proteins, short fats, boolean vegan,
+			boolean halal, boolean highProtein, boolean lowCarb, short weight, Storage storage,
+			ArrayList<DietaryRestrictions> restrictions, TypeOfMeat typeOfMeat) {
+		super(productName, caloricDensity, carbs, proteins, fats, vegan, halal, highProtein, lowCarb, weight, storage,
 				restrictions);
 		this.typeOfMeat = typeOfMeat;
 	}
 
+    
 
    
     
