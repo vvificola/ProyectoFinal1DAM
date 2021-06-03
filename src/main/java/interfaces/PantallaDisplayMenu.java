@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 
 import classes.Menu;
 import classes.User;
+import enums.DayofWeek;
 import enums.IMCGradation;
 import exceptions.CampoVacioException;
 import javax.swing.JToolBar;
@@ -35,139 +36,207 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.SystemColor;
+import javax.swing.table.DefaultTableModel;
 
 public class PantallaDisplayMenu  extends JPanel{
 	private Ventana ventana;
 	private User usuario;
 	private Menu menu;
+	private JTable table;
+	private JLabel comidaMiercoles;
 	
 	
 	public PantallaDisplayMenu(Ventana v, User u)  {
-		setBackground(SystemColor.controlLtHighlight);
-		this.menu= menu;
 		this.ventana=v;
+		this.menu = menu;
 		this.usuario=u;
-		this.setSize(1051, 585);
+		this.setSize(1154, 558);
+	
+
+		v.setResizable(false);
 		setLayout(null);
 		
-		JLabel labelMonday = new JLabel("Lunes");
-		labelMonday.setBounds(226, 60, 41, 17);
-		labelMonday.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(labelMonday);
+		JPanel panelCentral = new JPanel();
+		panelCentral.setBounds(0, 0, 0, 0);
+		add(panelCentral);
+		panelCentral.setLayout(null);
 		
-		JLabel labelTuesday = new JLabel("Martes");
-		labelTuesday.setBounds(345, 60, 47, 17);
-		labelTuesday.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(labelTuesday);
+		JLabel labelLunes = new JLabel("LUNES");
+		labelLunes.setFont(new Font("Tahoma", Font.BOLD, 14));
+		labelLunes.setBounds(145, 48, 52, 25);
+		add(labelLunes);
 		
-		JLabel labelWednesday = new JLabel("Miércoles");
-		labelWednesday.setBounds(457, 60, 63, 17);
-		labelWednesday.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(labelWednesday);
+		JLabel lblMartes = new JLabel("MARTES");
+		lblMartes.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblMartes.setBounds(268, 48, 59, 25);
+		add(lblMartes);
 		
-		JLabel labelThursday = new JLabel("Jueves");
-		labelThursday.setBounds(585, 60, 47, 17);
-		labelThursday.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(labelThursday);
+		JLabel lblMiercoles = new JLabel("MIÉRCOLES");
+		lblMiercoles.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblMiercoles.setBounds(409, 48, 86, 25);
+		add(lblMiercoles);
 		
-		JLabel labelFriday = new JLabel("Viernes");
-		labelFriday.setBounds(697, 60, 51, 17);
-		labelFriday.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(labelFriday);
+		JLabel lblJueves = new JLabel("JUEVES");
+		lblJueves.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblJueves.setBounds(577, 48, 65, 25);
+		add(lblJueves);
 		
-		JLabel labelSaturday = new JLabel("Sábado");
-		labelSaturday.setBounds(813, 60, 52, 17);
-		labelSaturday.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(labelSaturday);
+		JLabel lblViernes = new JLabel("VIERNES");
+		lblViernes.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblViernes.setBounds(724, 48, 65, 25);
+		add(lblViernes);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("Domingo");
-		lblNewLabel_3_3.setBounds(930, 60, 62, 17);
-		lblNewLabel_3_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(lblNewLabel_3_3);
+		JLabel lblSabado = new JLabel("SÁBADO");
+		lblSabado.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblSabado.setBounds(871, 48, 65, 25);
+		add(lblSabado);
 		
-		JLabel labelBreakfast = new JLabel("Desayuno ");
-		labelBreakfast.setBounds(72, 112, 64, 15);
-		labelBreakfast.setFont(new Font("Tahoma", Font.BOLD, 12));
-		add(labelBreakfast);
+		JLabel lblDomingo = new JLabel("DOMINGO");
+		lblDomingo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDomingo.setBounds(1018, 48, 75, 25);
+		add(lblDomingo);
 		
-		JLabel labelLunch = new JLabel("Comida");
-		labelLunch.setBounds(82, 222, 45, 15);
-		labelLunch.setFont(new Font("Tahoma", Font.BOLD, 12));
-		add(labelLunch);
+		JLabel lblDesayuno = new JLabel("DESAYUNO");
+		lblDesayuno.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDesayuno.setBounds(21, 141, 86, 25);
+		add(lblDesayuno);
 		
-		JLabel labelDinner = new JLabel("Cena");
-		labelDinner.setBounds(89, 332, 30, 15);
-		labelDinner.setFont(new Font("Tahoma", Font.BOLD, 12));
-		add(labelDinner);
+		JLabel lblComida = new JLabel("COMIDA");
+		lblComida.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblComida.setBounds(21, 281, 75, 25);
+		add(lblComida);
 		
-		JLabel labelInfo = new JLabel("Contador de macros/día");
-		labelInfo.setBounds(30, 382, 149, 15);
-		labelInfo.setFont(new Font("Tahoma", Font.BOLD, 12));
-		add(labelInfo);
+		JLabel lblCena = new JLabel("CENA");
+		lblCena.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblCena.setBounds(21, 437, 52, 25);
+		add(lblCena);
 		
-		JLabel labelCarbs = new JLabel("Carbohidratos");
-		labelCarbs.setBounds(67, 402, 74, 15);
-		labelCarbs.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(labelCarbs);
+		JLabel desayunoLunes = new JLabel("0");
+		desayunoLunes.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoLunes.setBackground(Color.MAGENTA);
+		desayunoLunes.setBounds(134, 118, 75, 75);
+		add(desayunoLunes);
 		
-		JLabel lblNewLabel_1 = new JLabel("Proteínas");
-		lblNewLabel_1.setBounds(79, 422, 50, 15);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblNewLabel_1);
+		JLabel comidaLunes = new JLabel("0");
+		comidaLunes.setHorizontalAlignment(SwingConstants.CENTER);
+		comidaLunes.setBackground(Color.MAGENTA);
+		comidaLunes.setBounds(134, 258, 75, 75);
+		add(comidaLunes);
 		
-		JLabel lblNewLabel_2 = new JLabel("Grasas");
-		lblNewLabel_2.setBounds(87, 442, 34, 15);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblNewLabel_2);
+		JLabel cenaLunes = new JLabel("0");
+		cenaLunes.setHorizontalAlignment(SwingConstants.CENTER);
+		cenaLunes.setBackground(Color.MAGENTA);
+		cenaLunes.setBounds(134, 414, 75, 75);
+		add(cenaLunes);
 		
-		JLabel lblNewLabel_3 = new JLabel("Total kcal");
-		lblNewLabel_3.setBounds(78, 462, 52, 15);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblNewLabel_3);
+		JLabel desayunoMartes = new JLabel("0");
+		desayunoMartes.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoMartes.setBackground(Color.MAGENTA);
+		desayunoMartes.setBounds(260, 118, 75, 75);
+		add(desayunoMartes);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBackground(SystemColor.textHighlight);
-		lblNewLabel_4.setBounds(332, 98, 80, 80);
-		add(lblNewLabel_4);
+		JLabel comidaMartes = new JLabel("0");
+		comidaMartes.setHorizontalAlignment(SwingConstants.CENTER);
+		comidaMartes.setBackground(Color.MAGENTA);
+		comidaMartes.setBounds(260, 258, 75, 75);
+		add(comidaMartes);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setBackground(SystemColor.textHighlight);
-		lblNewLabel_5.setBounds(457, 98, 80, 80);
-		add(lblNewLabel_5);
+		JLabel cenaMartes = new JLabel("0");
+		cenaMartes.setHorizontalAlignment(SwingConstants.CENTER);
+		cenaMartes.setBackground(Color.MAGENTA);
+		cenaMartes.setBounds(260, 414, 75, 75);
+		add(cenaMartes);
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setBackground(SystemColor.textHighlight);
-		lblNewLabel_6.setBounds(573, 98, 80, 80);
-		add(lblNewLabel_6);
+		JLabel desayunoMiercoles = new JLabel("0");
+		desayunoMiercoles.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoMiercoles.setBackground(Color.MAGENTA);
+		desayunoMiercoles.setBounds(415, 118, 75, 75);
+		add(desayunoMiercoles);
 		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7.setBackground(SystemColor.textHighlight);
-		lblNewLabel_7.setBounds(686, 98, 80, 80);
-		add(lblNewLabel_7);
+		comidaMiercoles = new JLabel("0");
+		comidaMiercoles.setHorizontalAlignment(SwingConstants.CENTER);
+		comidaMiercoles.setBackground(Color.MAGENTA);
+		comidaMiercoles.setBounds(415, 258, 75, 75);
+		add(comidaMiercoles);
 		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_8.setBackground(SystemColor.textHighlight);
-		lblNewLabel_8.setBounds(801, 98, 80, 80);
-		add(lblNewLabel_8);
+		JLabel cenaMiercoles = new JLabel("0");
+		cenaMiercoles.setHorizontalAlignment(SwingConstants.CENTER);
+		cenaMiercoles.setBackground(Color.MAGENTA);
+		cenaMiercoles.setBounds(415, 414, 75, 75);
+		add(cenaMiercoles);
 		
-		JLabel lblNewLabel_9 = new JLabel("New label");
-		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_9.setBackground(SystemColor.textHighlight);
-		lblNewLabel_9.setBounds(927, 98, 80, 80);
-		add(lblNewLabel_9);
+		JLabel desayunoJueves = new JLabel("0");
+		desayunoJueves.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoJueves.setBackground(Color.MAGENTA);
+		desayunoJueves.setBounds(572, 118, 75, 75);
+		add(desayunoJueves);
 		
-		JLabel lblNewLabel_4_1 = new JLabel("New label");
-		String imagePath = menu.getPlanningCena().get()
-		lblNewLabel_4_1.setIcon(new ImageIcon("\\\\MACBOOKPRO-EF2E\\NetBeansProjects\\ProyectoFinal1DAM\\images\\desayuno_halal.jpeg"));
-		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1.setBackground(SystemColor.textHighlight);
-		lblNewLabel_4_1.setBounds(194, 98, 113, 121);
-		add(lblNewLabel_4_1);
+		JLabel comidaJueves = new JLabel("0");
+		comidaJueves.setHorizontalAlignment(SwingConstants.CENTER);
+		comidaJueves.setBackground(Color.MAGENTA);
+		comidaJueves.setBounds(1018, 403, 75, 75);
+		add(comidaJueves);
+		
+		JLabel cenaJueves = new JLabel("0");
+		cenaJueves.setHorizontalAlignment(SwingConstants.CENTER);
+		cenaJueves.setBackground(Color.MAGENTA);
+		cenaJueves.setBounds(572, 414, 75, 75);
+		add(cenaJueves);
+		
+		JLabel desayunoViernes = new JLabel("0");
+		desayunoViernes.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoViernes.setBackground(Color.MAGENTA);
+		desayunoViernes.setBounds(719, 118, 75, 75);
+		add(desayunoViernes);
+		
+		JLabel comidaViernes = new JLabel("0");
+		comidaViernes.setHorizontalAlignment(SwingConstants.CENTER);
+		comidaViernes.setBackground(Color.MAGENTA);
+		comidaViernes.setBounds(719, 258, 75, 75);
+		add(comidaViernes);
+		
+		JLabel cenaViernes = new JLabel("0");
+		cenaViernes.setHorizontalAlignment(SwingConstants.CENTER);
+		cenaViernes.setBackground(Color.MAGENTA);
+		cenaViernes.setBounds(719, 414, 75, 75);
+		add(cenaViernes);
+		
+		JLabel desayunoSabado = new JLabel("0");
+		desayunoSabado.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoSabado.setBackground(Color.MAGENTA);
+		desayunoSabado.setBounds(866, 118, 75, 75);
+		add(desayunoSabado);
+		
+		JLabel comidaSabado = new JLabel("0");
+		comidaSabado.setHorizontalAlignment(SwingConstants.CENTER);
+		comidaSabado.setBackground(Color.MAGENTA);
+		comidaSabado.setBounds(866, 258, 75, 75);
+		add(comidaSabado);
+		
+		JLabel cenaSabado = new JLabel("0");
+		cenaSabado.setHorizontalAlignment(SwingConstants.CENTER);
+		cenaSabado.setBackground(Color.MAGENTA);
+		cenaSabado.setBounds(866, 414, 75, 75);
+		add(cenaSabado);
+		
+		JLabel desayunoDomingo = new JLabel("0");
+		desayunoDomingo.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoDomingo.setBackground(Color.MAGENTA);
+		desayunoDomingo.setBounds(1018, 118, 75, 75);
+		add(desayunoDomingo);
+		
+		JLabel comidaDomingo = new JLabel("0");
+		comidaDomingo.setHorizontalAlignment(SwingConstants.CENTER);
+		comidaDomingo.setBackground(Color.MAGENTA);
+		comidaDomingo.setBounds(1018, 258, 75, 75);
+		add(comidaDomingo);
+		
+		JLabel cenaDomingo = new JLabel("0");
+		cenaDomingo.setHorizontalAlignment(SwingConstants.CENTER);
+		cenaDomingo.setBackground(Color.MAGENTA);
+		cenaDomingo.setBounds(0, 0, 1154, 558);
+		add(cenaDomingo);
+		String imagePath = "";
 	
 
 		v.setResizable(false);

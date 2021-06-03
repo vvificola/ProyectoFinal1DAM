@@ -3,6 +3,10 @@ package interfaces;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -19,6 +23,8 @@ public class Ventana extends JFrame {
     private PantallaCreacionUsuarioyPass pantallaCreacionUsuario;
     private PantallaBuscador pantallaBuscador;
     private PantallaCargaRecetas pantallaCargaRecetas;
+    private PantallaDisplayMenu pantallaDisplayMenu;
+
 
     private Ventana v;
     private User u;
@@ -86,7 +92,18 @@ public class Ventana extends JFrame {
         if (this.pantallaUsuario == null) {
             this.pantallaUsuario = new PantallaUsuario(this, u);
         }
-        this.pantallaInicio.setVisible(false);
+        
+        if (this.pantallaCargaRecetas != null) {
+        	this.pantallaCargaRecetas.setVisible(false);
+        }
+        else if (this.pantallaInicio != null) {
+        	 this.pantallaInicio.setVisible(false);
+        }
+        
+        else if (this.pantallaBuscador != null) {
+       	 this.pantallaInicio.setVisible(false);
+       }
+       
         this.setContentPane(this.pantallaUsuario);
         this.setSize(pantallaUsuario.getSize());
         this.setTitle("menú usuario");
@@ -123,7 +140,24 @@ public class Ventana extends JFrame {
 
      }
     
-    
+    public void DisplayMenu (User u)  {
+
+		LocalDate date = LocalDate.now();
+		TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear(); 
+		byte weekNumber = (byte) date.get(woy);
+    	
+    	
+    	
+   	 if (this.pantallaDisplayMenu == null) {
+            this.pantallaDisplayMenu = new PantallaDisplayMenu(this, u);
+        }
+        this.pantallaUsuario.setVisible(false);
+        this.setContentPane(this.pantallaDisplayMenu);
+        this.setSize(pantallaDisplayMenu.getSize());
+        this.setTitle("menú correspondiente a la semana" + "" + weekNumber);
+        this.pantallaDisplayMenu.setVisible(true);
+
+    }
     
     	
     	

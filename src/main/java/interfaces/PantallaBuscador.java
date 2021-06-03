@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import classes.User;
+import exceptions.CampoVacioException;
 import preferenceEnums.RecipeDifficulty;
 import preferenceEnums.Storage;
 import preferenceEnums.TypeOfCooking;
@@ -253,7 +254,23 @@ public class PantallaBuscador extends JPanel {
 		});
 		searchButton.setIcon(new ImageIcon("/Users/carlac/NetBeansProjects/ProyectoFinal1DAM/images/icon_busqueda.png"));
 		searchButton.setFont(new Font("Futura", Font.PLAIN, 12));
-		searchButton.setBounds(198, 292, 117, 29);
+		searchButton.setBounds(299, 292, 117, 29);
 		panelCentral.add(searchButton);
+		
+		JButton btnVolver = new JButton("volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					ventana.userLogged(u);
+				} catch (CampoVacioException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnVolver.setFont(new Font("Futura", Font.PLAIN, 12));
+		btnVolver.setBounds(91, 292, 117, 29);
+		panelCentral.add(btnVolver);
 	}
 }

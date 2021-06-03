@@ -62,7 +62,7 @@ public class PantallaUsuario  extends JPanel{
 		this.setSize(713, 551);
 	
 
-		v.setResizable(false);
+		v.setResizable(true);
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelCentral = new JPanel();
@@ -132,7 +132,6 @@ public class PantallaUsuario  extends JPanel{
 		searchRecipesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//este try catch me lo pide el IDE auqnue no se muy bien por qué ya que es un botón 
 				try {
 					ventana.goSearchRecipes(u);
 				} catch (CampoVacioException e1) {
@@ -314,7 +313,8 @@ public class PantallaUsuario  extends JPanel{
 				JButton btnGenerateMenu_1 = new JButton("generar menú");
 				btnGenerateMenu_1.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-				         
+						 ventana.DisplayMenu(u);
+						
 						 ArrayList <Recipe> desayuno = new ArrayList <Recipe>();
 						 
 						 String desayunoImagePath ="";
@@ -423,10 +423,9 @@ public class PantallaUsuario  extends JPanel{
 								
 										 Recipe desayunoHalal = new Recipe (recipeName, desayunoImagePath, caloricDensity, carbs, protein, fats, vegan,  halal,
 													highProtein,  lowCarb);
-										 System.out.println(desayunoHalal);
+										 
 							        	
 										 desayuno.add(desayunoHalal);
-										 menu.setPlanningDesayuno(u,  desayuno, desayunoImagePath);
 										 System.out.println(DietaryRestrictions.HALAL);
 										
 								  }
@@ -481,8 +480,7 @@ public class PantallaUsuario  extends JPanel{
 		                
 						 
 					
-					
-					
+						
 					
 		        	
 					}});
