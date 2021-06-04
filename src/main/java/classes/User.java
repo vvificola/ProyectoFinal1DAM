@@ -6,9 +6,9 @@
 package classes;
 
 import exceptions.CampoVacioException;
-import exceptions.ContraseñaMuyCortaException;
-import exceptions.ContraseñaMuyLargaException;
-import exceptions.ContraseñaNoCoincideException;
+import exceptions.ContrasenaMuyCortaException;
+import exceptions.ContrasenaMuyLargaException;
+import exceptions.ContrasenaNoCoincideException;
 import exceptions.EmailNoValidoException;
 import exceptions.LongitudNombreIncorrectaException;
 import exceptions.NombreVacioException;
@@ -77,7 +77,7 @@ public class User {
     
     }
     
-    public User(String userName, String password, String passwordConfirm) throws ContraseñaMuyCortaException, ContraseñaMuyLargaException, ContraseñaNoCoincideException, NombreVacioException, LongitudNombreIncorrectaException {
+    public User(String userName, String password, String passwordConfirm) throws ContrasenaMuyCortaException, ContrasenaMuyLargaException, ContrasenaNoCoincideException, NombreVacioException, LongitudNombreIncorrectaException {
         this.setUserName(userName);
         this.setPassword(password, passwordConfirm);
 
@@ -257,14 +257,14 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password, String confirmPassword) throws ContraseñaMuyCortaException, ContraseñaMuyLargaException, ContraseñaNoCoincideException {
+    public void setPassword(String password, String confirmPassword) throws ContrasenaMuyCortaException, ContrasenaMuyLargaException, ContrasenaNoCoincideException {
         if (password.length()< 8) {
-            throw new ContraseñaMuyCortaException("La contraseña es demasiado corta");
+            throw new ContrasenaMuyCortaException("La contraseña es demasiado corta");
         }  else if(password.length()>14) {
-            throw new ContraseñaMuyLargaException("La contraseña es demasiado corta");
+            throw new ContrasenaMuyLargaException("La contraseña es demasiado corta");
          
         } else if (!password.contentEquals(confirmPassword)) {
-          throw new ContraseñaNoCoincideException("La contraseña es demasiado corta");
+          throw new ContrasenaNoCoincideException("La contraseña es demasiado corta");
 
         } 
         this.password = password;

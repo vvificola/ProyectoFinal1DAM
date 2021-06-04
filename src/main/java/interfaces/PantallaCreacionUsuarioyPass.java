@@ -18,9 +18,9 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 import classes.User;
-import exceptions.ContraseñaMuyCortaException;
-import exceptions.ContraseñaMuyLargaException;
-import exceptions.ContraseñaNoCoincideException;
+import exceptions.ContrasenaMuyCortaException;
+import exceptions.ContrasenaMuyLargaException;
+import exceptions.ContrasenaNoCoincideException;
 import exceptions.LongitudNombreIncorrectaException;
 import exceptions.NombreVacioException;
 
@@ -116,16 +116,16 @@ public class PantallaCreacionUsuarioyPass extends JPanel {
 					JOptionPane.showConfirmDialog(ventana, "Usuario creado" + "\n" + "¿Desea continuar con el registro?");
 					ventana.goRegister(creado);
 					
-				} catch (ContraseñaMuyCortaException e1) {
+				} catch (ContrasenaMuyCortaException e1) {
 					JOptionPane.showMessageDialog(ventana,"La contraseña es demasiado corta","Error",  JOptionPane.ERROR_MESSAGE);
 					passwordField.setBackground(new Color (255, 210, 210)); 
 					
-				} catch (ContraseñaMuyLargaException e1) {
+				} catch (ContrasenaMuyLargaException e1) {
 					JOptionPane.showMessageDialog(ventana,"La contraseña es demasiado larga", "Error", JOptionPane.ERROR_MESSAGE);
 					passwordField.setBackground(new Color (255, 210, 210)); 
 
 					
-				} catch (ContraseñaNoCoincideException e1) {
+				} catch (ContrasenaNoCoincideException e1) {
 					JOptionPane.showMessageDialog(ventana,"Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
 					passwordField.setBackground(new Color (255, 210, 210)); 
 

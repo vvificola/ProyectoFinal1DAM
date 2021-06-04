@@ -5,16 +5,15 @@
  */
 package exceptions;
 
-/**Clase que modela una excepción cuando la contraseña introducida no coincide con su confirmación
+/**
+ *Clase que modela una excepción cuando la contraseña introducida es demasiado corta
  * @author Cándido Vidal 
  */
-public class ContraseñaNoCoincideException extends Exception{
+public class ContrasenaMuyCortaException extends Exception{
     
-    public ContraseñaNoCoincideException  (String msg) {
+    public ContrasenaMuyCortaException (String msg) {
     
     super ("Ha habido un problema: " + msg);
 		
 }
-    
-    
 }

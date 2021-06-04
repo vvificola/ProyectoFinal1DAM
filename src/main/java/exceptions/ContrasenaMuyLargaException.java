@@ -5,15 +5,15 @@
  */
 package exceptions;
 
-/**
- *Clase que modela una excepción cuando la contraseña introducida es demasiado corta
+/**Clase que modela una excepción cuando la contraseña introducida es demasiado larga
  * @author Cándido Vidal 
  */
-public class ContraseñaMuyCortaException extends Exception{
+public class ContrasenaMuyLargaException extends Exception {
     
-    public ContraseñaMuyCortaException (String msg) {
+    public ContrasenaMuyLargaException (String msg) {
     
     super ("Ha habido un problema: " + msg);
 		
 }
+    
 }

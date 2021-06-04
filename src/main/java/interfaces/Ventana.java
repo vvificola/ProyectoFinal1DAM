@@ -139,6 +139,11 @@ public class Ventana extends JFrame {
 
     }
     
+    /**
+     * Función que muestra la interfaz de busqueda de recetas 
+     * @param u instancia del usuario que está usando el programa 
+     * @throws CampoVacioException 
+     */
     
     public void goSearchRecipes (User u)  throws CampoVacioException {
     	
@@ -154,7 +159,11 @@ public class Ventana extends JFrame {
      }
     
     
-    
+    /**
+     * Función que muestra la interfaz de carga de nuevos productos 
+     * @param u
+     * @throws CampoVacioException 
+     */
     public void goChargeProducts (User u)  throws CampoVacioException {
     	
     	 if (this.pantallaCargaProductos == null) {

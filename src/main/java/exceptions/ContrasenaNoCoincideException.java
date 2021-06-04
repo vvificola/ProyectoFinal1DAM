@@ -5,15 +5,16 @@
  */
 package exceptions;
 
-/**Clase que modela una excepción cuando la contraseña introducida es demasiado larga
+/**Clase que modela una excepción cuando la contraseña introducida no coincide con su confirmación
  * @author Cándido Vidal 
  */
-public class ContraseñaMuyLargaException extends Exception {
+public class ContrasenaNoCoincideException extends Exception{
     
-    public ContraseñaMuyLargaException (String msg) {
+    public ContrasenaNoCoincideException  (String msg) {
     
     super ("Ha habido un problema: " + msg);
 		
 }
+    
     
 }
