@@ -6,8 +6,8 @@
 package preferenceEnums;
 
 /**
- *
- * @author carlac
+ *Clase enum que establece las restricciones dietarias 
+ * @author Candido Vidal 
  */
 public enum DietaryRestrictions {
     

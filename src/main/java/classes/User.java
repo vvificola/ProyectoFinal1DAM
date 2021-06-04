@@ -19,20 +19,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import enums.IMCGradation;
 import interfaces.PantallaRegistro;
 import preferenceEnums.DietaryRestrictions;
 
-/**
+/**Clase que modela el usuario del programa
  *
- * @author carlac
+ * @author Cándido Vidal 
  */
 public class User {
 
@@ -57,6 +54,24 @@ public class User {
     private ArrayList<Menu> savedMenu;
     private PantallaRegistro p;
 
+    
+    /**
+     * Constructor de la clase Usuario 
+     * @param userName el nick de usuario
+     * @param password el password del usuario 
+     * @param email el email del usuario 
+     * @param firstName el nombre del usuario 
+     * @param lastName el primer apellido del usuario 
+     * @param secondLastName el segundo apellido del usuario 
+     * @param genre el género del usuario 
+     * @param height la altura del usuario 
+     * @param weight el peso del usuario 
+     * @param birthDate la fecha de nacimiento del usuario 
+     * @param vegan booleano que devuelve true si el usuario lleva una dieta vegana o false si no lo es 
+     * @param halal booleano que devuelve true si el usuario lleva una dieta halal false si no lo es 
+     * @param highProtein booleano que devuelve true si el usuario lleva una dieta alta en proteínas o false si no lo es 
+     * @param lowCarb booleano que devuelve true si el usuario lleva una dieta baja en carbohidratos o false si no lo es  
+     */
     public User(String userName, String password, String email, String firstName, String lastName, String secondLastName, boolean genre, int height, int weight, LocalDate birthDate,
     		boolean halal, boolean vegan, boolean lowCarb, boolean highProtein) {
         this.userName = userName;
@@ -76,14 +91,31 @@ public class User {
         
     
     }
-    
+    /**
+     * 
+     * @param userName nombre de usuario 
+     * @param password contraseña de usuario 
+     * @param passwordConfirm confirmación de contraseña de usuario 
+     * @throws ContrasenaMuyCortaException Excepcion que se lanza si la contraseña es demasiado corta
+     * @throws ContrasenaMuyLargaException Excepcion que se lanza si la contraseña es demasiado larga
+     * @throws ContrasenaNoCoincideException Excepcion que se lanza si la contraseña y la confiramción no coinciden 
+     * @throws NombreVacioException  Excepcion que se lanza si el campo del nombre está vacío 
+     * @throws LongitudNombreIncorrectaException  Excepcion que se lanza si la longitud del nombre elegido no cumple los criterios
+     */
     public User(String userName, String password, String passwordConfirm) throws ContrasenaMuyCortaException, ContrasenaMuyLargaException, ContrasenaNoCoincideException, NombreVacioException, LongitudNombreIncorrectaException {
         this.setUserName(userName);
         this.setPassword(password, passwordConfirm);
 
     }
     
-    
+    /**
+     * 
+     * Función que calcula el IMC seguún los parámetros de peso y altura
+     * 
+     * @param weight peso introducido 
+     * @param height altura introducida
+     * @return el indice IMC
+     */
     public float calculateIMC(int weight, int height) {
 		
     	//pasando de centímetros a metros para hacer el cálculo correcto
@@ -91,7 +123,14 @@ public class User {
 		return imc;
     }
     
-    
+    /**
+     * Función que calcula la tasa metabólica en función de los parámetros del usuario 
+     * @param weight peso del usuario 
+     * @param height altura del usuario 
+     * @param genre género del usuario 
+     * @param edad edad del usuario 
+     * @return la tasa metabólica 
+     */
     public float calculateMBI (int weight, int height, boolean genre, int edad) {
 		float mbi = 0;
     	
@@ -111,6 +150,11 @@ public class User {
 
     }
     
+    /**
+     * Función que calcula el rango del IMC 
+     * @param imc el el índice de masa corporal 
+     * @return  la tasa metabolica 
+     */
     public IMCGradation gradeIMC(float imc) {
 		 IMCGradation grade = null;
     	//aquí no puedo aplicar switch/case así que no htengo otro remedio que hacerlo con else if
@@ -138,7 +182,11 @@ public class User {
     	
     	}
     
-    
+    /**
+     * Función que calcula la edad del usuario en función de su fecha de nacimiento
+     * @param birthDate la fecha de nacimiento 
+     * @return la edad actual 
+     */
     public byte calculateAge (LocalDate birthDate) {
     	
     	 LocalDate today = LocalDate.now();   
@@ -147,6 +195,11 @@ public class User {
     	
     }
     
+    /**
+     * Función que genera los desayunos apropiados del usuario en función de sus parámetros 
+     * @param u la instancia del usuario que usa el programa 
+     * @return la ruta absoluta de las imágenes asociadas a los desayunos 
+     */
     
     public String generateBreakfast (User u) {
     	String path = null;
@@ -237,10 +290,23 @@ public class User {
     	
     
     //getter y setters
+    /**
+     * Función que devuelve el nombre del usuario 
+     * 
+     * @return el nombre del usuario 
+     * @throws CampoVacioException  se lanza si el campo está vacío 
+     */
     public String getUserName()  throws CampoVacioException{
         return userName;
     }
 
+    
+    /**
+     * Función que establece el nombre del usuario 
+     * @param userName el nombre del usuario 
+     * @throws NombreVacioException se lanza si el campo está vacío 
+     * @throws LongitudNombreIncorrectaException se lanza si la longitud es incorrecta 
+     */
     public void setUserName(String userName) throws NombreVacioException, LongitudNombreIncorrectaException {
         if (userName.isBlank()){
            throw new NombreVacioException ("El nombre de usuario no puede estar vacío");
@@ -252,11 +318,21 @@ public class User {
         
         this.userName = userName;
     }
-
+    /**
+     * Función que obtiene el nombre del usuario 
+     * @return el nombre del usuario 
+     */
     public String getPassword() {
         return password;
     }
-
+     /**
+      * Función que establece el password del usuario 
+      * @param password el password introducido 
+      * @param confirmPassword la confirmación del password
+      * @throws ContrasenaMuyCortaException se lanza si la contraseña es demasiado corta 
+      * @throws ContrasenaMuyLargaException se lanza si la contraseña es demasiado larga
+      * @throws ContrasenaNoCoincideException  se lanza si la contraseña ny la confirmación o coinciden 
+      */
     public void setPassword(String password, String confirmPassword) throws ContrasenaMuyCortaException, ContrasenaMuyLargaException, ContrasenaNoCoincideException {
         if (password.length()< 8) {
             throw new ContrasenaMuyCortaException("La contraseña es demasiado corta");
@@ -270,11 +346,18 @@ public class User {
         this.password = password;
         
     }
-
+   /**
+    * función que obtiene el email del usuario 
+    * @return el email del usuario 
+    */
     public  String getEmail() {
         return email;
     }
-
+    /**
+     * Función que establece el email del usuario 
+     * @param email el email del usuario 
+     * @throws EmailNoValidoException se lanza si el formato de email no es correcto 
+     */
     public  void setEmail(String email) throws EmailNoValidoException {
     	
     	if (!email.contains("@") || !email.contains(".")) {
@@ -283,7 +366,13 @@ public class User {
         this.email = email;
     }
     
-    
+    /**
+     * Función que almacena las opciones dietarias del usario en un ArrayList
+@param vegan booleano que devuelve true si el usuario es vegano o false si no lo es 
+    * @param halal booleano que devuelve true si el usuario es halal false si no lo es 
+    * @param highProtein booleano que devuelve true si el usuario elige dieta alta en proteínas o false si no lo es 
+    * @param lowCarb booleano que devuelve true si el usuario elige dieta  baja en carbohidratos o false si no lo es 
+     */
     public void setDietaryOptions(boolean halal,boolean vegan, boolean lowCarb, boolean highProtein) {
     	
     	if (halal) {
@@ -304,70 +393,105 @@ public class User {
        
     }
     
-
+    /**
+     * Función que obtiene el nombre del usuario 
+     * @return el nombre del usuario 
+     */
     public String getFirstName() {
         return firstName;
     }
-
+     /**función que establece el nombre del usuario 
+      * 
+      * @param firstName el nombre del usuario 
+      */
     public  void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    /**
+     * función que obtiene el primer apellido del usuario
+     * @return  el primer apellido del usuario 
+     */
     public String getLastName() {
         return lastName;
     }
-
+    /**
+     * fucnión que establece el apellido del usuario 
+     * @param lastName el apellido del usuario 
+     */
     public  void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    /**
+     * función que obtiene el segundo  apellido del usuario
+     * @return el segundo  apellido del usuario
+     */
     public  String getSecondLastName() {
         return secondLastName;
     }
-
+    /**función que establece el segundo apellido del usuario
+     * 
+     * @param secondLastName el segundo apellido del usuario
+     */
     public void setSecondLastName(String secondLastName) {
         this.secondLastName = secondLastName;
     }
-
+    /**
+     * función que devuelve el genero del usario, true si hombre
+     * @return el genero 
+     */
     public  boolean isGenre() {
         return genre;
     }
-
+   /**
+    * función que define el género del usuario 
+    * @param genre el género 
+    */
     public  void setGenre(boolean genre) {
       this.genre = genre;
     }
-
+    /**
+     * función que obtiene la altura del usaurio 
+     * @return la altura del usuario 
+     */
     public int getHeight() {
         return height;
     }
-
+     /**
+      * función que establece la altura del usuario 
+      * @param height la altura del usuario 
+      */
     public  void setHeight(short height) {
        this.height = height;
     }
-
+     /**
+      * fucnión que obtiene el peso del usuario 
+      * @return el peso del usuario 
+      */
     public int getWeight() {
         return weight;
     }
-
+     /**
+      * función que establece el peso del usuario 
+      * @param weight el peso del usuario 
+      */
     public  void setWeight(short weight) {
         this.weight = weight;
     }
-
+    /**Función que obtiene la fecha de naciomiento del usuario 
+     * 
+     * @return la fecha de nacimiento 
+     */
     public LocalDate getBirthDate() {
         return birthDate;
     }
-
+     /**función que establece la fecha de nacimiento del usuario 
+      * 
+      * @param birthDate la fecha de naciemiento del usuario 
+      */
     public  void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
-
-    public ArrayList<User> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(ArrayList<User> usuarios) {
-        this.usuarios = usuarios;
-    }
+ 
 
     public ArrayList<Product> getFavoriteProducts() {
         return favoriteProducts;

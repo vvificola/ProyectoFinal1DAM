@@ -6,8 +6,8 @@
 package typeOfEnums;
 
 /**
- *
- * @author carlac
+ * Calse enum que establece los tipos de legumbre
+ * @author Cándido Vidal
  */
 public enum TypeOfLegume {
     

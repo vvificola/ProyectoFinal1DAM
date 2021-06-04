@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package typeOfEnums;
-
 /**
- *
- * @author carlac
+ * Calse enum que establece los tipos de vegetal
+ * @author Cándido Vidal
  */
 public enum TypeOfVegetable {
 

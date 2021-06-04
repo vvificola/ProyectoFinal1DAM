@@ -160,7 +160,7 @@ public class Ventana extends JFrame {
     
     
     /**
-     * Función que muestra la interfaz de carga de nuevos productos 
+     * Función que muestra la interfaz de carga de nuevos product
      * @param u
      * @throws CampoVacioException 
      */

@@ -6,8 +6,8 @@
 package preferenceEnums;
 
 /**
- *
- * @author carlac
+ *Clase enum que establece las familias de las recetas según su estilo de cocina
+ * @author Cándido Vidal
  */
 public enum TypeOfCooking {
     

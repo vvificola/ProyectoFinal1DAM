@@ -1,46 +1,18 @@
 package interfaces;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.time.LocalDate;
-import java.time.temporal.TemporalField;
-import java.time.temporal.WeekFields;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import classes.Menu;
 import classes.User;
-import enums.DayofWeek;
-import enums.IMCGradation;
-import exceptions.CampoVacioException;
-import javax.swing.JToolBar;
 import javax.swing.JTable;
-import javax.swing.border.CompoundBorder;
-import javax.swing.JTextField;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.SystemColor;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
-
+/**
+ * Interfaz de usuario que muestra las recetas seleccionadas en base a los criterios introducidos 
+ * @author Candido Vidal 
+ */
 public class PantallaDisplayReceta extends JPanel{
 	private Ventana ventana;
 	private User usuario;
@@ -49,7 +21,12 @@ public class PantallaDisplayReceta extends JPanel{
 	private Menu menu;
 	private JTable table;
 	
-	
+	/**
+         * Constructor de la interfaz de muestra de recetas
+         * @param v instancia de la clase ventana de las que dependen todas las ventanas del proyecto 
+         * @param u instancia de usuario que está haciendo uso del programa 
+         * @param ip array de todos las rutas relativas que se emplean para mostrar las imágenes 
+         */
 	public PantallaDisplayReceta(Ventana v, User u, String [] ip)  {
 		this.ventana=v;
 		this.imagePath = ip;

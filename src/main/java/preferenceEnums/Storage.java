@@ -6,8 +6,8 @@
 package preferenceEnums;
 
 /**
- *
- * @author carlac
+ *Clase enum que establece los tipos de almcenaje 
+ * @author Cándido Vidal 
  */
 public enum Storage {
     

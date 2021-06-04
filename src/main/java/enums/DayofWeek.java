@@ -7,7 +7,7 @@ package enums;
 
 /**
  *
- * @author carlac
+ * Clase ENUM con los días de la semana
  */
 public enum DayofWeek {
     

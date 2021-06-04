@@ -53,6 +53,10 @@ import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 
+/**
+ * Interfaz de usuario que permite añadir nuevos productos a la base de datos
+ * @author Candido Vidal 
+ */
 public class PantallaCargaProductos extends JPanel {
 
     private Storage storage;

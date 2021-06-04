@@ -6,8 +6,8 @@
 package typeOfEnums;
 
 /**
- *
- * @author carlac
+ * Calse enum que establece los tipos de carne
+ * @author Cándido Vidal
  */
 public enum TypeOfMeat {
     

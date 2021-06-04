@@ -6,8 +6,8 @@
 package preferenceEnums;
 
 /**
- *
- * @author carlac
+ *Clase enum que establece los grados de dificultad de las recetas 
+ * @author Cándido Vidal
  */
 public enum RecipeDifficulty {
     
