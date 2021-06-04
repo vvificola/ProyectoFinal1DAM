@@ -1,28 +1,26 @@
 package interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import classes.User;
 import exceptions.CampoVacioException;
 
-import javax.swing.JTextPane;
+/**
+ * Interfaz de usuario para la modificación de sus datos 
+ * NO IMPLEMENTADO
+ * @author Candido Vidal 
+ */
 
+
+/**
+ * Constructor de la clase no implementada PantallaModificacionDatos
+ * @author Candido Vidal 
+ */
 public class PantallaModificacionDatos extends JPanel{
 	
 	private Ventana ventana;

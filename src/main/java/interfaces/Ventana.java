@@ -1,21 +1,26 @@
 package interfaces;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
-import java.util.ArrayList;
 import java.util.Locale;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import classes.Recipe;
 import classes.User;
 import exceptions.CampoVacioException;
+
+/**
+ * Clase a partir de la cual se construyen todas las demás ventanas del proyecto 
+ * @author Cándido Vidal 
+ */
+
+
+/**
+ * Constructor de la clase Ventana
+ * @author Cándido Vidal 
+ */
 
 public class Ventana extends JFrame {
 
@@ -45,6 +50,9 @@ public class Ventana extends JFrame {
         this.setVisible(true);
 
     }
+    /**
+     * Función que ejecuta el paso de la interfaz de pantalla inicial hacia la de la creación de un nuevo usuario
+     */
 
     public void goCreateUser() {
 
@@ -58,7 +66,10 @@ public class Ventana extends JFrame {
         this.pantallaCreacionUsuario.setVisible(true);
 
     }
-
+     
+    /**
+     * Función que muestra la interfaz para el login con las credenciales del usuario 
+     */
     public void goLogin() {
 
         if (this.pantallaInicio == null) {
@@ -75,7 +86,10 @@ public class Ventana extends JFrame {
     
  
 
-
+    /**
+     * Función que muestra la interefaz para el registro de datos y recibe por parámetros la instancia del nuevo usuario creado 
+     * @param creado El usuario creado
+     */
 
     public void goRegister(User creado) {
 
@@ -91,7 +105,11 @@ public class Ventana extends JFrame {
     }
 
  
-
+     /**
+      * Función que muestra la interfaz de usuario recibiendo por parámetros los datos de este
+      * @param u instancia del usuario que usa el programa
+      * @throws CampoVacioException 
+      */
     public void userLogged(User u) throws CampoVacioException {
 
         if (this.pantallaUsuario == null) {

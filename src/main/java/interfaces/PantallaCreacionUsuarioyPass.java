@@ -37,6 +37,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+/**
+ * Interfaz de usuario para la creación de un usuario y una contraseñas previos al registro de datos 
+ * @author Candido Vidal 
+ */
+
 
 public class PantallaCreacionUsuarioyPass extends JPanel {
 

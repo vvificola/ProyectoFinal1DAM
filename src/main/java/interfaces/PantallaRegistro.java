@@ -1,10 +1,7 @@
 package interfaces;
 
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -12,23 +9,17 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
 
 import classes.User;
 import exceptions.CampoVacioException;
-import exceptions.EmailNoValidoException;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JToggleButton;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
-import java.awt.Component;
-import javax.swing.Box;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -37,14 +28,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Iterator;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+
+/**
+ * Interfaz de usuario para el registro de datos personales y biométricos 
+ * @author Cándido Vidal 
+ */
 public class PantallaRegistro extends JPanel {
 
     private JTextField firstNameField;
@@ -55,6 +46,12 @@ public class PantallaRegistro extends JPanel {
     private Ventana ventana;
     private User user;
 
+    /**
+     * Constructor de la clase PantallaRegistro 
+     * @param v instancia de la clase ventana de la que dependen todas las ventans del proyecto 
+     *
+     * @param creado instancia del usuario creado en la pantalla anterior 
+     */
     public PantallaRegistro(Ventana v, User creado) {
 
         this.ventana = v;

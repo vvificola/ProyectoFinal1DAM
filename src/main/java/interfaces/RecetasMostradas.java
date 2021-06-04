@@ -19,7 +19,15 @@ import javax.swing.SwingConstants;
 import classes.User;
 import enums.IMCGradation;
 import exceptions.CampoVacioException;
+/**
+ * Interfaz de usuario para el display gráfico de las recetas buscadas 
+ * @author Candido Vidal 
+ */
 
+/**
+ * Constructor de la interfaz Recetas mostradas 
+ * @author Candido Vidal 
+ */
 public class RecetasMostradas extends JPanel  {
 	
 	

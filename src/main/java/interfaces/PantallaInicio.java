@@ -3,17 +3,12 @@ package interfaces;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
 
 import classes.User;
 import exceptions.CampoVacioException;
@@ -21,12 +16,6 @@ import exceptions.CampoVacioException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JToggleButton;
-import javax.swing.JCheckBox;
-import javax.swing.JSpinner;
-import java.awt.Component;
-import javax.swing.Box;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -35,17 +24,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+/**
+ * Interfaz de usuario para login con credenciales  
+ * @author Candido Vidal 
+ */
 public class PantallaInicio extends JPanel {
 
     private JTextField userNameField;
     private JPasswordField passwordField;
     private Ventana ventana;
     private User usuario;
-
+    
+    
+    /**
+     * Constructor de la interfaz ventana
+     * @param v instancia de la clase ventana de la que dependen todas las ventanas del programa
+     */
     public PantallaInicio(Ventana v) {
         this.ventana = v;
    
