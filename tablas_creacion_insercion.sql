@@ -76,7 +76,8 @@ create table recipe(
  caloricDensity int, 
  carbs int, 
  fats int, 
- protein int, 
+ protein int,
+ vegan boolean,
  halal boolean, 
  highProtein boolean, 
  lowCarb boolean,
@@ -89,9 +90,7 @@ create table recipe(
  ingredient6 int,
  ingredient7 int,
  ingredient8 int);
- 
- select * from recipe; 
- 
+
 insert into recipe
  values ('porra antequerana','https://www.directoalpaladar.com/recetas-de-sopas-y-cremas/como-hacer-porra-antequerana-receta-tradicional-malaguena',
  './images/porra.jpeg', 'LOW', 'SPANISH', 90, 12, 4, 2, true, true, false, true, false, 'tomate en rama', 'pimiento verde', 'aceite de oliva', 'huevo cocido', null, null, null, null); 
@@ -102,7 +101,7 @@ insert into recipe
  
   insert into recipe
  values ('tortilla de patatas','https://www.directoalpaladar.com/recetas-de-huevos-y-tortillas/empezando-en-la-cocina-receta-de-tortilla-de-patatas-con-cebolla',
- './images/recetas/tortilla-patatas.jpeg', 'MEDIUM', 'SPANISH', 210, 11, 6, 21, false, true, false, true, true, 'patata', 'cebolla', 'aceite', 'sal', null, null, null, null); 
+ './images/tortilla-patatas.jpeg', 'MEDIUM', 'SPANISH', 210, 11, 6, 21, false, true, false, true, true, 'patata', 'cebolla', 'aceite', 'sal', null, null, null, null); 
  
   insert into recipe
  values ('potaje de garbanzos con espinacas','https://www.directoalpaladar.com/recetas-de-legumbres-y-verduras/potaje-garbanzos-receta-mi-abuela-que-no-sabe-modas-falta-que-le-hace',
