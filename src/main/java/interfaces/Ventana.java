@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
@@ -24,6 +25,8 @@ public class Ventana extends JFrame {
     private PantallaBuscador pantallaBuscador;
     private PantallaCargaRecetas pantallaCargaRecetas;
     private PantallaDisplayMenu pantallaDisplayMenu;
+    private PantallaDisplayReceta pantallaDisplayReceta;
+
 
 
     private Ventana v;
@@ -100,8 +103,13 @@ public class Ventana extends JFrame {
         	 this.pantallaInicio.setVisible(false);
         }
         
-        else if (this.pantallaBuscador != null) {
-       	 this.pantallaInicio.setVisible(false);
+        else if (this.pantallaInicio != null) {
+        	
+        	
+        }
+        
+        else if (this.pantallaDisplayMenu != null) {
+       	 this.pantallaDisplayMenu.setVisible(false);
        }
        
         this.setContentPane(this.pantallaUsuario);
@@ -159,7 +167,22 @@ public class Ventana extends JFrame {
 
     }
     
+    public void DisplayReceta (String [] ip, User u)  {
+
+		
     	
+    	
+   	 if (this.pantallaDisplayReceta == null) {
+            this.pantallaDisplayReceta = new PantallaDisplayReceta(this, u, ip);
+        }
+        this.pantallaUsuario.setVisible(false);
+        this.setContentPane(this.pantallaDisplayReceta);
+        this.setSize(pantallaDisplayReceta.getSize());
+        
+        this.pantallaDisplayReceta.setVisible(true);
+
+    }
+    
     	
     	
     	

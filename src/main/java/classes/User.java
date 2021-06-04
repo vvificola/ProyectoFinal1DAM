@@ -297,7 +297,43 @@ public class User {
 
 
 
-    public ArrayList<Menu> getSavedMenu() {
+    public boolean isHighProtein() {
+		return highProtein;
+	}
+
+	public void setHighProtein(boolean highProtein) {
+		this.highProtein = highProtein;
+	}
+
+	public boolean isHalal() {
+		return halal;
+	}
+
+	public void setHalal(boolean halal) {
+		this.halal = halal;
+	}
+
+	public boolean isVegan() {
+		return vegan;
+	}
+
+	public void setVegan(boolean vegan) {
+		this.vegan = vegan;
+	}
+
+	public boolean isLowCarb() {
+		return lowCarb;
+	}
+
+	public void setLowCarb(boolean lowCarb) {
+		this.lowCarb = lowCarb;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public ArrayList<Menu> getSavedMenu() {
         return savedMenu;
     }
 

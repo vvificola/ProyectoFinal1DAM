@@ -51,6 +51,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
+import java.awt.SystemColor;
 
 public class PantallaCargaRecetas extends JPanel {
 
@@ -81,11 +82,13 @@ public class PantallaCargaRecetas extends JPanel {
         panelCentral.add(labelTipoDeProducto);
 
         JComboBox comboBoxCategoriaProducto = new JComboBox();
+        comboBoxCategoriaProducto.setBackground(SystemColor.text);
         comboBoxCategoriaProducto.setModel(new DefaultComboBoxModel(TypeOfCondiment.values()));
         comboBoxCategoriaProducto.setBounds(185, 86, 225, 27);
         panelCentral.add(comboBoxCategoriaProducto);
 
         JComboBox comboBoxTipoProducto = new JComboBox();
+        comboBoxTipoProducto.setBackground(SystemColor.text);
         comboBoxTipoProducto.setModel(new DefaultComboBoxModel(new String[]{"Condimento", "Pescado", "Fruta", "Legumbre", "Carne", "Verdura"}));
         comboBoxTipoProducto.setBounds(185, 40, 225, 27);
         panelCentral.add(comboBoxTipoProducto);
@@ -189,6 +192,7 @@ public class PantallaCargaRecetas extends JPanel {
         panelCentral.add(labelAlmacenaje);
 
         JComboBox comboBoxTipoProducto_1 = new JComboBox();
+        comboBoxTipoProducto_1.setBackground(SystemColor.text);
         comboBoxTipoProducto_1.setModel(new DefaultComboBoxModel(Storage.values()));
         comboBoxTipoProducto_1.setBounds(117, 320, 69, 27);
         panelCentral.add(comboBoxTipoProducto_1);
@@ -239,7 +243,7 @@ public class PantallaCargaRecetas extends JPanel {
         fieldPeso.setColumns(10);
 
         JButton btnCargar = new JButton("alta producto");
-        btnCargar.setBounds(100, 531, 103, 23);
+        btnCargar.setBounds(85, 531, 147, 23);
         panelCentral.add(btnCargar);
         
 
@@ -473,7 +477,7 @@ public class PantallaCargaRecetas extends JPanel {
                             break;
                         case 3:
                             Product newLegume = new Legume(productName, caloricDensity, (short)carbs, (short)proteins, (short)fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.COLD, restrictions, l);
-                            insert = "LEGUME";
+                            insert = "LEGUMES";
                             break;
                         case 4:
                             Product newMeat = new Meat(productName, caloricDensity, (short)carbs,(short) proteins,(short) fats, vegan, halal, highProtein, lowCarb, (short) 0, Storage.COLD, restrictions, m);
@@ -494,25 +498,51 @@ public class PantallaCargaRecetas extends JPanel {
 
                         switch (insert) {
                             case "CONDIMENT":
-                                smt.executeUpdate("insert into" + insert
-                                        + "values ('" + productName + "', '" + c.toString() + "', '" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.DRY.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
-
+                                smt.executeUpdate("insert into " + insert 
+                                        + " values ('" + productName + "', '" + c.toString() + "', '" + caloricDensity + "','" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.DRY.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
+                               
                                 smt.close();
                                 break;
+                              
                             case "FISH":
-                                smt.executeUpdate("insert into" + insert
-                                        + "values ('" + productName + "', '" + f.toString() + "', '" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.COLD.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
+                                smt.executeUpdate("insert into " + insert 
+                                        + " values ('" + productName + "', '" + f.toString() + "', '" + caloricDensity + "','" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.COLD.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
 
                                 smt.close();
                                 break;
+                            case "FRUIT":
+                                smt.executeUpdate("insert into " + insert 
+                                        + " values ('" + productName + "', '" + fr.toString() + "', '" + caloricDensity + "','" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.DRY.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
+
+                                smt.close();
+                                break;
+                            case "LEGUMES":
+                                smt.executeUpdate("insert into " + insert 
+                                        + " values ('" + productName + "', '" + l.toString() + "', '" + caloricDensity + "','" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.DRY.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
+
+                                smt.close();
+                                break;
+                            case "MEAT":
+                                smt.executeUpdate("insert into " + insert 
+                                        + " values ('" + productName + "', '" + m.toString() + "', '" + caloricDensity + "','" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.COLD.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
+
+                                smt.close();
+                                break;
+                            case "VEGETABLE":
+                                smt.executeUpdate("insert into " + insert 
+                                        + " values ('" + productName + "', '" + v.toString() + "', '" + caloricDensity + "','" + carbs + "', '" + proteins + "', '" + fats + "',  '" + weight + "',  '" + Storage.DRY.toString() + "', " + vegan + ",  " + halal + ",  " + highProtein + ",  " + lowCarb + ");");
+
+                                smt.close();
+                                break;
+
 
                            
                         }
 
-                        JOptionPane.showMessageDialog(ventana, "", "Se ha dado de alta el producto satisfactoriamente", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(ventana, "Se ha dado de alta el producto satisfactoriamente", "alta producto", JOptionPane.INFORMATION_MESSAGE);
 
                     }catch (SQLException e1) {
-                    // TODO Auto-generated catch block
+                    	e1.printStackTrace();
                     JOptionPane.showMessageDialog(ventana, "Ha habido un problema completando la inserción del registro", "Problema base de datos", JOptionPane.ERROR_MESSAGE);
                 }
                 }
@@ -534,7 +564,7 @@ public class PantallaCargaRecetas extends JPanel {
         		
         	}
         });
-        btnVolver.setBounds(303, 531, 89, 23);
+        btnVolver.setBounds(317, 531, 89, 23);
         panelCentral.add(btnVolver);
         
         

@@ -50,7 +50,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		this.ventana=v;
 		this.menu = menu;
 		this.usuario=u;
-		this.setSize(1154, 558);
+		this.setSize(1154, 621);
 	
 
 		v.setResizable(false);
@@ -110,7 +110,9 @@ public class PantallaDisplayMenu  extends JPanel{
 		lblCena.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblCena.setBounds(21, 437, 52, 25);
 		add(lblCena);
+		u.getDietaryOptions();
 		
+	
 		JLabel desayunoLunes = new JLabel("0");
 		desayunoLunes.setHorizontalAlignment(SwingConstants.CENTER);
 		desayunoLunes.setBackground(Color.MAGENTA);
@@ -236,15 +238,22 @@ public class PantallaDisplayMenu  extends JPanel{
 		cenaDomingo.setBackground(Color.MAGENTA);
 		cenaDomingo.setBounds(0, 0, 1154, 558);
 		add(cenaDomingo);
-		String imagePath = "";
-	
-
-		v.setResizable(false);
 		
-		LocalDate date = LocalDate.now();
-		TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear(); 
-		byte weekNumber = (byte) date.get(woy);
-	
+		JButton btnNewButton = new JButton("volver");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					ventana.userLogged(u);
+				} catch (CampoVacioException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnNewButton.setBounds(490, 514, 85, 21);
+		add(btnNewButton);
+		
+		
 		
 		
 	}

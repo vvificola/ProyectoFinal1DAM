@@ -45,11 +45,11 @@ import preferenceEnums.TypeOfCooking;
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
+import java.awt.SystemColor;
 
 public class PantallaUsuario  extends JPanel{
 	private Ventana ventana;
 	private JButton btnNewProducts;
-	private JButton modifyUsername;
 	private JButton btnLogout;
 	private User usuario;
 	private Menu menu;
@@ -122,11 +122,6 @@ public class PantallaUsuario  extends JPanel{
 	
 		
 		JButton btnNewButton;
-		modifyUsername = new JButton("modificar");
-		modifyUsername.setVerticalAlignment(SwingConstants.TOP);
-		modifyUsername.setFont(new Font("Futura", Font.PLAIN, 9));
-		modifyUsername.setBounds(242, 44, 85, 16);
-		panelCentral.add(modifyUsername);
 		
 		JButton searchRecipesButton = new JButton("buscador recetas");
 		searchRecipesButton.addActionListener(new ActionListener() {
@@ -271,30 +266,6 @@ public class PantallaUsuario  extends JPanel{
 		lblDatosUsuario.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblDatosUsuario.setBounds(41, 23, 155, 16);
 		panelCentral.add(lblDatosUsuario);
-		
-		JButton modifyName = new JButton("modificar");
-		modifyName.setVerticalAlignment(SwingConstants.TOP);
-		modifyName.setFont(new Font("Futura", Font.PLAIN, 9));
-		modifyName.setBounds(242, 74, 85, 16);
-		panelCentral.add(modifyName);
-		
-		JButton modifyLastName = new JButton("modificar");
-		modifyLastName.setVerticalAlignment(SwingConstants.TOP);
-		modifyLastName.setFont(new Font("Futura", Font.PLAIN, 9));
-		modifyLastName.setBounds(242, 102, 85, 16);
-		panelCentral.add(modifyLastName);
-		
-		JButton modifySecondLastName = new JButton("modificar");
-		modifySecondLastName.setVerticalAlignment(SwingConstants.TOP);
-		modifySecondLastName.setFont(new Font("Futura", Font.PLAIN, 9));
-		modifySecondLastName.setBounds(242, 130, 85, 16);
-		panelCentral.add(modifySecondLastName);
-		
-		JButton modifyEmail = new JButton("modificar");
-		modifyEmail.setVerticalAlignment(SwingConstants.TOP);
-		modifyEmail.setFont(new Font("Futura", Font.PLAIN, 9));
-		modifyEmail.setBounds(242, 158, 85, 16);
-		panelCentral.add(modifyEmail);
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setValue(weekNumber);
@@ -509,6 +480,49 @@ public class PantallaUsuario  extends JPanel{
 				
 				lblNewLabel.setBounds(437, 259, 200, 200);
 				panelCentral.add(lblNewLabel);
+				
+				JLabel changeDietLabel = new JLabel("he cambiado de dieta");
+				changeDietLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
+				changeDietLabel.setForeground(new Color(51, 51, 204));
+				changeDietLabel.addMouseListener(new MouseAdapter() {
+					@Override
+		        	public void mouseEntered(MouseEvent e) {
+						changeDietLabel.setForeground(new Color (207, 168, 43));
+		        	}
+		        	public void mouseExited(MouseEvent e) {
+		        		changeDietLabel.setForeground(new Color(51, 51, 204));
+		        	}
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						boolean vegan = u.isVegan();
+						boolean halal = u.isHalal(); 
+						boolean highProtein = u.isHighProtein(); 
+						boolean lowCarb = u.isLowCarb();
+						String diet = JOptionPane.showInputDialog(changeDietLabel,"introduzca su nuevo tipo de dieta: VEGANA, HALAL, HIGHPROTEIN O LOWCARB");
+						switch (diet) {
+						case "VEGANA":
+							 vegan = true;
+							 u.setVegan(vegan);
+							break;
+						case "HALAL":
+							 halal = true;
+							 u.setHalal(halal);
+							break;
+						case "HIGHPROTEIN":
+							highProtein = true;
+							u.setHighProtein(highProtein);
+							break;
+						case "LOWCARB":
+							lowCarb = true;
+							u.setLowCarb(lowCarb);
+							break;
+		
+						}
+						
+					}
+				});
+				changeDietLabel.setBounds(41, 182, 264, 13);
+				panelCentral.add(changeDietLabel);
 		
 	
 	
