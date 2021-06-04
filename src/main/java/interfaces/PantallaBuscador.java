@@ -36,7 +36,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
-
+/**
+ *
+ * Interfaz de usuario que le permite buscar productos en funcion de varios parámetros 
+ * como su nombre concreto, su tipo, o su categoría
+ *
+ * @author Cándido Vidal 
+ */
+ 
 public class PantallaBuscador extends JPanel {
 	
 	private Storage storage;

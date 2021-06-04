@@ -6,8 +6,9 @@
 package exceptions;
 
 /**
- *
- * @author carlac
+ *Clase que modela una excepción cuando el campo nombre está vacío
+ * @author Cándido Vidal 
+
  */
 public class NombreVacioException extends Exception {
     

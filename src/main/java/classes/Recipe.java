@@ -10,7 +10,16 @@ import preferenceEnums.RecipeDifficulty;
 import preferenceEnums.TypeOfCooking;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,7 +71,10 @@ public class Recipe extends NutritionalValues {
 	}
 
 
-
+    
+    
+    
+    
 
 
 

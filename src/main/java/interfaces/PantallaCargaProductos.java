@@ -53,7 +53,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 
-public class PantallaCargaRecetas extends JPanel {
+public class PantallaCargaProductos extends JPanel {
 
     private Storage storage;
     private RecipeDifficulty difficulty;
@@ -64,7 +64,7 @@ public class PantallaCargaRecetas extends JPanel {
     private JTextField textField;
     private JTextField fieldPeso;
 
-    public PantallaCargaRecetas(Ventana v, User u) {
+    public PantallaCargaProductos(Ventana v, User u) {
         this.usuario = u;
         this.ventana = v;
         this.setSize(493, 660);

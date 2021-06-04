@@ -6,8 +6,8 @@
 package exceptions;
 
 /**
- *
- * @author carlac
+ *Clase que modela una excepción cuando la contraseña introducida es demasiado corta
+ * @author Cándido Vidal 
  */
 public class ContraseñaMuyCortaException extends Exception{
     

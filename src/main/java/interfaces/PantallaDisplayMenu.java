@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import classes.Menu;
+import classes.Recipe;
 import classes.User;
 import enums.DayofWeek;
 import enums.IMCGradation;
@@ -41,6 +42,7 @@ import javax.swing.table.DefaultTableModel;
 public class PantallaDisplayMenu  extends JPanel{
 	private Ventana ventana;
 	private User usuario;
+	private Recipe recipe;
 	private Menu menu;
 	private JTable table;
 	private JLabel comidaMiercoles;
@@ -50,6 +52,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		this.ventana=v;
 		this.menu = menu;
 		this.usuario=u;
+		
 		this.setSize(1154, 621);
 	
 
@@ -110,14 +113,58 @@ public class PantallaDisplayMenu  extends JPanel{
 		lblCena.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblCena.setBounds(21, 437, 52, 25);
 		add(lblCena);
-		u.getDietaryOptions();
+		
 		
 	
-		JLabel desayunoLunes = new JLabel("0");
+		JLabel desayunoLunes = new JLabel();
+		desayunoLunes.setIcon(new ImageIcon(""+u.generateBreakfast(u)));
 		desayunoLunes.setHorizontalAlignment(SwingConstants.CENTER);
 		desayunoLunes.setBackground(Color.MAGENTA);
 		desayunoLunes.setBounds(134, 118, 75, 75);
 		add(desayunoLunes);
+		
+		JLabel desayunoMartes = new JLabel("0");
+		desayunoMartes.setIcon(new ImageIcon(""+u.generateBreakfast(u)));
+		desayunoMartes.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoMartes.setBackground(Color.MAGENTA);
+		desayunoMartes.setBounds(260, 118, 75, 75);
+		add(desayunoMartes);
+		
+		JLabel desayunoMiercoles = new JLabel("0");
+		desayunoMiercoles.setIcon(new ImageIcon(""+u.generateBreakfast(u)));
+		desayunoMiercoles.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoMiercoles.setBackground(Color.MAGENTA);
+		desayunoMiercoles.setBounds(415, 118, 75, 75);
+		add(desayunoMiercoles);
+		
+		JLabel desayunoJueves = new JLabel("0");
+		desayunoJueves.setIcon(new ImageIcon(""+u.generateBreakfast(u)));
+		desayunoJueves.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoJueves.setBackground(Color.MAGENTA);
+		desayunoJueves.setBounds(572, 118, 75, 75);
+		add(desayunoJueves);
+		
+		JLabel desayunoViernes = new JLabel("0");
+		desayunoViernes.setIcon(new ImageIcon(""+u.generateBreakfast(u)));
+		desayunoViernes.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoViernes.setBackground(Color.MAGENTA);
+		desayunoViernes.setBounds(719, 118, 75, 75);
+		add(desayunoViernes);
+		
+		JLabel desayunoSabado = new JLabel("0");
+		desayunoSabado.setIcon(new ImageIcon(""+u.generateBreakfast(u)));
+		desayunoSabado.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoSabado.setBackground(Color.MAGENTA);
+		desayunoSabado.setBounds(866, 118, 75, 75);
+		add(desayunoSabado);
+		
+		JLabel desayunoDomingo = new JLabel("0");
+		desayunoDomingo.setIcon(new ImageIcon(""+u.generateBreakfast(u)));
+		desayunoDomingo.setHorizontalAlignment(SwingConstants.CENTER);
+		desayunoDomingo.setBackground(Color.MAGENTA);
+		desayunoDomingo.setBounds(1018, 118, 75, 75);
+		add(desayunoDomingo);
+		
 		
 		JLabel comidaLunes = new JLabel("0");
 		comidaLunes.setHorizontalAlignment(SwingConstants.CENTER);
@@ -131,11 +178,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		cenaLunes.setBounds(134, 414, 75, 75);
 		add(cenaLunes);
 		
-		JLabel desayunoMartes = new JLabel("0");
-		desayunoMartes.setHorizontalAlignment(SwingConstants.CENTER);
-		desayunoMartes.setBackground(Color.MAGENTA);
-		desayunoMartes.setBounds(260, 118, 75, 75);
-		add(desayunoMartes);
+	
 		
 		JLabel comidaMartes = new JLabel("0");
 		comidaMartes.setHorizontalAlignment(SwingConstants.CENTER);
@@ -149,11 +192,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		cenaMartes.setBounds(260, 414, 75, 75);
 		add(cenaMartes);
 		
-		JLabel desayunoMiercoles = new JLabel("0");
-		desayunoMiercoles.setHorizontalAlignment(SwingConstants.CENTER);
-		desayunoMiercoles.setBackground(Color.MAGENTA);
-		desayunoMiercoles.setBounds(415, 118, 75, 75);
-		add(desayunoMiercoles);
+		
 		
 		comidaMiercoles = new JLabel("0");
 		comidaMiercoles.setHorizontalAlignment(SwingConstants.CENTER);
@@ -167,11 +206,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		cenaMiercoles.setBounds(415, 414, 75, 75);
 		add(cenaMiercoles);
 		
-		JLabel desayunoJueves = new JLabel("0");
-		desayunoJueves.setHorizontalAlignment(SwingConstants.CENTER);
-		desayunoJueves.setBackground(Color.MAGENTA);
-		desayunoJueves.setBounds(572, 118, 75, 75);
-		add(desayunoJueves);
+		
 		
 		JLabel comidaJueves = new JLabel("0");
 		comidaJueves.setHorizontalAlignment(SwingConstants.CENTER);
@@ -185,11 +220,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		cenaJueves.setBounds(572, 414, 75, 75);
 		add(cenaJueves);
 		
-		JLabel desayunoViernes = new JLabel("0");
-		desayunoViernes.setHorizontalAlignment(SwingConstants.CENTER);
-		desayunoViernes.setBackground(Color.MAGENTA);
-		desayunoViernes.setBounds(719, 118, 75, 75);
-		add(desayunoViernes);
+	
 		
 		JLabel comidaViernes = new JLabel("0");
 		comidaViernes.setHorizontalAlignment(SwingConstants.CENTER);
@@ -203,12 +234,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		cenaViernes.setBounds(719, 414, 75, 75);
 		add(cenaViernes);
 		
-		JLabel desayunoSabado = new JLabel("0");
-		desayunoSabado.setHorizontalAlignment(SwingConstants.CENTER);
-		desayunoSabado.setBackground(Color.MAGENTA);
-		desayunoSabado.setBounds(866, 118, 75, 75);
-		add(desayunoSabado);
-		
+	
 		JLabel comidaSabado = new JLabel("0");
 		comidaSabado.setHorizontalAlignment(SwingConstants.CENTER);
 		comidaSabado.setBackground(Color.MAGENTA);
@@ -221,11 +247,7 @@ public class PantallaDisplayMenu  extends JPanel{
 		cenaSabado.setBounds(866, 414, 75, 75);
 		add(cenaSabado);
 		
-		JLabel desayunoDomingo = new JLabel("0");
-		desayunoDomingo.setHorizontalAlignment(SwingConstants.CENTER);
-		desayunoDomingo.setBackground(Color.MAGENTA);
-		desayunoDomingo.setBounds(1018, 118, 75, 75);
-		add(desayunoDomingo);
+		
 		
 		JLabel comidaDomingo = new JLabel("0");
 		comidaDomingo.setHorizontalAlignment(SwingConstants.CENTER);

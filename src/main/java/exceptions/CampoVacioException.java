@@ -1,8 +1,8 @@
 package exceptions;
 
 /**
- *
- * @author carlac
+ *Clase que modela una excepcion cuando el campo de texto está vacío 
+ * @author Candido Vidal 
  */
 public class CampoVacioException extends Exception {
     

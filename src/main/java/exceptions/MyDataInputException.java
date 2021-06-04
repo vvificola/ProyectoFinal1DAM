@@ -5,9 +5,8 @@
  */
 package exceptions;
 
-/**
- *
- * @author carlac
+/**Clase que modela una excepción cuando los datos introducidos no cumplen los parámetros requeridos
+ * @author Cándido Vidal 
  */
 public class MyDataInputException extends Exception{
     

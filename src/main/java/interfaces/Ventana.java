@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import classes.Recipe;
 import classes.User;
 import exceptions.CampoVacioException;
 
@@ -23,7 +24,7 @@ public class Ventana extends JFrame {
     private PantallaUsuario pantallaUsuario;
     private PantallaCreacionUsuarioyPass pantallaCreacionUsuario;
     private PantallaBuscador pantallaBuscador;
-    private PantallaCargaRecetas pantallaCargaRecetas;
+    private PantallaCargaProductos pantallaCargaProductos;
     private PantallaDisplayMenu pantallaDisplayMenu;
     private PantallaDisplayReceta pantallaDisplayReceta;
 
@@ -31,6 +32,7 @@ public class Ventana extends JFrame {
 
     private Ventana v;
     private User u;
+    private Recipe r;
 
     public Ventana() {
 
@@ -96,8 +98,8 @@ public class Ventana extends JFrame {
             this.pantallaUsuario = new PantallaUsuario(this, u);
         }
         
-        if (this.pantallaCargaRecetas != null) {
-        	this.pantallaCargaRecetas.setVisible(false);
+        if (this.pantallaCargaProductos != null) {
+        	this.pantallaCargaProductos.setVisible(false);
         }
         else if (this.pantallaInicio != null) {
         	 this.pantallaInicio.setVisible(false);
@@ -137,14 +139,14 @@ public class Ventana extends JFrame {
     
     public void goChargeProducts (User u)  throws CampoVacioException {
     	
-    	 if (this.pantallaCargaRecetas == null) {
-             this.pantallaCargaRecetas = new PantallaCargaRecetas(this, u);
+    	 if (this.pantallaCargaProductos == null) {
+             this.pantallaCargaProductos = new PantallaCargaProductos(this, u);
          }
          this.pantallaUsuario.setVisible(false);
-         this.setContentPane(this.pantallaCargaRecetas);
-         this.setSize(pantallaCargaRecetas.getSize());
+         this.setContentPane(this.pantallaCargaProductos);
+         this.setSize(pantallaCargaProductos.getSize());
          this.setTitle("carga de recetas");
-         this.pantallaCargaRecetas.setVisible(true);
+         this.pantallaCargaProductos.setVisible(true);
 
      }
     

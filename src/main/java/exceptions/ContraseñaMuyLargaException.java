@@ -5,9 +5,8 @@
  */
 package exceptions;
 
-/**
- *
- * @author carlac
+/**Clase que modela una excepción cuando la contraseña introducida es demasiado larga
+ * @author Cándido Vidal 
  */
 public class ContraseñaMuyLargaException extends Exception {
     

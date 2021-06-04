@@ -284,8 +284,8 @@ public class PantallaUsuario  extends JPanel{
 				JButton btnGenerateMenu_1 = new JButton("generar menú");
 				btnGenerateMenu_1.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						 ventana.DisplayMenu(u);
 						
+						ventana.DisplayMenu(u);
 						 ArrayList <Recipe> desayuno = new ArrayList <Recipe>();
 						 
 						 String desayunoImagePath ="";
@@ -295,16 +295,10 @@ public class PantallaUsuario  extends JPanel{
 							  		"root", "UXa19661!");
 							  Statement smt = c.createStatement();
 							  
-							  
-						 
-							  
-							  
 							  if (u.getDietaryOptions().contains(DietaryRestrictions.VEGAN)) {
 							  ResultSet r = smt.executeQuery(
 									  "select * from RECIPE where style = 'BREAKFAST';"
-									 
-									  
-									  
+	
 									  );
 							 
 							   while(r.next()) {
@@ -331,7 +325,6 @@ public class PantallaUsuario  extends JPanel{
 							  smt.close();
 							  c.close();
 						     
-
 							  }	 
 							  
 							  
@@ -446,6 +439,7 @@ public class PantallaUsuario  extends JPanel{
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
+						
 
 				}
 		                
@@ -455,6 +449,7 @@ public class PantallaUsuario  extends JPanel{
 					
 		        	
 					}});
+			
 				btnGenerateMenu_1.setFont(new Font("SansSerif", Font.BOLD, 12));
 				btnGenerateMenu_1.setBounds(427, 66, 212, 30);
 				panelCentral.add(btnGenerateMenu_1);

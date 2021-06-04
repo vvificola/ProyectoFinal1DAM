@@ -5,9 +5,8 @@
  */
 package exceptions;
 
-/**
- *
- * @author carlac
+/**Clase que modela una excepción cuando la longitud del nombre es incorrecta
+ * @author Cándido Vidal 
  */
 public class LongitudNombreIncorrectaException extends Exception  {
     

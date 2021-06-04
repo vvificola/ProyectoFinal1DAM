@@ -5,9 +5,8 @@
  */
 package exceptions;
 
-/**
- *
- * @author carlac
+/**Clase que modela una excepción cuando la contraseña introducida no coincide con su confirmación
+ * @author Cándido Vidal 
  */
 public class ContraseñaNoCoincideException extends Exception{
     
